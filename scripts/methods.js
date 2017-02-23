@@ -116,18 +116,20 @@ function progress(step,message){
 function startup(){
     var step_list = set_step_list();
     console.log(step_list);
-    $("#startButton").attr("onclick","downloadZip()");
-    $("#startButton").text("Download Zip");
-    
-    step_list.forEach(function(step){
-        switch(step){
-            case "soundhax":
-                soundhax_hb();
-                break;
-            default:
-                break;
-        }
-    })
+    if(step_list){
+        $("#startButton").attr("onclick","downloadZip()");
+        $("#startButton").text("Download Zip");
+
+        step_list.forEach(function(step){
+            switch(step){
+                case "soundhax":
+                    soundhax_hb();
+                    break;
+                default:
+                    break;
+            }
+        })
+    }
 }
 
 function soundhax_hb(){
@@ -169,7 +171,7 @@ function soundhax_hb(){
     addFile("otherapp","","otherapp.bin","list","otherapp");
     getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "soundhax");
     addFile("soundhax","","soundhax.mp4","list","soundhax");
-    getFileBuffer_url("http://smealum.github.io/ninjhax2/starter.zip","starter");
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
     extractZip("starter","");
 }
 

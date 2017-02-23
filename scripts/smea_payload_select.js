@@ -1,11 +1,11 @@
 function getUrlFromVersion(v)
 {
-    return "http://smealum.github.io/ninjhax2/JL1Xf2KFVm/otherapp/"+getFilenameFromVersion(v)+".bin";
+    return "https://smealum.github.io/ninjhax2/JL1Xf2KFVm/otherapp/"+getFilenameFromVersion(v)+".bin";
 }
 
 function getRopbinUrlFromVersion(v)
 {
-    return "http://smealum.github.io/ninjhax2/JL1Xf2KFVm/r/"+getFilenameFromVersion(v)+".bin";
+    return "https://smealum.github.io/ninjhax2/JL1Xf2KFVm/r/"+getFilenameFromVersion(v)+".bin";
 }
 
 var global_version = {};
