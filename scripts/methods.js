@@ -35,18 +35,28 @@ function extractZip(bufferName,path,remove_path){
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
+            progress(bufferName, bufferName + ": Extracting");
+            var file_count = 0;
+            
             //Code snippet from @jkcgs :3
             Object.keys(data.files).forEach(function(key){
                 var file = data.files[key];
 
                 var file_name = (file.name).replace("starter/","");
                 if (file.dir) {
+                    file_count++;
                     return;
                 }
 
                 file.async("arraybuffer").then(function(content) {
+                    file_count++;
+                    
                     addFile(content, "", file_name, "buffer",false);
-                    progress(bufferName, bufferName + ": Moved to file");
+
+                    if(file_count == Object.keys(data.files).length){
+                        progress(bufferName, bufferName + ": Added to file");
+                    }
+                    
                 });
             });               
         })
@@ -106,6 +116,8 @@ function progress(step,message){
 function startup(){
     var step_list = set_step_list();
     console.log(step_list);
+    $("#startButton").attr("onclick","downloadZip()");
+    $("#startButton").text("Download Zip");
     
     step_list.forEach(function(step){
         switch(step){
