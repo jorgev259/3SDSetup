@@ -127,6 +127,10 @@ function startup(){
                 case "soundhax":
                     soundhax_hb();
                     break;
+                    
+                case "d9(hb)":
+                    d9_hb();
+                    break;
                 default:
                     break;
             }
@@ -177,9 +181,25 @@ function soundhax_hb(){
     extractZip("starter","");
 }
 
+function d9_hb(){
+    /*var server = HttpContext.Current.Server.MapPath("~/temp/");
+
+            Directory.CreateDirectory(server + stamp + "/files9");
+            download_from_url(await strap.repo_url("TiniVi", "safehax", false), stamp, "safehax.3dsx");
+            download_from_url(await strap.repo_url("nedwill", "fasthax", false), stamp, "fasthax.3dsx");
+            download_from_url(await strap.repo_url("d0k3", "Decrypt9WIP",".zip"), stamp, "d9.zip");
+            extract_file("d9.zip", "Decrypt9WIP.bin", "safehaxpayload.bin", "", stamp, "zip");
+            Directory.Move(server + "downloads" + stamp + "/safehax.3dsx", server + stamp + "/3ds/safehax.3dsx");
+            Directory.Move(server + "downloads" + stamp + "/fasthax.3dsx", server + stamp + "/3ds/fasthax.3dsx");
+*/
+    
+    finalZip.file("files9/");
+    getGitURL("TiniVi", "safehax","safehax","3dsx");
+}
+
 function downloadZip(){
     finalZip.generateAsync({type:"blob"})
     .then(function (blob) {
-        saveAs(blob, ":3.zip");
+        saveAs(blob, "plairekt.zip");
     });
 }
