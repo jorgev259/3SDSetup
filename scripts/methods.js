@@ -15,6 +15,8 @@ function getFileBuffer_url(url,name){
                 bufferList[name] = this.result;
             };
             fileReader.readAsArrayBuffer(fileBlob);
+            progress(name,"Download " + name + ": Complete");
+            
         }
     };
     xhr.send();
