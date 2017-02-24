@@ -194,7 +194,7 @@ function d9_hb(){
 */
     
     finalZip.file("files9/");
-    getGitURL("TiniVi", "safehax","safehax","3dsx");
+    getFileBuffer_url("gitFiles/d9.zip","d9");
 }
 
 function downloadZip(){
