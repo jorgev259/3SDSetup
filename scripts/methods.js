@@ -7,7 +7,7 @@ function getFileBuffer_url(url,name){
     xhr.responseType = "arraybuffer";
     xhr.onprogress = function(e){
         if (e.lengthComputable){
-            var percent = (e.loaded / e.total) * 100;
+            var percent = Math.floor((e.loaded / e.total) * 100);
             progress(name,"Download " + name + ": " + percent);
         }
     };
@@ -203,6 +203,14 @@ function d9_hb(){
     
     getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/fasthax.3dsx","fasthax");
     addFile("fasthax","3ds","fasthax.3dsx","list","fasthax");   
+}
+
+function install(){
+    finalZip.file("cias/");
+    finalZip.remove("3ds");
+    
+    //getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
+    //getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
 }
 
 function downloadZip(){
