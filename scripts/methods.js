@@ -5,7 +5,10 @@ function getFileBuffer_url(url,name){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
-
+    xhr.onprogress = function(e){
+        if (e.lengthComputable)
+            progress(name,"Download " + name + ": " + (Math.floor(e.loaded / e.total) * 100));
+        };
     xhr.onload = function () {
          var fileBlob = new Blob([xhr.response]);
         
@@ -117,7 +120,7 @@ function progress(step,message){
     if($("#" + step).length>0){
         $("#" + step).text(message);
     }else{
-        $("#progress").append("<div id='" + step + "'>" + message + "</div>")
+        $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
 }
 
@@ -187,18 +190,7 @@ function soundhax_hb(){
     extractZip("starter","");
 }
 
-function d9_hb(){
-    /*var server = HttpContext.Current.Server.MapPath("~/temp/");
-
-            Directory.CreateDirectory(server + stamp + "/files9");
-            download_from_url(await strap.repo_url("TiniVi", "safehax", false), stamp, "safehax.3dsx");
-            download_from_url(await strap.repo_url("nedwill", "fasthax", false), stamp, "fasthax.3dsx");
-            download_from_url(await strap.repo_url("d0k3", "Decrypt9WIP",".zip"), stamp, "d9.zip");
-            extract_file("d9.zip", "Decrypt9WIP.bin", "safehaxpayload.bin", "", stamp, "zip");
-            Directory.Move(server + "downloads" + stamp + "/safehax.3dsx", server + stamp + "/3ds/safehax.3dsx");
-            Directory.Move(server + "downloads" + stamp + "/fasthax.3dsx", server + stamp + "/3ds/fasthax.3dsx");
-*/
-    
+function d9_hb(){   
     finalZip.file("files9/");
     
     getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
