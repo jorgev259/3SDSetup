@@ -6,9 +6,10 @@ function getFileBuffer_url(url,name){
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
     xhr.onprogress = function(e){
-        if (e.lengthComputable)
+        if (e.lengthComputable){
             progress(name,"Download " + name + ": " + (Math.floor(e.loaded / e.total) * 100));
-        };
+        }
+    };
     xhr.onload = function () {
          var fileBlob = new Blob([xhr.response]);
         
