@@ -55,7 +55,7 @@ function extractZip(bufferName,path,remove_path){
             Object.keys(data.files).forEach(function(key){
                 var file = data.files[key];
 
-                var file_name = (file.name).replace("starter/","");
+                var file_name = (file.name).replace(remove_path + "/","");
                 if (file.dir) {
                     file_count++;
                     return;
@@ -142,6 +142,9 @@ function startup(){
                 case "d9(hb)":
                     d9_hb();
                     break;
+                case "install":
+                    install();
+                    break;
                 default:
                     break;
             }
@@ -189,7 +192,7 @@ function soundhax_hb(){
     getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "soundhax");
     addFile("soundhax","","soundhax.mp4","list","soundhax");
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
-    extractZip("starter","");
+    extractZip("starter","","starter");
 }
 
 function d9_hb(){   
@@ -207,8 +210,14 @@ function d9_hb(){
 
 function install(){
     finalZip.file("cias/");
-    finalZip.remove("3ds");
+    finalZip.remove("3ds/");
     
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
+    extractZip("starter","","starter");
+    
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lhinstaller.zip","a9lhinstaller");
+    extractZip("a9lhinstaller","","");
     //getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
     //getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
 }
