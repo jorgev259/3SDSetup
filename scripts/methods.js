@@ -1,31 +1,33 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
 
-function getFileBuffer_url(url,name){    
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.responseType = "arraybuffer";
-    xhr.onprogress = function(e){
-        if (e.lengthComputable){
-            var percent = Math.floor((e.loaded / e.total) * 100);
-            progress(name,"Download " + name + ": " + percent);
-        }
-    };
-    xhr.onload = function () {
-         var fileBlob = new Blob([xhr.response]);
-        
-        if (this.status === 200) {
-            var fileReader = new FileReader();
-            fileReader.onload = function() {
-                bufferList[name] = this.result;
-            };
-            fileReader.readAsArrayBuffer(fileBlob);
-            progress(name,"Download " + name + ": Complete");
-            
-        }
-    };
-    xhr.send();
-    progress(name,"Download " + name + ": ongoing");
+function getFileBuffer_url(url,name){ 
+    if(bufferList[name] != undefined){
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "arraybuffer";
+        xhr.onprogress = function(e){
+            if (e.lengthComputable){
+                var percent = Math.floor((e.loaded / e.total) * 100);
+                progress(name,"Download " + name + ": " + percent);
+            }
+        };
+        xhr.onload = function () {
+             var fileBlob = new Blob([xhr.response]);
+
+            if (this.status === 200) {
+                var fileReader = new FileReader();
+                fileReader.onload = function() {
+                    bufferList[name] = this.result;
+                };
+                fileReader.readAsArrayBuffer(fileBlob);
+                progress(name,"Download " + name + ": Complete");
+
+            }
+        };
+        xhr.send();
+        progress(name,"Download " + name + ": ongoing");
+    }
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
@@ -55,7 +57,7 @@ function extractZip(bufferName,path,remove_path){
             Object.keys(data.files).forEach(function(key){
                 var file = data.files[key];
 
-                var file_name = (file.name).replace("starter/","");
+                var file_name = (file.name).replace(remove_path + "","");
                 if (file.dir) {
                     file_count++;
                     return;
@@ -142,6 +144,11 @@ function startup(){
                 case "d9(hb)":
                     d9_hb();
                     break;
+                    
+                case "install":
+                    install();
+                    break;
+                    
                 default:
                     break;
             }
@@ -184,12 +191,13 @@ function soundhax_hb(){
             break;
     }
     
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
+    extractZip("starter","","starter");
     getFileBuffer_url(updatePayload(),"otherapp");
     addFile("otherapp","","otherapp.bin","list","otherapp");
     getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "soundhax");
-    addFile("soundhax","","soundhax.mp4","list","soundhax");
-    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
-    extractZip("starter","");
+    addFile("soundhax","","soundhax.mp4","list","soundhax");   
+    
 }
 
 function d9_hb(){   
@@ -207,7 +215,10 @@ function d9_hb(){
 
 function install(){
     finalZip.file("cias/");
-    finalZip.remove("3ds");
+    finalZip.remove("3ds/");
+    
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
+    extractZip("starter","","starter");
     
     //getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
     //getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
