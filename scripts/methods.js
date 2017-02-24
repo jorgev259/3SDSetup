@@ -24,11 +24,17 @@ function getFileBuffer_url(url,name){
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
-    JSZip.loadAsync(bufferList[bufferName]).then(function (data) {        
-        data.file(original_name).async("arraybuffer").then(function success(content){
-            addFile(content,path,new_name,"buffer");
-        })                                
-    });
+    if(bufferList[bufferName] == undefined){
+        console.log("Extract " + original_name + " from " + bufferName + " delayed");
+        setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
+    }else{
+    
+        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {        
+            data.file(original_name).async("arraybuffer").then(function success(content){
+                addFile(content,path,new_name,"buffer",bufferName);
+            })                                
+        });
+    }
 }
 
 function extractZip(bufferName,path,remove_path){
@@ -194,7 +200,15 @@ function d9_hb(){
 */
     
     finalZip.file("files9/");
-    getFileBuffer_url("gitFiles/d9.zip","d9");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
+    getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/safehax.3dsx","safehax");
+    addFile("safehax","3ds","safehax.3dsx","list","safehax");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/fasthax.3dsx","fasthax");
+    addFile("fasthax","3ds","fasthax.3dsx","list","fasthax");   
 }
 
 function downloadZip(){
