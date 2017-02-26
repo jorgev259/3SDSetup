@@ -204,7 +204,7 @@ function install(){
     extractZip("A9LH Installer","","");
     
     getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lh.zip","A9LH");
-    extractZip("A9LH","A9LH","");
+    extractZip("A9LH","a9lh","");
     
     getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/hbloader.zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
