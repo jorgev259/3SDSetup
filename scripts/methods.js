@@ -67,7 +67,7 @@ function extractZip(bufferName,path,remove_path){
                     addFile(content, path, file_name, "buffer",false);
 
                     if(file_count == Object.keys(data.files).length){
-                        progress(bufferName, bufferName + ": Added to file");
+                        progress(bufferName, bufferName + ": Added to zip file");
                     }
                     
                 });
@@ -100,7 +100,7 @@ function addFile(name,path,filename,origin,step){
         }
         
         if(step != false){
-            progress(step, step + ": Moved to file");
+            progress(step, step + ": Added to zip file");
         }
         console.log(finalZip);
     }
