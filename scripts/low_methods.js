@@ -8,7 +8,7 @@ function getFileBuffer_url(url,name){
     xhr.onprogress = function(e){
         if (e.lengthComputable){
             var percent = Math.floor((e.loaded / e.total) * 100);
-            progress(name,"Download " + name + ": " + percent);
+            progress(name,"Download " + name + ": <progress value='" + percent + "' max='100'></progress>");
         }
     };
     xhr.onload = function () {
