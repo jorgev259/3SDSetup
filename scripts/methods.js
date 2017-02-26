@@ -54,8 +54,8 @@ function extractZip(bufferName,path,remove_path){
             //Code snippet from @jkcgs :3
             Object.keys(data.files).forEach(function(key){
                 var file = data.files[key];
-
-                var file_name = (file.name).replace(remove_path + "/","");
+                var file_name = file.name;
+                if(remove_path != ""){var file_name = (file_name).replace(remove_path + "/","");};
                 if (file.dir) {
                     file_count++;
                     return;
@@ -64,7 +64,7 @@ function extractZip(bufferName,path,remove_path){
                 file.async("arraybuffer").then(function(content) {
                     file_count++;
                     
-                    addFile(content, "", file_name, "buffer",false);
+                    addFile(content, path, file_name, "buffer",false);
 
                     if(file_count == Object.keys(data.files).length){
                         progress(bufferName, bufferName + ": Added to file");
@@ -209,17 +209,34 @@ function d9_hb(){
 }
 
 function install(){
-    finalZip.file("cias/");
     finalZip.remove("3ds/");
     
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
     extractZip("starter","","starter");
     
-    
     getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lhinstaller.zip","a9lhinstaller");
     extractZip("a9lhinstaller","","");
-    //getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
-    //getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lh.zip","a9lh");
+    extractZip("a9lh","a9lh","");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/hbloader.zip","hbloader");
+    getFileBuffer_zip("hbloader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/lumaupdater.cia","lumaupdater");
+    addFile("lumaupdater","cias","lumaupdater.cia","list","lumaupdater");
+  
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/FBI.zip","fbi");
+    getFileBuffer_zip("fbi", "3ds-arm/FBI.cia","FBI.cia","cias");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/luma.zip","luma");
+    getFileBuffer_zip("luma", "arm9loaderhax.bin","arm9loaderhax.bin","");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/h9.zip","h9");
+    getFileBuffer_zip("h9", "Hourglass9.bin","start_Hourglass9.bin","luma/payloads");
+    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/DspDump.3dsx","dspdump");
+    addFile("dspdump","3ds","DspDump.3dsx","list","dspdump");
 }
 
 function downloadZip(){
