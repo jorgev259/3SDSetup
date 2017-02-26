@@ -115,6 +115,10 @@ function progress(step,message){
     }
 }
 
+function torrent(url,name){
+    $("#torrent_list").append("<div><a href='" + url + "'>" + name + "</a></div>");
+}
+
 
 function downloadZip(){
     finalZip.generateAsync({type:"blob"})
