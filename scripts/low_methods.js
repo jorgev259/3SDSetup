@@ -41,7 +41,7 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {        
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
-                progress(bufferName, bufferName + ": Added to zip file");
+                progress_finish(bufferName, bufferName + ": Added to zip file");
             })                                
         });
     }
@@ -72,7 +72,7 @@ function extractZip(bufferName,path,remove_path){
                     addFile(content, path, file_name, "buffer");
 
                     if(file_count == Object.keys(data.files).length){
-                        progress(bufferName, bufferName + ": Added to zip file");
+                        progress_finish(bufferName, bufferName + ": Added to zip file");
                     }
                     
                 });
@@ -105,7 +105,7 @@ function addFile(name,path,filename,origin){
         }
         
         if(origin == "list"){
-            progress(name, name + ": Added to zip file");
+            progress_finish(name, name + ": Added to zip file");
         }
         console.log(finalZip);
     }
@@ -117,6 +117,19 @@ function progress(step,message){
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
+}
+
+function progress_finish(step,message){
+    document.getElementById(step).innerHTML = message;
+    $("#complete").append(document.getElementById(step).outerHTML);
+    var element = document.getElementById(step);
+    element.parentNode.removeChild(element);
+    
+    /*if(document.getElementById(step) !== null){
+        document.getElementById(step).innerHTML = message;
+    }else{
+        $("#progress").append("<div id='" + step + "'>" + message + "</div>");
+    }*/
 }
 
 function torrent(url,name){

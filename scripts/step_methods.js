@@ -6,7 +6,8 @@ function startup(){
     if(step_list){
         $("#startButton").attr("onclick","downloadZip()");
         $("#startButton").text("Download Zip");
-        $("#torrent_list").append("<label>Torrent List</label><br>");
+        $("#torrent_list").append("<label>Torrent List</label><br>")
+        $("#complete").append("<label>Complete</label><br>")
 
         step_list.forEach(function(step){
             switch(step){
