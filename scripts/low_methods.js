@@ -11,6 +11,10 @@ function getFileBuffer_url(url,name){
             progress(name,"Download " + name + ": <progress value='" + percent + "' max='100'></progress>");
         }
     };
+    xhr.onerror = function(){
+        progress(name,"Download " + name + ": retrying");
+        getFileBuffer_url(url,name);
+    }
     xhr.onload = function () {
          var fileBlob = new Blob([xhr.response]);
         
@@ -25,7 +29,7 @@ function getFileBuffer_url(url,name){
         }
     };
     xhr.send();
-    progress(name,"Download " + name + ": ongoing");
+    progress(name,"Download " + name + ": starting");
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
