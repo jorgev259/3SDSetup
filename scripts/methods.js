@@ -36,7 +36,8 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
     
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {        
             data.file(original_name).async("arraybuffer").then(function success(content){
-                addFile(content,path,new_name,"buffer",bufferName);
+                addFile(content,path,new_name,"buffer");
+                progress(bufferName, bufferName + ": Added to zip file");
             })                                
         });
     }
@@ -64,7 +65,7 @@ function extractZip(bufferName,path,remove_path){
                 file.async("arraybuffer").then(function(content) {
                     file_count++;
                     
-                    addFile(content, path, file_name, "buffer",false);
+                    addFile(content, path, file_name, "buffer");
 
                     if(file_count == Object.keys(data.files).length){
                         progress(bufferName, bufferName + ": Added to zip file");
@@ -77,7 +78,7 @@ function extractZip(bufferName,path,remove_path){
     
 }
 
-function addFile(name,path,filename,origin,step){
+function addFile(name,path,filename,origin){
     //origin either "list" or "buffer"
     
     var buffer;
@@ -91,7 +92,7 @@ function addFile(name,path,filename,origin,step){
     }
     
     if(buffer == undefined){
-        setTimeout(function(){ addFile(name,path,filename,origin,step);},500);
+        setTimeout(function(){ addFile(name,path,filename,origin);},500);
     }else{                
         if(path == ""){
             finalZip.file(filename,buffer);
@@ -99,28 +100,16 @@ function addFile(name,path,filename,origin,step){
             finalZip.folder(path).file(filename,buffer);
         }
         
-        if(step != false){
-            progress(step, step + ": Added to zip file");
+        if(origin == "list"){
+            progress(name, name + ": Added to zip file");
         }
         console.log(finalZip);
     }
 }
 
-function getGitURL(author,repo, bufferName, keyword){
-     $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest").done(function(data){
-         var i;
-         for(i=0;i<data.assets.length;i++){
-             if(data.assets[i].name.includes(keyword)){                
-                 getFileBuffer_url(data.assets[i].browser_download_url,bufferName);
-                 i=data.assets.length;
-             }
-         }
-     })
-}
-
 function progress(step,message){
-    if($("#" + step).length>0){
-        $("#" + step).text(message);
+    if(document.getElementById(step) !== null){
+        document.getElementById(step).innerHTML = message;
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
@@ -187,56 +176,53 @@ function soundhax_hb(){
             break;
     }
     
-    getFileBuffer_url(updatePayload(),"otherapp");
-    addFile("otherapp","","otherapp.bin","list","otherapp");
-    getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "soundhax");
-    addFile("soundhax","","soundhax.mp4","list","soundhax");
-    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
-    extractZip("starter","","starter");
+    getFileBuffer_url(updatePayload(),"Otherapp Payload");
+    addFile("Otherapp Payload","","otherapp.bin","list");
+    
+    getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "Soundhax");
+    addFile("Soundhax","","soundhax.mp4","list");
+    
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
+    extractZip("Starter Homebrew Kit","","starter");
 }
 
 function d9_hb(){   
     finalZip.file("files9/");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","d9");
-    getFileBuffer_zip("d9","Decrypt9WIP.bin","safehaxpayload.bin","");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","Decrypt9");
+    getFileBuffer_zip("Decrypt9","Decrypt9WIP.bin","safehaxpayload.bin","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/safehax.3dsx","safehax");
-    addFile("safehax","3ds","safehax.3dsx","list","safehax");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/safehax.3dsx","Safehax");
+    addFile("Safehax","3ds","safehax.3dsx","list");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/fasthax.3dsx","fasthax");
-    addFile("fasthax","3ds","fasthax.3dsx","list","fasthax");   
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/fasthax.3dsx","Fasthax");
+    addFile("Fasthax","3ds","fasthax.3dsx","list");   
 }
 
-function install(){
-    finalZip.remove("3ds/");
+function install(){    
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lhinstaller.zip","A9LH Installer");
+    extractZip("A9LH Installer","","");
     
-    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","starter");
-    extractZip("starter","","starter");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lh.zip","A9LH");
+    extractZip("A9LH","A9LH","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lhinstaller.zip","a9lhinstaller");
-    extractZip("a9lhinstaller","","");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/hbloader.zip","HBL Loader");
+    getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lh.zip","a9lh");
-    extractZip("a9lh","a9lh","");
-    
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/hbloader.zip","hbloader");
-    getFileBuffer_zip("hbloader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
-    
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/lumaupdater.cia","lumaupdater");
-    addFile("lumaupdater","cias","lumaupdater.cia","list","lumaupdater");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/lumaupdater.cia","Luma Updater");
+    addFile("Luma Updater","cias","lumaupdater.cia","list");
   
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/FBI.zip","fbi");
-    getFileBuffer_zip("fbi", "3ds-arm/FBI.cia","FBI.cia","cias");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/FBI.zip","FBI");
+    getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/luma.zip","luma");
-    getFileBuffer_zip("luma", "arm9loaderhax.bin","arm9loaderhax.bin","");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/luma.zip","Luma CFW");
+    getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/h9.zip","h9");
-    getFileBuffer_zip("h9", "Hourglass9.bin","start_Hourglass9.bin","luma/payloads");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/h9.zip","Hourglass9");
+    getFileBuffer_zip("Hourglass9", "Hourglass9.bin","start_Hourglass9.bin","luma/payloads");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/DspDump.3dsx","dspdump");
-    addFile("dspdump","3ds","DspDump.3dsx","list","dspdump");
+    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/DspDump.3dsx","DspDump");
+    addFile("DspDump","3ds","DspDump.3dsx","list");
 }
 
 function downloadZip(){
