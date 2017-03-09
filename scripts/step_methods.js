@@ -188,10 +188,10 @@ function ctr_9_2(){
     } 
     torrent(url,"9.2 CTR Transfer");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/g9.zip","GodMode9");
+    getLatestRelease("d0k3","GodMode9",".bin","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","up_GodMode9.bin","luma/payloads");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","Decrypt9 (A9LH payload)");
+    getLatestRelease("d0k3","Decrypt9",".zip","Decrypt9 (A9LH payload)");
     getFileBuffer_zip("Decrypt9 (A9LH payload)","Decrypt9WIP.bin","x_Decrypt9WIP.bin","luma/payloads");
     
 }
