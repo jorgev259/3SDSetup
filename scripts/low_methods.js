@@ -37,7 +37,7 @@ function getLatestRelease(author,repo,filename,step){
             var file = data.assets[key];
             
             if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,"Safehax");
+                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,step);
             }
         })
     });

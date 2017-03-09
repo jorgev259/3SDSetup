@@ -124,28 +124,28 @@ function install(){
     torrent("magnet:?xt=urn:btih:f978b4cf5eda72823240b9c649f3fd2940a9f525&dn=fbi-2.4.2-injectable.zip&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","FBI 2.4.2 inyectable");
     torrent("magnet:?xt=urn:btih:a1195c9f7ab650fa7c7bf020b51fc19ea8d9440c&dn=data%5Finput%5Fv3.zip&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","data_input v3");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lhinstaller.zip","A9LH Installer");
+    getLatestRelease("Plailect", "SafeA9LHInstaller",".zip","A9LH Installer");
     extractZip("A9LH Installer","","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/a9lh.zip","A9LH");
+    getLatestRelease("AuroraWright","arm9loaderhax",".zip","A9LH");
     extractZip("A9LH","a9lh","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/hbloader.zip","HBL Loader");
+    getLatestRelease("yellows8", "hblauncher_loader",".zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/lumaupdater.cia","Luma Updater");
+    getLatestRelease("Hamcha", "lumaupdate",".cia","Luma Updater");
     addFile("Luma Updater","cias","lumaupdater.cia","list");
   
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/FBI.zip","FBI");
+    getLatestRelease("Steveice10", "FBI",".zip","FBI");
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/luma.zip","Luma CFW");
+    getLatestRelease("AuroraWright","Luma3DS",".zip","Luma CFW");
     getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/h9.zip","Hourglass9");
+    getLatestRelease("d0k3","Hourglass9",".zip","Hourglass9");
     getFileBuffer_zip("Hourglass9", "Hourglass9.bin","start_Hourglass9.bin","luma/payloads");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/DspDump.3dsx","DspDump");
+    getLatestRelease("Cruel","DspDump",".3dsx","DspDump");
     addFile("DspDump","3ds","DspDump.3dsx","list");
 }
 
