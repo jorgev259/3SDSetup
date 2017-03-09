@@ -1,9 +1,9 @@
 function startup(){
-    alert("Open a torrent client before continuing");
-    
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
+        alert("Open a torrent client before continuing");
+        
         $("#startButton").attr("onclick","downloadZip()");
         $("#startButton").text("Download Zip");
         $("#torrent_list").append("<label>Torrent List</label><br>")
@@ -86,13 +86,13 @@ function soundhax_hb(){
 function d9_hb(){   
     finalZip.file("files9/");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/d9.zip","Decrypt9");
+    getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9");
     getFileBuffer_zip("Decrypt9","Decrypt9WIP.bin","safehaxpayload.bin","");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/safehax.3dsx","Safehax");
+    getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
     addFile("Safehax","3ds","safehax.3dsx","list");
     
-    getFileBuffer_url("https://rikumax25.github.io/3SDSetup/gitFiles/fasthax.3dsx","Fasthax");
+    getLatestRelease("nedwill","fasthax","3dsx", "Fasthax");
     addFile("Fasthax","3ds","fasthax.3dsx","list");   
 }
 

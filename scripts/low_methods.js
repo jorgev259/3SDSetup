@@ -1,12 +1,12 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
 
-function getFileBuffer_url(url,name){    
+function getFileBuffer_url(url, name) {   
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
-    xhr.onprogress = function(e){
-        if (e.lengthComputable){
+    xhr.onprogress = function (e) {
+        if (e.lengthComputable) {
             var percent = Math.floor((e.loaded / e.total) * 100);
             progress(name,"Download " + name + ": <progress value='" + percent + "' max='100'></progress>");
         }
@@ -25,16 +25,27 @@ function getFileBuffer_url(url,name){
             };
             fileReader.readAsArrayBuffer(fileBlob);
             progress(name,"Download " + name + ": Complete");
-            
         }
     };
     xhr.send();
     progress(name,"Download " + name + ": starting");
 }
 
+function getLatestRelease(author,repo,filename,step){
+    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
+        Object.keys(data.assets).forEach(function(key){
+            var file = data.assets[key];
+            
+            if(file.name.indexOf(filename) > -1){
+                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,"Safehax");
+            }
+        })
+    });
+
+}
+
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
     if(bufferList[bufferName] == undefined){
-        console.log("Extract " + original_name + " from " + bufferName + " delayed");
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
     }else{
     
@@ -49,7 +60,6 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
 
 function extractZip(bufferName,path,remove_path){
     if(bufferList[bufferName] == undefined){
-        console.log("Extract " + bufferName + " delayed");
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
@@ -68,7 +78,6 @@ function extractZip(bufferName,path,remove_path){
 
                 file.async("arraybuffer").then(function(content) {
                     file_count++;
-                    
                     addFile(content, path, file_name, "buffer");
 
                     if(file_count == Object.keys(data.files).length){
@@ -84,7 +93,6 @@ function extractZip(bufferName,path,remove_path){
 
 function addFile(name,path,filename,origin){
     //origin either "list" or "buffer"
-    
     var buffer;
     switch(origin){
         case "list":
@@ -104,10 +112,11 @@ function addFile(name,path,filename,origin){
             finalZip.folder(path).file(filename,buffer);
         }
         
-        if(origin == "list"){
+        if(origin == "list"){;
             progress_finish(name, name + ": Added to zip file");
         }
-        console.log(finalZip);
+        
+        
     }
 }
 
@@ -124,18 +133,21 @@ function progress_finish(step,message){
     $("#complete").append(document.getElementById(step).outerHTML);
     var element = document.getElementById(step);
     element.parentNode.removeChild(element);
+
+    if(step == 0){
+        alert("Download");
+    }
     
-    /*if(document.getElementById(step) !== null){
+    if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
-    }*/
+    }
 }
 
 function torrent(url,name){
     $("#torrent_list").append("<div><a href='" + url + "'>" + name + "</a></div>");
 }
-
 
 function downloadZip(){
     finalZip.generateAsync({type:"blob"})
