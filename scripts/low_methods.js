@@ -1,5 +1,6 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
+$("#inner2").hide();
 
 function getFileBuffer_url(url, name) {   
     var xhr = new XMLHttpRequest();

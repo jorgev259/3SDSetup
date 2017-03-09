@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="libs/jquery-1.10.2.js"></script>
+        <script src="libs/FileSaver.js"></script>
+        <script src="libs/jszip.js"></script>
+        <script src="scripts/smea_payload_select.js"></script>
+        <script src="scripts/step_logic.js"></script>
+        <script src="scripts/low_methods.js"></script>
+        <script src="scripts/step_methods.js"></script>
+    </head>
+    <body>
+        <form id="data_ver" class="firmware-form" method="post">
+            <select data-id="0" name="five"></select> 
+            <select data-id="1" name="zero"></select>.
+            <select data-id="2" name="one"></select>.
+            <select data-id="3" name="two"></select>-
+            <select data-id="4" name="three"></select>
+            <select data-id="5" name="four"></select>
+            <br>
+            <br>
+            <button type="button" id="startButton" onclick="startup()">Prepare zip</button>
+        </form>
+        
+        <div id="progress">
+            
+        </div>
+        
+        <br><br>
+        
+        <div id="complete">
+        
+        </div>
+        
+        <br><br>
+        
+        <div id="torrent_list"></div>
+    </body>
+</html>

@@ -3,6 +3,8 @@ function startup(){
     console.log(step_list);
     if(step_list){
         alert("Open a torrent client before continuing");
+        $("#inner1").hide();
+        $("#inner2").show();
         
         $("#startButton").attr("onclick","downloadZip()");
         $("#startButton").text("Download Zip");
