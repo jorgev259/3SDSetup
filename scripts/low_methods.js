@@ -113,7 +113,7 @@ function addFile(name,path,filename,origin){
             finalZip.folder(path).file(filename,buffer);
         }
         
-        if(origin == "list"){;
+        if(origin == "list"){
             progress_finish(name, name + ": Added to zip file");
         }
         
