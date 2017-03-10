@@ -5,11 +5,6 @@ function startup_CFW(){
         alert("Open a torrent client before continuing");
         $("#inner1").hide();
         $("#inner2").show();
-        
-        $("#startButton").attr("onclick","downloadZip()");
-        $("#startButton").text("Download Zip");
-        $("#torrent_list").append("<label>Torrent List</label><br>")
-        $("#complete").append("<label>Complete</label><br>")
 
         step_list.forEach(function(step){
             switch(step){
@@ -41,14 +36,8 @@ function startup_CFW(){
 }
 
 function startup(){
-        alert("Open a torrent client before continuing");
-        $("#inner1").hide();
-        $("#inner2").show();
-        
-        $("#startButton").attr("onclick","downloadZip()");
-        $("#startButton").text("Download Zip");
-        $("#torrent_list").append("<label>Torrent List</label><br>");
-        $("#complete").append("<label>Complete</label><br>");
+    $("#inner1").hide();
+    $("#inner2").show();
     
     soundhax_hb();
 }
