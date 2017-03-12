@@ -42,7 +42,18 @@ function getLatestRelease(author,repo,filename,step){
             }
         })
     });
+}
 
+function notLatestRelease(author,repo,filename,step){
+    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases", function( data ) {
+      var data = data[0];  Object.keys(data.assets).forEach(function(key){
+            var file = data.assets[key];
+            
+            if(file.name.indexOf(filename) > -1){
+                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,step);
+            }
+        })
+    });
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
@@ -50,11 +61,40 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
     }else{
     
-        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {        
+        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {    
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
                 progress_finish(bufferName, bufferName + ": Added to zip file");
             })                                
+        });
+    }
+}
+
+function extractFolder(bufferName,folder,path){
+    if(bufferList[bufferName] == undefined){
+        setTimeout(function(){ extractFolder(bufferName,folder)},500);
+    }else{   
+        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
+            var file_count2 = 0;
+            
+            //Modified from @jkcgs's snippet from extractZip :3
+            Object.keys(data.files).forEach(function(filename){
+                var file = data.files[filename];
+                if (file.dir || !filename.startsWith(folder)) {
+                    file_count2++;
+                    return;
+                }
+                
+                file.async("arraybuffer").then(function(content) {
+                    file_count2++;
+                    addFile(content, path, filename, "buffer");
+
+                    if(file_count2 == Object.keys(data.files).length){
+                        progress_finish(bufferName, bufferName + ": Added to zip file");
+                    }
+                    
+                });
+            });
         });
     }
 }
