@@ -38,7 +38,7 @@ function getLatestRelease(author,repo,filename,step){
             var file = data.assets[key];
             
             if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,step);
+                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
             }
         })
     });
@@ -50,7 +50,7 @@ function notLatestRelease(author,repo,filename,step){
             var file = data.assets[key];
             
             if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://crossorigin.me/" + file.browser_download_url,step);
+                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
             }
         })
     });
