@@ -33,6 +33,7 @@ function set_step_list() {
                 switch (browser <= 25) {
                     case true:
                         //Update latest
+                        step_list.push("d9(browser)");
                         compatible = false;
                         break;
 
@@ -90,8 +91,7 @@ function set_step_list() {
     }
 
     if (!compatible) {
-        step_list = false;
-        alert("You need to update to 11.2 or you need a ds flashcard to continue (Check 3ds.guide for more info)")
+        alert("If you dont have a working browser, you need to update to 11.2 or you need a ds flashcard to continue (Check 3ds.guide for more info)");
     }
     return step_list;
 }
