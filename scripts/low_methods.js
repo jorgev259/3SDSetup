@@ -39,8 +39,21 @@ function getLatestRelease(author,repo,filename,step){
             
             if(file.name.indexOf(filename) > -1){
                 getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
+                return;
             }
         })
+    });
+}
+
+function getLatestRelease_local(author,repo,filename,step){
+    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
+        
+        jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {
+            getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
+            if(name != data.name){
+                alert("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github");
+            }
+        });
     });
 }
 
