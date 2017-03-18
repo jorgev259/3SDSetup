@@ -16,6 +16,10 @@ function startup_CFW(){
                     d9_hb();
                     break;
                     
+                case "d9(browser)":
+                    d9_browser();
+                    break;
+                    
                 case "2.1_ctr":
                     ctr_2_1();
                     break;
@@ -98,6 +102,12 @@ function d9_hb(){
     
     getLatestRelease("nedwill","fasthax","3dsx", "Fasthax");
     addFile("Fasthax","3ds","fasthax.3dsx","list");   
+}
+
+function d9_browser(){
+    getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9");
+    getFileBuffer_zip("Decrypt9","Decrypt9WIP.dat","Decrypt9WIP.dat","");
+    getFileBuffer_zip("Decrypt9","launcher.dat","launcher.dat","");
 }
 
 function ctr_2_1(){

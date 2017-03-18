@@ -30,17 +30,11 @@ function set_step_list() {
             }
 
             if (vers >= 400 && vers <= 810) {
-                switch (browser <= 25) {
-                    case true:
-                        //Update latest
-                        step_list.push("d9(browser)");
-                        compatible = false;
-                        break;
-
-                    case false:
-                        //d9 browser
-                        step_list.push("d9(browser)")
-                        break;
+                step_list.push("d9(browser)");
+                step_list.push("install");
+                step_list.push("9.2_ctr");
+                if(browser>=25){
+                    compatible = false;
                 }
             }
 
