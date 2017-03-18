@@ -107,7 +107,7 @@ function d9_hb(){
 function d9_browser(){
     getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9");
     getFileBuffer_zip("Decrypt9","Decrypt9WIP.dat","Decrypt9WIP.dat","");
-    getFileBuffer_zip("Decrypt9","launcher.dat","launcher.dat","");
+    getFileBuffer_zip("Decrypt9","Launcher.dat","Launcher.dat","");
 }
 
 function ctr_2_1(){
