@@ -195,8 +195,8 @@ function progress_finish(step,message){
     }
 }
 
-function torrent(url,name){
-    $("#torrent_list").append("<div><a href='" + url + "'>" + name + "</a></div>");
+function torrent(url,name,message){
+    $("#torrent_list").append("<div><a href='" + url + "'>" + name + " (" + message + ")</a></div>");
 }
 
 function downloadZip(){
