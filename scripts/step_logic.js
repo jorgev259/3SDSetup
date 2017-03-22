@@ -23,8 +23,6 @@ function set_step_list() {
                 step_list.push("soundhax");
                 //d9 (hb)
                 step_list.push("d9(hb)");
-                //ctr
-                step_list.push("2.1_ctr");
                 //arm9
                 step_list.push("install");
             }
@@ -66,8 +64,6 @@ function set_step_list() {
                 step_list.push("soundhax");
                 //d9 (hb)
                 step_list.push("d9(hb)");
-                //ctr
-                step_list.push("2.1_ctr");
                 //arm9
                 step_list.push("install");
             }
