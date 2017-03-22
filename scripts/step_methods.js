@@ -92,8 +92,6 @@ function soundhax_hb(){
 }
 
 function d9_hb(){   
-    finalZip.file("files9/");
-    
     getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9");
     getFileBuffer_zip("Decrypt9","Decrypt9WIP.bin","safehaxpayload.bin","");
     

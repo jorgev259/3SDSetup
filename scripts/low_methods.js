@@ -188,10 +188,6 @@ function progress_finish(step,message){
     var element = document.getElementById(step);
     element.parentNode.removeChild(element);
 
-    if(step == 0){
-        alert("Download");
-    }
-    
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
