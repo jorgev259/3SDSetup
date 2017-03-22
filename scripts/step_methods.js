@@ -170,7 +170,7 @@ function install(){
     getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
-    getFileBuffer_zip("GodMode9", "GodMode9","start_GodMode9.bin","luma/payloads");
+    getFileBuffer_zip("GodMode9", "GodMode9.bin","start_GodMode9.bin","luma/payloads");
     
     getLatestRelease("Cruel","DspDump",".3dsx","DspDump");
     addFile("DspDump","3ds","DspDump.3dsx","list");
