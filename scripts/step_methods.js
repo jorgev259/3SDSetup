@@ -215,9 +215,8 @@ function ctr_9_2(){
     torrent(url,"9.2 CTR Transfer", "Extract to /files9/");
     
     getLatestRelease("d0k3","GodMode9",".bin","GodMode9");
-    getFileBuffer_zip("GodMode9", "GodMode9.bin","up_GodMode9.bin","luma/payloads");
+    getFileBuffer_zip("GodMode9", "GodMode9.bin","start_GodMode9.bin","luma/payloads");
     
-    getLatestRelease("d0k3","Decrypt9",".zip","Decrypt9 (A9LH payload)");
-    getFileBuffer_zip("Decrypt9 (A9LH payload)","Decrypt9WIP.bin","x_Decrypt9WIP.bin","luma/payloads");
-    
+    getLatestRelease("Steveice10", "FBI",".zip","FBI");
+    getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
 }
