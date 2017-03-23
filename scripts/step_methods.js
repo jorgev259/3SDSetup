@@ -3,8 +3,10 @@ function startup_CFW(){
     console.log(step_list);
     if(step_list){
         alert("Open a torrent client before continuing");
+        $('body').css("background-image", "url(img/bg22.png)");  
         $("#inner1").hide();
         $("#inner2").show();
+        
 
         step_list.forEach(function(step){
             switch(step){
