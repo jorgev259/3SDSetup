@@ -1,7 +1,25 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
+
 $(document).ready(function(){
     $("#inner2").hide();
+    toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  "onclick": null,
+  "showDuration": "0",
+  "hideDuration": "0",
+  "timeOut": "0",
+  "extendedTimeOut": "0",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+    }
 });
 
 function getFileBuffer_url(url, name) {   
@@ -198,6 +216,10 @@ function progress_finish(step,message){
 }
 
 function torrent(url,name,message){
+    var toastorrent = toastr;
+    toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
+    toastorrent["info"]("You need a torrent client like Deluge to download the torrent files (Click here to go to Deluge's website)");
+
     $("#torrent_list").append("<div><a href='" + url + "'>" + name + " (" + message + ")</a></div>");
 }
 

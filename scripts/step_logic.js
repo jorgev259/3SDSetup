@@ -37,7 +37,6 @@ function set_step_list() {
                         step_list.push("safectr_mset");
                         step_list.push("install");
                         step_list.push("9.2_ctr");
-                        alert("You'll need a ds flashcart for this method");
                     }else{
                         compatible = false;
                     }
@@ -85,9 +84,10 @@ function set_step_list() {
     
     if(vers >= 1130){
         step_list = false;
-        alert("You need a NAND backup and hardmod");
+        toastr["warning"]("You need a NAND backup and hardmod");
     }else if (!compatible) {
-        alert("You need to do a cart update (check 3ds.guide for more info)");
+        step_list = false;
+        toastr["warning"]("You need to do a cart update (check 3ds.guide for more info)");
     }
     return step_list;
 }

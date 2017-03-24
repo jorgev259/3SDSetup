@@ -2,7 +2,7 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
-        alert("Open a torrent client before continuing");
+        toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
         $('body').css("background-image", "url(img/bg22.png)");  
         $("#inner1").hide();
         $("#inner2").show();
@@ -105,7 +105,7 @@ function safectr_hb(){
     ctr21();
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-            getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
     
     getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
     addFile("Safehax","3ds","safehax.3dsx","list");
@@ -116,6 +116,9 @@ function safectr_hb(){
 }
 
 function safectr_mset(){
+    toastr["warning"]("Copy the files inside the 'flashcart files' folder to your flashcart's SD card");
+    toastr["warning"]("You'll need a ds flashcart for this method or doing a cart update (check 3ds.guide for more info)");
+
     ctr21();
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
