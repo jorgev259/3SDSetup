@@ -262,6 +262,7 @@ window.onload=function(){
     }
 
     var NUPs_1 = {
+        '0' : regions,
         '7' : regions,
         '8' : regions,
         '9' : regions,

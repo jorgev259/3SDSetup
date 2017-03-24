@@ -28,11 +28,19 @@ function set_step_list() {
             }
 
             if (vers >= 400 && vers <= 810) {
-                step_list.push("d9(browser)");
-                step_list.push("install");
-                step_list.push("9.2_ctr");
                 if(browser>=25){
-                    compatible = false;
+                    step_list.push("d9(browser)");
+                    step_list.push("install");
+                    step_list.push("9.2_ctr");
+                }else{
+                    if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
+                        step_list.push("safectr_mset");
+                        step_list.push("install");
+                        step_list.push("9.2_ctr");
+                        alert("You'll need a ds flashcart for this method");
+                    }else{
+                        compatible = false;
+                    }
                 }
             }
 
@@ -78,10 +86,8 @@ function set_step_list() {
     if(vers >= 1130){
         step_list = false;
         alert("You need a NAND backup and hardmod");
-    }
-
-    if (!compatible) {
-        alert("If you dont have a working browser, you need to update to 11.2 or you need a ds flashcard to continue (Check 3ds.guide for more info)");
+    }else if (!compatible) {
+        alert("You need to do a cart update (check 3ds.guide for more info)");
     }
     return step_list;
 }
