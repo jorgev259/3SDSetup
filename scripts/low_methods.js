@@ -2,7 +2,6 @@ var bufferList = new Object();
 var finalZip = new JSZip();
 $(document).ready(function(){
     $("#inner2").hide();
-    $("#browser_ver").prepend("<option value='0'>0</option>");
 });
 
 function getFileBuffer_url(url, name) {   
