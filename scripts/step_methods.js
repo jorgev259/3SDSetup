@@ -14,11 +14,11 @@ function startup_CFW(){
                     soundhax_hb();
                     break;
                     
-                case "d9(hb)":
+                case "safectr_hb":
                     safectr_hb();
                     break;
                     
-                case "d9(browser)":
+                case "safectr_browser":
                     safectr_browser();
                     break;
                     

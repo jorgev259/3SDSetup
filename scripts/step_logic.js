@@ -22,14 +22,14 @@ function set_step_list() {
                 //Soundhax
                 step_list.push("soundhax");
                 //d9 (hb)
-                step_list.push("d9(hb)");
+                step_list.push("safectr_hb");
                 //arm9
                 step_list.push("install");
             }
 
             if (vers >= 400 && vers <= 810) {
                 if(browser>=25){
-                    step_list.push("d9(browser)");
+                    step_list.push("safectr_browser");
                     step_list.push("install");
                     step_list.push("9.2_ctr");
                 }else{
@@ -71,7 +71,7 @@ function set_step_list() {
                 //Soundhax
                 step_list.push("soundhax");
                 //d9 (hb)
-                step_list.push("d9(hb)");
+                step_list.push("safectr_hb");
                 //arm9
                 step_list.push("install");
             }
