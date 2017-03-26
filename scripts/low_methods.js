@@ -202,12 +202,7 @@ function progress(step,message){
     }
 }
 
-function progress_finish(step,message){
-    document.getElementById(step).innerHTML = message;
-    $("#complete").append(document.getElementById(step).outerHTML);
-    var element = document.getElementById(step);
-    element.parentNode.removeChild(element);
-
+function progress_finish(step,message){   
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
