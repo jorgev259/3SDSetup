@@ -94,6 +94,8 @@ function soundhax_hb(){
 }
 
 function safectr_browser(){
+    finalZip.file("CTRTransfer/dummy.txt", "i love ice cream");
+    
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
     getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.dat","SafeCtrTransfer.dat","");
     getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","flashcart");
@@ -103,6 +105,7 @@ function safectr_browser(){
 
 function safectr_hb(){
     ctr21();
+    finalZip.file("CTRTransfer/dummy.txt", "i love ice cream");
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
     getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
@@ -118,7 +121,8 @@ function safectr_hb(){
 function safectr_mset(){
     toastr["warning"]("Copy the files inside the 'flashcart files' folder to your flashcart's SD card");
     toastr["warning"]("You'll need a ds flashcart for this method or doing a cart update (check 3ds.guide for more info)");
-
+    
+    finalZipzip.file("CTRTransfer/dummy.txt", "i love ice cream");
     ctr21();
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
@@ -130,6 +134,8 @@ function safectr_mset(){
 function install(){
     torrent("magnet:?xt=urn:btih:18b3a17f78e2376e05feaa150749d9fd689b25dc&dn=aeskeydb.bin&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","aeskeydb.bin","Extract to /files9/");
     torrent("magnet:?xt=urn:btih:a1195c9f7ab650fa7c7bf020b51fc19ea8d9440c&dn=data%5Finput%5Fv3.zip&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","data_input v3","Extract to the root of the sd card");
+    
+    finalZipzip.file("files9/dummy.txt", "i love ice cream");
     
     getLatestRelease_local("Plailect", "SafeA9LHInstaller","SafeA9LHInstallerv2.0.6.zip","A9LH Installer");
     extractZip("A9LH Installer","","");
