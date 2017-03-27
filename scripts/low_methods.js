@@ -194,6 +194,11 @@ function addFile(name,path,filename,origin){
     }
 }
 
+function folder(name){
+    finalZip.file(name + "/dummy.txt", "i love ice cream");
+    finalZip.remove(name + "/dummy.txt");
+}
+
 function progress(step,message){
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
