@@ -20,6 +20,7 @@ $(document).ready(function(){
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
     }
+    toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
 });
 
 function getFileBuffer_url(url, name) {   

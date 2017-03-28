@@ -263,6 +263,12 @@ window.onload=function(){
 
     var NUPs_1 = {
         '0' : regions,
+        '1' : regions,
+        '2' : regions,
+        '3' : regions,
+        '4' : regions,
+        '5' : regions,
+        '6' : regions,
         '7' : regions,
         '8' : regions,
         '9' : regions,

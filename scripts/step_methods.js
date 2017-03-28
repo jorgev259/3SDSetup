@@ -2,6 +2,7 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
+        toastr.clear();
         toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
         $('body').css("background-image", "url(img/bg22.png)");  
         $("#inner1").hide();
@@ -42,6 +43,9 @@ function startup_CFW(){
 }
 
 function startup(){
+    toastr.clear();
+    toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+    $('body').css("background-image", "url(img/bg22.png)");  
     $("#inner1").hide();
     $("#inner2").show();
     

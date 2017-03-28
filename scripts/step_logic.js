@@ -28,7 +28,7 @@ function set_step_list() {
             }
 
             if (vers >= 400 && vers <= 810) {
-                if(browser>=25){
+                if(browser>0){
                     step_list.push("safectr_browser");
                     step_list.push("install");
                     step_list.push("9.2_ctr");
