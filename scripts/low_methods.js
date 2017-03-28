@@ -99,6 +99,7 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
                 progress_finish(bufferName, bufferName + ": Added to zip file");
+                
             })                                
         });
     }
@@ -125,6 +126,7 @@ function extractFolder(bufferName,folder,path){
 
                     if(file_count2 == Object.keys(data.files).length){
                         progress_finish(bufferName, bufferName + ": Added to zip file");
+                        
                     }
                     
                 });
@@ -157,6 +159,7 @@ function extractZip(bufferName,path,remove_path){
 
                     if(file_count == Object.keys(data.files).length){
                         progress_finish(bufferName, bufferName + ": Added to zip file");
+                        
                     }
                     
                 });
@@ -190,8 +193,6 @@ function addFile(name,path,filename,origin){
         if(origin == "list"){
             progress_finish(name, name + ": Added to zip file");
         }
-        
-        
     }
 }
 
@@ -200,20 +201,22 @@ function folder(name){
     finalZip.remove(name + "/dummy.txt");
 }
 
-function progress(step,message){
+function progress(step,message){   
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
+    $("#download_btn").text("Downloading...");
 }
 
-function progress_finish(step,message){   
+function progress_finish(step,message){       
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
+    $("#download_btn").text("Downloading Zip");
 }
 
 function torrent(url,name,message){

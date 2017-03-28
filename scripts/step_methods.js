@@ -38,7 +38,7 @@ function startup_CFW(){
                 default:
                     break;
             }
-        })
+        });
     }
 }
 
