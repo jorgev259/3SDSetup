@@ -48,7 +48,7 @@ function startup(){
     $('body').css("background-image", "url(img/bg22.png)");  
     $("#inner1").hide();
     $("#inner2").show();
-    
+    available = true;
     soundhax_hb();
 }
 

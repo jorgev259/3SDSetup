@@ -1,5 +1,7 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
+var torrent_number = [];
+var available = false;
 
 $(document).ready(function(){
     $("#inner2").hide();
@@ -23,12 +25,14 @@ $(document).ready(function(){
     toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
 });
 
-function getFileBuffer_url(url, name) {   
+function getFileBuffer_url(url, name) {
+    available = false;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
     xhr.responseType = "arraybuffer";
     xhr.onprogress = function (e) {
         if (e.lengthComputable) {
+            available = false;
             var percent = Math.floor((e.loaded / e.total) * 100);
             progress(name,"Download " + name + ": <progress value='" + percent + "' max='100'></progress>");
         }
@@ -47,6 +51,7 @@ function getFileBuffer_url(url, name) {
             };
             fileReader.readAsArrayBuffer(fileBlob);
             progress(name,"Download " + name + ": Complete");
+            available = true;
         }
     };
     xhr.send();
@@ -207,7 +212,6 @@ function progress(step,message){
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
-    $("#download_btn").text("Downloading...");
 }
 
 function progress_finish(step,message){       
@@ -216,20 +220,38 @@ function progress_finish(step,message){
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
-    $("#download_btn").text("Download zip");
 }
 
-function torrent(url,name,message){
+function torrent(url,name,message){    
     var toastorrent = toastr;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
     toastorrent["info"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
-    $("#torrent_list").append("<div><a class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
+    $("#torrent_list").append("<div><a onclick='torrent_click(" + torrent_number.length + ")' class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
+    
+    torrent_number[torrent_number.length] = 0;
+}
+
+function torrent_click(number){
+    torrent_number[number] = 1;
+    var count = 0;
+    for(var i=0;i<torrent_number.length;i++){
+        if(torrent_number[i] == 1){
+            count++;
+        }
+    }
+    if(count == torrent_number.length){
+        available = true;
+    }
 }
 
 function downloadZip(){
-    finalZip.generateAsync({type:"blob"})
-    .then(function (blob) {
-        saveAs(blob, "plairekt.zip");
-    });
+    if(available){
+        finalZip.generateAsync({type:"blob"})
+        .then(function (blob) {
+            saveAs(blob, "plairekt.zip");
+        });
+    }else{
+        toastr["error"]("You need to open all torrents and wait until are downloads are finished before downloading the zip");
+    }
 }
