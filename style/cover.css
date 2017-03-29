@@ -18,6 +18,17 @@ a:hover {
   background-color: #fff;
   border: 1px solid #fff;
 }
+.btn-torrent,
+.btn-torrent:hover,
+.btn-torrent:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+  font-size: 10px;
+   margin-bottom: 5px;
+}
+    
 
 /*
  * Base structure

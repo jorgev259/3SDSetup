@@ -216,15 +216,15 @@ function progress_finish(step,message){
     }else{
         $("#progress").append("<div id='" + step + "'>" + message + "</div>");
     }
-    $("#download_btn").text("Downloading Zip");
+    $("#download_btn").text("Download zip");
 }
 
 function torrent(url,name,message){
     var toastorrent = toastr;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
-    toastorrent["info"]("You need a torrent client like Deluge to download the torrent files (Click here to go to Deluge's website)");
+    toastorrent["info"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
-    $("#torrent_list").append("<div><a href='" + url + "'>" + name + " (" + message + ")</a></div>");
+    $("#torrent_list").append("<div><a class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
 }
 
 function downloadZip(){
