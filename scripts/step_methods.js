@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
+    available = false;
+})
+
 function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
