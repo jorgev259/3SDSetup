@@ -251,6 +251,6 @@ function downloadZip(){
             saveAs(blob, "plairekt.zip");
         });
     }else{
-        toastr["error"]("You need to open all torrents and wait until are downloads are finished before downloading the zip");
+        toastr["error"]("You need to open all torrents and wait until all downloads are finished before downloading the zip");
     }
 }
