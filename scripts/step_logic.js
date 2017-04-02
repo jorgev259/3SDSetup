@@ -1,11 +1,15 @@
-function set_step_list() {        
-    var form_data = $("#data_ver").serializeArray();
-
-    var ver_data = {};
-    var i;
-    for (i = 0; i <= 5; i++) {
-        ver_data[i.toString()] = form_data[i].value;
-    };
+function set_step_list() {
+    var ver_data = [];
+    if(auto){
+        ver_data = auto_list;
+    }else{
+         var form_data = $("#data_ver").serializeArray();
+        var i;
+        for (i = 0; i <= 5; i++) {
+            ver_data[i] = form_data[i].value;
+        };
+    }
+    
     
     
     var console = ver_data[0];
@@ -84,9 +88,11 @@ function set_step_list() {
     
     if(vers >= 1130){
         step_list = false;
+        auto = false;
         toastr["warning"]("You need a NAND backup and hardmod");
     }else if (!compatible) {
         step_list = false;
+        auto = false;
         toastr["warning"]("You need to do a cart update (check 3ds.guide for more info)");
     }
     return step_list;

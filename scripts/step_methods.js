@@ -1,6 +1,30 @@
+var auto = false;
+var auto_list;
+var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
+
 $(document).ready(function(){
-    toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
+    
+    var url_parse = $(location).attr('href').split("?");
+    console.log(url_parse);
+    
+    switch(url_parse[1]){
+        case "CFW":
+        case"cfw":
+            auto = true;
+            var ver_string = url_parse[2];
+            auto_list = ver_string.split(/[.-]+/);
+            startup_CFW();
+            break;
+            
+        default:
+            toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
+            break;
+    }
+    
+
     available = false;
+    
+    
 })
 
 function startup_CFW(){
@@ -10,8 +34,6 @@ function startup_CFW(){
         toastr.clear();
         toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
         $('body').css("background-image", "url(img/bg22.png)");  
-        $("#inner1").hide();
-        $("#inner2").show();
         
 
         step_list.forEach(function(step){
@@ -44,6 +66,10 @@ function startup_CFW(){
                     break;
             }
         });
+        
+        $("#inner1").hide();
+        $("#inner2").show();
+        
     }
 }
 
@@ -51,14 +77,22 @@ function startup(){
     toastr.clear();
     toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
     $('body').css("background-image", "url(img/bg22.png)");  
+    soundhax_hb();
     $("#inner1").hide();
     $("#inner2").show();
-    available = true;
-    soundhax_hb();
+    available = true;    
 }
 
 function soundhax_hb(){
-    var req_data = $("#data_ver").serializeArray();
+    var req_data;
+    if(auto){
+        req_data = default_form;
+        req_data["0"].value = auto_list["0"];
+        req_data["5"].value = auto_list["5"];
+    }else{
+         req_data = $("#data_ver").serializeArray();
+    }
+    
     var console = req_data["0"].value;
     var region = req_data["5"].value;
 
@@ -218,7 +252,14 @@ function ctr_9_2(){
 }
 
 function ctr21(){
-    var req_data = $("#data_ver").serializeArray();
+    var req_data;
+    if(auto){
+        req_data = default_form;
+        req_data["5"].value = auto_list["0"];
+    }else{
+         req_data = $("#data_ver").serializeArray();
+    }
+    
     var region = req_data["5"].value;
     var url;
     
