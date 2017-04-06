@@ -12,8 +12,6 @@ function set_step_list() {
         };
     }
     
-    
-    
     var console = ver_data[0];
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
     var browser = ver_data[4];

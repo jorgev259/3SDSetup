@@ -3,6 +3,7 @@ var finalZip = new JSZip();
 var torrent_number = [];
 var available = false;
 var start = "";
+var torrent_count = 0;
 
 $(document).ready(function(){
     $("#inner2").hide();
@@ -102,8 +103,7 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {    
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
-                progress_finish(bufferName, bufferName + ": Added to zip file");
-                
+                progress_finish(bufferName, bufferName + ": Added to zip file");                
             })                                
         });
     }
@@ -233,19 +233,16 @@ function torrent(url,name,message){
 
 function torrent_click(number){
     torrent_number[number] = 1;
-    var count = 0;
+    torrent_count = 0;
     for(var i=0;i<torrent_number.length;i++){
         if(torrent_number[i] == 1){
-            count++;
+            torrent_count++;
         }
-    }
-    if(count == torrent_number.length){
-        available = true;
     }
 }
 
 function downloadZip(){
-    if(available){
+    if(available && torrent_count == torrent_number.length){
         finalZip.generateAsync({type:"blob"})
         .then(function (blob) {
             saveAs(blob, "plairekt.zip");
@@ -261,7 +258,7 @@ function downloadZip(){
                     url = "";
                    break;
            };
-            window.open(url,"_blank");
+            window.location.replace(url);
         });
     }else{
         toastr["error"]("You need to open all torrents and wait until all downloads are finished before downloading the zip");
