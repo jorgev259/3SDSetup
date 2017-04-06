@@ -1,3 +1,5 @@
+var guide = "3ds";
+
 function set_step_list() {
     var ver_data = [];
     if(auto){
@@ -29,6 +31,8 @@ function set_step_list() {
                 step_list.push("safectr_hb");
                 //arm9
                 step_list.push("install");
+                
+                start = "homebrew-launcher-(soundhax)";
             }
 
             if (vers >= 400 && vers <= 810) {
@@ -36,11 +40,15 @@ function set_step_list() {
                     step_list.push("safectr_browser");
                     step_list.push("install");
                     step_list.push("9.2_ctr");
+                    
+                    start = "safectrtransfer-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("safectr_mset");
                         step_list.push("install");
                         step_list.push("9.2_ctr");
+                        
+                        start = "safectrtransfer-(mset)";
                     }else{
                         compatible = false;
                     }
@@ -55,6 +63,8 @@ function set_step_list() {
                             step_list.push("install");
                             //9.2 ctr
                             step_list.push("9.2_ctr");
+                            
+                            start= "installing-arm9loaderhax"
                         } else {
                             //Update latest
                             compatible = false;
