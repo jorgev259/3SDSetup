@@ -173,6 +173,18 @@ function extractZip(bufferName,path,remove_path){
     
 }
 
+function deletefile_zip(bufferName,filename){
+    if(bufferList[bufferName] == undefined){
+        setTimeout(function(){ deletefile_zip(bufferName,filename)},500);
+    }else{
+    
+        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
+            console.log(data);
+            data.remove(filename);                        
+        });
+    }
+}
+
 function addFile(name,path,filename,origin){
     //origin either "list" or "buffer"
     var buffer;
