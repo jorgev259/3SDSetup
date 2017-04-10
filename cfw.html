@@ -105,25 +105,27 @@
     <script src="scripts/low_methods.js"></script>
     <script src="scripts/step_methods.js"></script>
     <script>
-        var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
-        var url_parse = $(location).attr('href').split("/");
-        var v_list = url_parse[url_parse.length - 1].split("?");
-        console.log(url_parse);
+        $(document).ready(function(){
+            var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
+            var url_parse = $(location).attr('href').split("/");
+            var v_list = url_parse[url_parse.length - 1].split("?");
+            console.log(url_parse);
 
-        switch(v_list[0]){
-            case "CFW":
-            case"cfw":
-            case "cfw.html":
-                auto = true;
-                var ver_string = v_list[1];
-                auto_list = ver_string.split(/[.-]+/);
-                startup_CFW();
-                break;
-                
-            default:
-                //window.location.replace("http://3sdsetup.tk");
-                break;
-        }
+            switch(v_list[0]){
+                case "CFW":
+                case"cfw":
+                case "cfw.html":
+                    auto = true;
+                    var ver_string = v_list[1];
+                    auto_list = ver_string.split(/[.-]+/);
+                    startup_CFW();
+                    break;
+
+                default:
+                    //window.location.replace("http://3sdsetup.tk");
+                    break;
+            }
+        })
             
     
     </script>
