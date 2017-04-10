@@ -1,30 +1,9 @@
 var auto = false;
 var auto_list;
-var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
 
 $(document).ready(function(){
-    
-    var url_parse = $(location).attr('href').split("?");
-    console.log(url_parse);
-    
-    switch(url_parse[1]){
-        case "CFW":
-        case"cfw":
-            auto = true;
-            var ver_string = url_parse[2];
-            auto_list = ver_string.split(/[.-]+/);
-            startup_CFW();
-            break;
-            
-        default:
-            toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");
-            break;
-    }
-    
-
-    available = false;
-    
-    
+    toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");    
+    available = false;    
 })
 
 function startup_CFW(){
