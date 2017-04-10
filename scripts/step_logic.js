@@ -37,14 +37,12 @@ function set_step_list() {
                 if(browser>0){
                     step_list.push("safectr_browser");
                     step_list.push("install");
-                    step_list.push("9.2_ctr");
                     
                     start = "safectrtransfer-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("safectr_mset");
                         step_list.push("install");
-                        step_list.push("9.2_ctr");
                         
                         start = "safectrtransfer-(mset)";
                     }else{
