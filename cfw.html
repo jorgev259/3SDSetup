@@ -105,8 +105,8 @@
     <script src="scripts/low_methods.js"></script>
     <script src="scripts/step_methods.js"></script>
     <script>
-        $(document).ready(function(){
-            var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
+        var default_form = JSON.parse('[{"name":"five","value":"OLD"},{"name":"zero","value":"1"},{"name":"one","value":"0"},{"name":"two","value":"0"},{"name":"three","value":"0"},{"name":"four","value":"E"}]');
+        $(document).ready(function(){            
             var url_parse = $(location).attr('href').split("/");
             var v_list = url_parse[url_parse.length - 1].split("?");
             console.log(url_parse);
