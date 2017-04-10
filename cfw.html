@@ -118,11 +118,15 @@
                     auto = true;
                     var ver_string = v_list[1];
                     auto_list = ver_string.split(/[.-]+/);
-                    startup_CFW();
+                    if(auto_list.length == 6){
+                        startup_CFW();
+                    }else{
+                        window.location.replace("http://3sdsetup.tk");
+                    }
                     break;
 
                 default:
-                    //window.location.replace("http://3sdsetup.tk");
+                    window.location.replace("http://3sdsetup.tk");
                     break;
             }
         })
