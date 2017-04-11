@@ -122,8 +122,6 @@ function safectr_browser(){
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
     getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.dat","SafeCtrTransfer.dat","");
     getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","flashcart");
-    
-    ctr21();
 }
 
 function safectr_hb(){
