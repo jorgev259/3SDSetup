@@ -22,7 +22,7 @@ function set_step_list() {
     //Hard-coded, will make it updatable later on
     switch(console){
         case "OLD":
-            if (vers >= 900 && vers <= 1120) {
+            if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
                 //d9 (hb)
@@ -91,10 +91,7 @@ function set_step_list() {
 
             break;
     }
-    
-    if(vers = 1130){
-        window.location.replace("https://media.giphy.com/media/abwE9TnmuqdlC/giphy.gif");
-    }
+
     
     if(vers >= 1140){
         step_list = false;
