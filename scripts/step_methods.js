@@ -108,8 +108,8 @@ function soundhax_hb(){
     getFileBuffer_url(updatePayload(),"Otherapp Payload");
     addFile("Otherapp Payload","","otherapp.bin","list");
     
-    getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "Soundhax");
-    addFile("Soundhax","","soundhax.m4a","list");
+    getFileBuffer_url("https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a", "Soundhax " + region);
+    addFile("Soundhax","","soundhax-" + region + "-" + console + ".m4a","list");
     
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
     extractZip("Starter Homebrew Kit","","starter");
