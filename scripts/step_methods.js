@@ -135,8 +135,8 @@ function safectr_hb(){
     getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
     addFile("Safehax","3ds","safehax.3dsx","list");
     
-    getLatestRelease("nedwill","fasthax","3dsx", "Fasthax");
-    addFile("Fasthax","3ds","fasthax.3dsx","list");   
+    getLatestRelease("smealum","udsploit","3dsx", "udsploit");
+    addFile("Fasthax","3ds","udsploit.3dsx","list");   
     
 }
 
