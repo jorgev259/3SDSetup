@@ -76,7 +76,7 @@ function set_step_list() {
             break;
 
         case "NEW":
-            if (vers >= 900 && vers <= 1120) {
+            if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
                 //d9 (hb)
