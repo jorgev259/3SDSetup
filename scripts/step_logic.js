@@ -92,7 +92,11 @@ function set_step_list() {
             break;
     }
     
-    if(vers >= 1130){
+    if(vers = 1130){
+        window.location.replace("https://media.giphy.com/media/abwE9TnmuqdlC/giphy.gif");
+    }
+    
+    if(vers >= 1140){
         step_list = false;
         auto = false;
         toastr["warning"]("You need a NAND backup and hardmod");
