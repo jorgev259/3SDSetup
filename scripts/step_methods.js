@@ -164,14 +164,16 @@ function install(){
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
     extractZip("A9LH","a9lh","");
     
-    cfw_files();
+    cfw_files(false);
 }
 
-function cfw_files(){
-    if(auto){
+function cfw_files(change_start){
+    if(change_start){
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
-    }else{
-        $("#inner1").hide();
+    }
+    
+    if(!auto){
+         $("#inner1").hide();
         $("#inner2").show();
     }
     
