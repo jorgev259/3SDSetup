@@ -238,7 +238,7 @@ function ctr_9_2(){
             }
             break;
     } 
-    torrent(url,"9.2 CTR Transfer", "Extract to /files9/");
+    torrent(url,"9.2 CTR Transfer " + region, "Extract to /files9/");
     
     getLatestRelease("d0k3","GodMode9",".bin","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","start_GodMode9.bin","luma/payloads");
@@ -274,5 +274,5 @@ function ctr21(){
             break;
     }
     
-    torrent(url,"2.1 CTR Transfer", "Extract to /CtrTransfer/");
+    torrent(url,"2.1 CTR Transfer " + region, "Extract to /CtrTransfer/");
 }
