@@ -136,7 +136,7 @@ function safectr_hb(){
     addFile("Safehax","3ds","safehax.3dsx","list");
     
     getLatestRelease("smealum","udsploit","3dsx", "udsploit");
-    addFile("Fasthax","3ds","udsploit.3dsx","list");   
+    addFile("udsploit","3ds","udsploit.3dsx","list");   
     
 }
 
