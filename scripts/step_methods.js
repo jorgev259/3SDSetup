@@ -170,6 +170,9 @@ function install(){
 function cfw_files(){
     if(auto){
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
+    }else{
+        $("#inner1").hide();
+        $("#inner2").show();
     }
     
     folder("files9");
