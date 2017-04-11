@@ -116,6 +116,7 @@ function soundhax_hb(){
 }
 
 function safectr_browser(){
+    ctr21();
     folder("CTRTransfer");
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
