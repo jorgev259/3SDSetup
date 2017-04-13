@@ -72,6 +72,19 @@ function getLatestRelease(author,repo,filename,step){
     });
 }
 
+function getRelease(author,repo,filename,release,step){
+    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/tags" + release, function( data ) {
+        Object.keys(data.assets).forEach(function(key){
+            var file = data.assets[key];
+            
+            if(file.name.indexOf(filename) > -1){
+                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
+                return;
+            }
+        })
+    });
+}
+
 function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
