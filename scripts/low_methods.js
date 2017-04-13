@@ -73,7 +73,7 @@ function getLatestRelease(author,repo,filename,step){
 }
 
 function getRelease(author,repo,filename,release,step){
-    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/tags" + release, function( data ) {
+    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/tags/" + release, function( data ) {
         Object.keys(data.assets).forEach(function(key){
             var file = data.assets[key];
             
