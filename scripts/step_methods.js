@@ -131,11 +131,27 @@ function safectr_hb(){
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
     getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
     
-    getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
+    var ver_data = [];
+    if(auto){
+        ver_data = auto_list;
+    }else{
+         var form_data = $("#data_ver").serializeArray();
+        var i;
+        for (i = 0; i <= 5; i++) {
+            ver_data[i] = form_data[i].value;
+        };
+    }
+    
+    var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
+    
+    if(vers < 1300){                          
+        getRelease("TiniVi","safehax","3dsx", "r19", "Safehax");
+    }else{
+        getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
+        
+    }
     addFile("Safehax","3ds","safehax.3dsx","list");
     
-    getRelease("TiniVi","safehax","3dsx", "r19", "Safehax r19");
-    addFile("Safehax r19","3ds","safehax_r19(use_in_case_you_are_not_in_11-3).3dsx","list");
     
     getLatestRelease("smealum","udsploit","3dsx", "udsploit");
     addFile("udsploit","3ds","udsploit.3dsx","list");   
