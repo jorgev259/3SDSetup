@@ -144,7 +144,7 @@ function safectr_hb(){
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
     
-    if(vers < 1300){                          
+    if(vers < 11300){                          
         getRelease("TiniVi","safehax","3dsx", "r19", "Safehax");
     }else{
         getLatestRelease("TiniVi","safehax","3dsx", "Safehax");
