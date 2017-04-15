@@ -235,7 +235,7 @@ function cfw_files(change_start){
     getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
-    getFileBuffer_zip("GodMode9", "GodMode9.bin","start_GodMode9.bin","luma/payloads");
+    getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
     
     getLatestRelease("Cruel","DspDump",".3dsx","DspDump");
     addFile("DspDump","3ds","DspDump.3dsx","list");
@@ -281,7 +281,7 @@ function ctr_9_2(){
     torrent(url,"9.2 CTR Transfer " + region, "Extract to /files9/");
     
     getLatestRelease("d0k3","GodMode9",".bin","GodMode9");
-    getFileBuffer_zip("GodMode9", "GodMode9.bin","start_GodMode9.bin","luma/payloads");
+    getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
     
     getLatestRelease("Steveice10", "FBI",".zip","FBI");
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
