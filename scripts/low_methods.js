@@ -282,7 +282,7 @@ function downloadZip(){
                    break
            };
             if(!button_redirect){
-                $("#button_lastpage").append("<div><a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a></div>");
+                $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
                 button_redirect = true;
             }
         });
