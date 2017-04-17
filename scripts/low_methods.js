@@ -2,6 +2,7 @@ var bufferList = new Object();
 var finalZip = new JSZip();
 var torrent_number = [];
 var available = false;
+var button_redirect = false;
 var start = "";
 var torrent_count = 0;
 
@@ -273,17 +274,17 @@ function downloadZip(){
             saveAs(blob, "plairekt.zip");
             var url = "";
            switch(guide){
-               case "3ds":
+               case "3ds.guide":
                    url = "http://3ds.guide/" + start;
                    break;
                 case "wiiu.guide":
                    url = "http://wiiu.guide/"
                    break
-                case "flimflam":
-                    url = "";
-                   break;
            };
-            window.location.replace(url);
+            if(!button_redirect){
+                $("#button_lastpage").append("<div><a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a></div>");
+                button_redirect = true;
+            }
         });
     }else{
         toastr["error"]("You need to open all torrents and wait until all downloads are finished before downloading the zip");

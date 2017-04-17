@@ -1,4 +1,4 @@
-var guide = "3ds";
+var guide = "3ds.guide";
 
 function set_step_list() {
     var ver_data = [];

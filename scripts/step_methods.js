@@ -12,7 +12,10 @@ function startup_CFW(){
     if(step_list){
         toastr.clear();
         toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
-        $('body').css("background-image", "url(img/bg22.png)");  
+        $('body').css("background-image", "url(img/bg22.png)");
+        
+        $("#inner1").hide();
+        $("#inner2").show();
         
 
         step_list.forEach(function(step){
@@ -46,8 +49,7 @@ function startup_CFW(){
             }
         });
         
-        $("#inner1").hide();
-        $("#inner2").show();
+        
         
     }
 }
