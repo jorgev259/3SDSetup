@@ -278,7 +278,7 @@ function downloadZip(){
                    url = "http://3ds.guide/" + start;
                    break;
                 case "wiiu.guide":
-                   url = "http://wiiu.guide#section-ii---block-system-updates"
+                   url = "http://wiiu.guide/get-started#section-ii---block-system-updates"
                    break
            };
             if(!button_redirect){
