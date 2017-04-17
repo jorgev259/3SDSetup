@@ -53,13 +53,30 @@ function startup_CFW(){
 }
 
 function startup(){
-    toastr.clear();
-    toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
-    $('body').css("background-image", "url(img/bg22.png)");  
-    soundhax_hb();
-    $("#inner1").hide();
-    $("#inner2").show();
-    available = true;    
+    var ver_data = [];
+    if(auto){
+        ver_data = auto_list;
+    }else{
+         var form_data = $("#data_ver").serializeArray();
+        var i;
+        for (i = 0; i <= 5; i++) {
+            ver_data[i] = form_data[i].value;
+        };
+    }
+    
+    var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
+    
+    if(vers > 900 && vers < 1140){
+        toastr.clear();
+        toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+        $('body').css("background-image", "url(img/bg22.png)");  
+        soundhax_hb();
+        $("#inner1").hide();
+        $("#inner2").show();
+        available = true;
+    }else{
+        toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
+    }
 }
 
 function soundhax_hb(){
