@@ -217,6 +217,7 @@ function install(){
     folder("files9");
     
     getLatestRelease_local("Plailect", "SafeA9LHInstaller","SafeA9LHInstallerv2.0.6.zip","A9LH Installer");
+    deletefile_zip("A9LH Installer","arm9loaderhax.bin");
     extractZip("A9LH Installer","","");
     
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
