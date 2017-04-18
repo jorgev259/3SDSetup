@@ -88,6 +88,7 @@ function getRelease(author,repo,filename,release,step){
 
 function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
+    
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
         $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {                   
             if(name != data.name){
@@ -112,8 +113,7 @@ function notLatestRelease(author,repo,filename,step){
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
     if(bufferList[bufferName] == undefined){
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
-    }else{
-    
+    }else{   
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {    
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
