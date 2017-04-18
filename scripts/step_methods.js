@@ -251,7 +251,7 @@ function cfw_files(change_start){
     getLatestRelease("Steveice10", "FBI",".zip","FBI");
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
-    getLatestRelease_local("AuroraWright","Luma3DS","Luma3DSv7.0.zip","Luma CFW");
+    getLatestRelease_local("AuroraWright","Luma3DS","Luma3DSv7.0.1.zip","Luma CFW");
     getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
