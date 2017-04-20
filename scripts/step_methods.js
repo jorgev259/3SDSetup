@@ -148,7 +148,7 @@ function safectr_hb(){
     folder("CTRTransfer");
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.bin","safehaxpayload.bin","");
     
     var ver_data = [];
     if(auto){
