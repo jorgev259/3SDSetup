@@ -155,7 +155,7 @@ function extractFolder(bufferName,folder,path){
 }
 
 function extractZip(bufferName,path,remove_path){
-    if(bufferList[bufferName] == undefined || deletefile_zip[bufferName]){
+    if(bufferList[bufferName] == undefined || delete_zip[bufferName]){
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
