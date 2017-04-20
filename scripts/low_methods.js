@@ -1,6 +1,7 @@
 var bufferList = new Object();
 var finalZip = new JSZip();
 var torrent_number = [];
+var delete_zip = new Object();
 var available = false;
 var button_redirect = false;
 var start = "";
@@ -154,7 +155,7 @@ function extractFolder(bufferName,folder,path){
 }
 
 function extractZip(bufferName,path,remove_path){
-    if(bufferList[bufferName] == undefined){
+    if(bufferList[bufferName] == undefined || deletefile_zip[bufferName]){
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
@@ -189,12 +190,13 @@ function extractZip(bufferName,path,remove_path){
 
 function deletefile_zip(bufferName,filename){
     if(bufferList[bufferName] == undefined){
+        delete_zip[bufferName] = true;
         setTimeout(function(){ deletefile_zip(bufferName,filename)},500);
-    }else{
-    
+    }else{   
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
             console.log(data);
-            data.remove(filename);                        
+            data.remove(filename);
+            delete_zip[bufferName] = false;
         });
     }
 }
