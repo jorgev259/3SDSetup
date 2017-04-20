@@ -195,7 +195,11 @@ function deletefile_zip(bufferName,filename){
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
             console.log(data);
             data.remove(filename);
-            bufferList[bufferName] = data;
+            
+            data.generateAsync({type:"arraybuffer"}).then(function (content) {
+                // see FileSaver.js
+                bufferList[bufferName] = content;
+            });
         });
     }
 }
