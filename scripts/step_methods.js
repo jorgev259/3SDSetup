@@ -138,9 +138,9 @@ function safectr_browser(){
     ctr21();
     folder("CTRTransfer");
     
-    getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9WIP");
-    getFileBuffer_zip("Decrypt9WIP","Decrypt9WIP.dat","Decrypt9WIP.dat","");
-    getFileBuffer_zip("Decrypt9WIP","Launcher.dat","Launcher.dat","");
+    getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.dat","SafeCTRTransfer.dat","");
+    getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","");
 }
 
 function safectr_hb(){
@@ -184,9 +184,9 @@ function safectr_mset(){
     folder("CTRTransfer");
     ctr21();
     
-    getLatestRelease("d0k3","Decrypt9WIP",".zip", "Decrypt9WIP");
-    getFileBuffer_zip("Decrypt9WIP","Decrypt9WIP.dat","Decrypt9WIP.dat","");
-    getFileBuffer_zip("Decrypt9WIP","Decrypt9WIP.nds","Decrypt9WIP.nds","flashcart files");
+    getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.dat","SafeCTRTransfer.dat","");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.nds","SafeCTRTransfernds","flashcart files");
     
 }
 
