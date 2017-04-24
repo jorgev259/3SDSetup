@@ -279,20 +279,34 @@ function downloadZip(){
     if(available && torrent_count == torrent_number.length){
         finalZip.generateAsync({type:"blob"})
         .then(function (blob) {
-            saveAs(blob, "plairekt.zip");
-            var url = "";
-           switch(guide){
-               case "3ds.guide":
-                   url = "http://3ds.guide/" + start;
-                   break;
-                case "wiiu.guide":
-                   url = "http://wiiu.guide/get-started#section-ii---block-system-updates"
-                   break
-           };
-            if(!button_redirect){
-                $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
-                button_redirect = true;
-            }
+            
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = process;
+            xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://3sdsetup.tk/scripts/typos.txt", true);
+            xhr.send();
+
+            function process()
+            {
+              if (xhr.readyState == 4) {
+                var resp = xhr.responseText;
+                var resp_list = resp.split("/");
+                var name = Math.floor(Math.random() * resp_list.length);
+                saveAs(blob, resp_list[name] + ".zip");
+                var url = "";
+                switch(guide){
+                   case "3ds.guide":
+                       url = "http://3ds.guide/" + start;
+                       break;
+                    case "wiiu.guide":
+                       url = "http://wiiu.guide/get-started#section-ii---block-system-updates"
+                       break
+               };
+                if(!button_redirect){
+                    $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
+                    button_redirect = true;
+                }
+              }
+            } 
         });
     }else{
         toastr["error"]("You need to open all torrents and wait until all downloads are finished before downloading the zip");
