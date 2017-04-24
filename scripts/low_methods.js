@@ -276,10 +276,9 @@ function torrent_click(number){
 }
 
 function downloadZip(){
-    if(available && torrent_count == torrent_number.length){
+    if((available && torrent_count == torrent_number.length)||localStorage.torrent_noob == true){
         finalZip.generateAsync({type:"blob"})
-        .then(function (blob) {
-            
+        .then(function (blob) {            
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = process;
             xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://3sdsetup.tk/scripts/typos.txt", true);
@@ -305,6 +304,8 @@ function downloadZip(){
                     $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
                     button_redirect = true;
                 }
+                  
+                  localStorage.torrent_noob = true;
               }
             } 
         });
