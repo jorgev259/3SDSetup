@@ -2,6 +2,7 @@ var bufferList = new Object();
 var delete_zip = new Object();
 var finalZip = new JSZip();
 var torrent_number = [];
+var torrent_used = false;
 var available = false;
 var button_redirect = false;
 var start = "";
@@ -257,6 +258,7 @@ function progress_finish(step,message){
 
 function torrent(url,name,message){    
     var toastorrent = toastr;
+    torrent_used = true;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
     toastorrent["info"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
@@ -304,8 +306,7 @@ function downloadZip(){
                     $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
                     button_redirect = true;
                 }
-                  
-                  localStorage.torrent_noob = true;
+                if(torrent_used){localStorage.torrent_noob = true;}
               }
             } 
         });
