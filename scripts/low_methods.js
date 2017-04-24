@@ -93,7 +93,7 @@ function getLatestRelease_local(author,repo,filename,step){
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
         $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {                   
             if(name != data.name){
-                alert("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github");
+                toastr["warning"]("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github");
             }
         });
     });
