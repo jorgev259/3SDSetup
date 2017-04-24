@@ -278,7 +278,7 @@ function torrent_click(number){
 }
 
 function downloadZip(){
-    if((available && torrent_count == torrent_number.length)||localStorage.torrent_noob == true){
+    if((available && torrent_count == torrent_number.length)||localStorage.torrent_noob == "true"){
         finalZip.generateAsync({type:"blob"})
         .then(function (blob) {            
             var xhr = new XMLHttpRequest();
