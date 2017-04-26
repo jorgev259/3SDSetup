@@ -1,8 +1,10 @@
-3SDSetup
-
-for use with https://3ds.guide/
-
 Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
+
+**3SDSetup**
+
+For use with https://3ds.guide/
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 **Usage**
 
