@@ -1,16 +1,19 @@
-3SD Setup
+3SDSetup
 
-Use with 3DS.Guide
+for use with https://3ds.guide/
 
-https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
+Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-Documentaion
+**Usage**
+Sets up SD card for new installations of arm9loaderhax+Luma3DS with magnet links to neccessary torrents.
 
-getFileBuffer_url(url, name) -> Gets file from url and stores it with a name to identify it
+**Documentation**
+
+getFileBuffer_url(url, name) -> Gets file from URL and stores it with a name to identify it
 Example: getFileBuffer_url ("http://3sdsetup.tk/index.html","index")
 
 
-getLatestRelease(author,repo,filename,step) -> gets the url from a file that contains "filename" from the latest release of a repository, step is a name to                                                identify the step is used to (must be shared between the actions related to the corresponding step)
+getLatestRelease(author,repo,filename,step) -> gets the URL from a file that contains "filename" from the latest release of a repository, step is a name to                                                identify the step is used to (must be shared between the actions related to the corresponding step)
 Example: getLatestRelease("TiniVi","safehax","3dsx", "Safehax") -> Gets the 3dsx file from the safehax repository for the step "Safehax"
 
 
