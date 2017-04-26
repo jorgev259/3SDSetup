@@ -22,10 +22,10 @@ getLatestRelease(author,repo,filename,step) -> gets the URL from a file that con
 Example: getLatestRelease("TiniVi","safehax","3dsx", "Safehax") -> Gets the 3dsx file from the safehax repository for the step "Safehax"
 
 
-notLatestRelease(author,repo,filename,step) -> same that getLatestRelease but its used in repositories that dont use the "Latest" tag
+notLatestRelease(author,repo,filename,step) -> same as getLatestRelease but used in repositories that don't use the "Latest" tag
 
 
-getFileBuffer_zip(bufferName,original_name,new_name,path) -> Extracts the "original_name" file from an already downloaded zip file and extracts it to an                                                                specified "path"
+getFileBuffer_zip(bufferName,original_name,new_name,path) -> Extracts the "original_name" file from an already downloaded zip file and extracts it to a                                                                specified "path"
 
 
 extractFolder(bufferName,folder,path) -> extracts a whole "folder" from an already downloaded zip file into an specified "path"
@@ -36,5 +36,5 @@ Example: extractZip("Starter Homebrew Kit","","starter"); -> Extracts content of
          extractZip("Starter Homebrew Kit","",""); -> Extracts starter folder
          
          
- addFile(name,path,filename,origin) -> Adds an already downloaded file to an specified "path" with and specified "filename"
+ addFile(name,path,filename,origin) -> Adds an already downloaded file to a specified "path" with a specified "filename"
  Example: addFile("Fasthax","3ds","fasthax.3dsx","list"); -> Adds the Fasthax file to the 3ds folder
