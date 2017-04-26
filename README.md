@@ -11,6 +11,7 @@ Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
 
 Sets up SD card for new installations of arm9loaderhax+Luma3DS with magnet links to neccessary torrents.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 **Documentation**
 
 getFileBuffer_url(url, name) -> Gets file from URL and stores it with a name to identify it
