@@ -218,10 +218,10 @@ function install(){
     
     getLatestRelease_local("Plailect", "SafeA9LHInstaller","a9lhinstaller.zip","A9LH Installer");
     deletefile_zip("A9LH Installer","arm9loaderhax.bin");
-    extractZip("A9LH Installer","","uncompressed");
+    extractZip("A9LH Installer","","uncompressed/SafeA9LHInstaller");
     
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
-    extractZip("A9LH","a9lh","uncompressed");
+    extractZip("A9LH","a9lh","uncompressed/arm9loaderhax");
     
     cfw_files(false,ver_data[5],ver_data[0]);
 }
