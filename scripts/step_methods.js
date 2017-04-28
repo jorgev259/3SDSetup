@@ -203,13 +203,47 @@ function install(){
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
     extractZip("A9LH","a9lh","");
     
-    cfw_files(false);
+    cfw_files(false,ver_data[5],ver_data[0]);
 }
 
-function cfw_files(change_start){
+function cfw_files(change_start,region,console){
+    var ver_data = [];
     if(change_start){
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
+        var form_data = $("#data_ver").serializeArray();
+        var i;
+        for (i = 0; i <= 5; i++) {
+            ver_data[i] = form_data[i].value;
+        };
+        region = ver_data[5];
+        console = ver_data[0]; 
     }
+    
+    if(console == "OLD"){
+        folder("hblauncherloader");
+        
+        global_version = $.parseJSON('{"0":"OLD","1":"11","2":"2","3":"0","4":"0","5":"' + region + '"}');
+        getFileBuffer_url(updatePayload(),"Otherapp Payload (11.2)");
+        var payloadName = "OLD-11-4-0-37-";
+        switch(region){
+            case "E":
+                payloadName += "EUR";
+                break;
+            case "U":
+                payloadName += "USA";
+                break;
+            case "J":
+                payloadName += "JPN";
+                break;
+            case "K":
+                payloadName += "KOR";
+                break;
+        }
+        addFile("Otherapp Payload (11.2)","hblauncherloader",payloadName + "uncompressed/arm9loaderhax.bin","list");
+    } 
+    
+    
+
     
     if(!auto){
          $("#inner1").hide();
