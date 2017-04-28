@@ -12,7 +12,10 @@ function startup_CFW(){
     if(step_list){
         toastr.clear();
         toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
-        $('body').css("background-image", "url(img/bg22.png)");  
+        $('body').css("background-image", "url(img/bg22.png)");
+        
+        $("#inner1").hide();
+        $("#inner2").show();
         
 
         step_list.forEach(function(step){
@@ -46,20 +49,36 @@ function startup_CFW(){
             }
         });
         
-        $("#inner1").hide();
-        $("#inner2").show();
+        
         
     }
 }
 
 function startup(){
-    toastr.clear();
-    toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
-    $('body').css("background-image", "url(img/bg22.png)");  
-    soundhax_hb();
-    $("#inner1").hide();
-    $("#inner2").show();
-    available = true;    
+    var ver_data = [];
+    if(auto){
+        ver_data = auto_list;
+    }else{
+         var form_data = $("#data_ver").serializeArray();
+        var i;
+        for (i = 0; i <= 5; i++) {
+            ver_data[i] = form_data[i].value;
+        };
+    }
+    
+    var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
+    
+    if(vers > 900 && vers < 1140){
+        toastr.clear();
+        toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+        $('body').css("background-image", "url(img/bg22.png)");  
+        soundhax_hb();
+        $("#inner1").hide();
+        $("#inner2").show();
+        available = true;
+    }else{
+        toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
+    }
 }
 
 function soundhax_hb(){
@@ -120,8 +139,8 @@ function safectr_browser(){
     folder("CTRTransfer");
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.dat","SafeCtrTransfer.dat","");
-    getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","flashcart");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.dat","SafeCTRTransfer.dat","");
+    getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","");
 }
 
 function safectr_hb(){
@@ -129,7 +148,7 @@ function safectr_hb(){
     folder("CTRTransfer");
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.bin","safehaxpayload.bin","");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.bin","safehaxpayload.bin","");
     
     var ver_data = [];
     if(auto){
@@ -166,8 +185,8 @@ function safectr_mset(){
     ctr21();
     
     getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.dat","SafeCtrTransfer.dat","");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCtrTransfer.nds","SafeCtrTransfer.nds","flashcart files");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.dat","SafeCTRTransfer.dat","");
+    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.nds","SafeCTRTransfernds","flashcart files");
     
 }
 
@@ -197,11 +216,12 @@ function install(){
     
     folder("files9");
     
-    getLatestRelease_local("Plailect", "SafeA9LHInstaller","SafeA9LHInstallerv2.0.6.zip","A9LH Installer");
-    extractZip("A9LH Installer","","");
+    getLatestRelease_local("Plailect", "SafeA9LHInstaller","a9lhinstaller.zip","A9LH Installer");
+    deletefile_zip("A9LH Installer","arm9loaderhax.bin");
+    extractZip("A9LH Installer","","uncompressed");
     
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
-    extractZip("A9LH","a9lh","");
+    extractZip("A9LH","a9lh","uncompressed");
     
     cfw_files(false,ver_data[5],ver_data[0]);
 }
@@ -239,11 +259,8 @@ function cfw_files(change_start,region,console){
                 payloadName += "KOR";
                 break;
         }
-        addFile("Otherapp Payload (11.2)","hblauncherloader",payloadName + "uncompressed/arm9loaderhax.bin","list");
+        addFile("Otherapp Payload (11.2)","hblauncherloader",payloadName + ".bin","list");
     } 
-    
-    
-
     
     if(!auto){
          $("#inner1").hide();
@@ -265,8 +282,8 @@ function cfw_files(change_start,region,console){
     getLatestRelease("Steveice10", "FBI",".zip","FBI");
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
-    getLatestRelease_local("AuroraWright","Luma3DS","Luma3DSv7.0.zip","Luma CFW");
-    getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
+    getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Luma CFW");
+    getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","uncompressed/arm9loaderhax.bin","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");

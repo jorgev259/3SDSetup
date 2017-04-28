@@ -96,9 +96,8 @@
             var v_list = url_parse[url_parse.length - 1].split("?");
             console.log(url_parse);
 
-            switch(v_list[0]){
-                case "CFW":
-                case"cfw":
+            switch(v_list[0].toLowerCase()){
+                case "cfw":
                 case "cfw.html":
                     auto = true;
                     var ver_string = v_list[1];
@@ -109,7 +108,7 @@
                         window.location.replace("http://3sdsetup.tk");
                     }
                     break;
-
+                    
                 default:
                     window.location.replace("http://3sdsetup.tk");
                     break;

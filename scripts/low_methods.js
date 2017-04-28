@@ -1,7 +1,10 @@
 var bufferList = new Object();
+var delete_zip = new Object();
 var finalZip = new JSZip();
 var torrent_number = [];
+var torrent_used = false;
 var available = false;
+var button_redirect = false;
 var start = "";
 var torrent_count = 0;
 
@@ -87,10 +90,11 @@ function getRelease(author,repo,filename,release,step){
 
 function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
+    
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
         $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {                   
             if(name != data.name){
-                alert("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github");
+                toastr["warning"]("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github");
             }
         });
     });
@@ -111,8 +115,7 @@ function notLatestRelease(author,repo,filename,step){
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
     if(bufferList[bufferName] == undefined){
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
-    }else{
-    
+    }else{   
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {    
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
@@ -153,7 +156,7 @@ function extractFolder(bufferName,folder,path){
 }
 
 function extractZip(bufferName,path,remove_path){
-    if(bufferList[bufferName] == undefined){
+    if(bufferList[bufferName] == undefined || delete_zip[bufferName] == true){
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
@@ -187,13 +190,20 @@ function extractZip(bufferName,path,remove_path){
 }
 
 function deletefile_zip(bufferName,filename){
+    delete_zip[bufferName] = true;
     if(bufferList[bufferName] == undefined){
         setTimeout(function(){ deletefile_zip(bufferName,filename)},500);
     }else{
     
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
             console.log(data);
-            data.remove(filename);                        
+            data.remove(filename);
+            
+            data.generateAsync({type:"arraybuffer"}).then(function (content) {
+                // see FileSaver.js
+                delete_zip[bufferName] = false;
+                bufferList[bufferName] = content;
+            });
         });
     }
 }
@@ -248,6 +258,7 @@ function progress_finish(step,message){
 
 function torrent(url,name,message){    
     var toastorrent = toastr;
+    torrent_used = true;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
     toastorrent["info"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
@@ -267,23 +278,37 @@ function torrent_click(number){
 }
 
 function downloadZip(){
-    if(available && torrent_count == torrent_number.length){
+    if((available && torrent_count == torrent_number.length)||localStorage.torrent_noob == "true"){
         finalZip.generateAsync({type:"blob"})
-        .then(function (blob) {
-            saveAs(blob, "plairekt.zip");
-            var url = "";
-           switch(guide){
-               case "3ds":
-                   url = "http://3ds.guide/" + start;
-                   break;
-                case "wiiu.guide":
-                   url = "http://wiiu.guide/"
-                   break
-                case "flimflam":
-                    url = "";
-                   break;
-           };
-            window.location.replace(url);
+        .then(function (blob) {            
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = process;
+            xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://3sdsetup.tk/scripts/typos.txt", true);
+            xhr.send();
+
+            function process()
+            {
+              if (xhr.readyState == 4) {
+                var resp = xhr.responseText;
+                var resp_list = resp.split("/");
+                var name = Math.floor(Math.random() * resp_list.length);
+                saveAs(blob, resp_list[name] + ".zip");
+                var url = "";
+                switch(guide){
+                   case "3ds.guide":
+                       url = "http://3ds.guide/" + start;
+                       break;
+                    case "wiiu.guide":
+                       url = "http://wiiu.guide/get-started#section-ii---block-system-updates"
+                       break
+               };
+                if(!button_redirect){
+                    $("#button_lastpage").append("<a class='btn btn-lg btn-default' href='" + url + "'>Go to " +   guide + "</a>");
+                    button_redirect = true;
+                }
+                if(torrent_used){localStorage.torrent_noob = true;}
+              }
+            } 
         });
     }else{
         toastr["error"]("You need to open all torrents and wait until all downloads are finished before downloading the zip");
