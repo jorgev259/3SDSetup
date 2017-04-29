@@ -6,7 +6,7 @@ $(document).ready(function(){
     
     var toastContact = toastr;
     toastContact.options.onclick = function() { window.open(' https://discord.me/Nintenbrew', '_blank'); };
-    toastr["info"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
+    toastContact["info"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
     
     available = false;    
 })
