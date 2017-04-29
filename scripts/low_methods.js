@@ -283,7 +283,7 @@ function downloadZip(){
         .then(function (blob) {            
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = process;
-            xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://3sdsetup.tk/scripts/typos.txt", true);
+            xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://3sdsetup.net/scripts/typos.txt", true);
             xhr.send();
 
             function process()
