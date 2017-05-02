@@ -217,10 +217,10 @@ function install(){
     
     getLatestRelease_local("Plailect", "SafeA9LHInstaller","a9lhinstaller.zip","A9LH Installer");
     deletefile_zip("A9LH Installer","arm9loaderhax.bin");
-    extractZip("A9LH Installer","","uncompressed/SafeA9LHInstaller");
+    extractZip("A9LH Installer","","");
     
     getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
-    extractZip("A9LH","a9lh","uncompressed/arm9loaderhax");
+    extractZip("A9LH","a9lh","");
     
     cfw_files(false,ver_data[5],ver_data[0]);
 }
@@ -282,7 +282,7 @@ function cfw_files(change_start,region,console){
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
     getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Luma CFW");
-    getFileBuffer_zip("Luma CFW", "uncompressed/Luma3DS/arm9loaderhax.bin","arm9loaderhax.bin","");
+    getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
