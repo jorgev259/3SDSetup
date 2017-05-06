@@ -28,8 +28,12 @@ a:hover {
   font-size: 10px;
    margin-bottom: 5px;
 }
-#inner1{
+#inner1,#inner2{
     z-index:99;
+    position: relative
+}
+.mastfoot {
+    z-index:90;
 }
 
 
