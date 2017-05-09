@@ -7,6 +7,7 @@ var available = false;
 var button_redirect = false;
 var start = "";
 var torrent_count = 0;
+var sha;
 
 $(document).ready(function(){
     $("#inner2").hide();
@@ -96,9 +97,40 @@ function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
     
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
-        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {                   
+        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
+            var data = {};
+            
+            data.new_text = data.tag_name;
+            var found = false;
+            Object.keys(data.assets).forEach(function(key){
+                if(found){return;};
+                var file = data.assets[key];
+
+                if(file.name.indexOf(filename) > -1){
+                    data.url = file.browser_download_url;
+                    
+                    data.author = author;
+                    data.repo = repo;
+                    
+                    found = true;
+                    $.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: '/updater',
+                        
+                    }).done(function(res){
+                        alert(res);
+                        check();
+                        
+                    });
+                    
+                    return;
+                }
+            })
+            
             if(name != data.name){
-                toastr["warning"]("The hosted file for " + repo + " is outdated, please inform Rikumax25 at Discord or open an issue on github. This is on purpose, you can continue and update it manually later");
+                toastr["warning"]("The hosted file for " + repo + " is outdated");
             }
         });
     });
@@ -296,6 +328,7 @@ function downloadZip(){
                 var resp = xhr.responseText;
                 var resp_list = resp.split("/");
                 var name = Math.floor(Math.random() * resp_list.length);
+                 download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + resp_list[name] + ".zip into your SD Card");
                 saveAs(blob, resp_list[name] + ".zip");
                 var url = "";
                 switch(guide){

@@ -1,5 +1,6 @@
 var auto = false;
 var auto_list;
+var download_msg;
 
 $(document).ready(function(){
     toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");  
@@ -10,7 +11,7 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
-        toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+        download_msg = toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('body').css("background-image", "url(img/bg22.png)");
         
         $("#inner1").hide();
