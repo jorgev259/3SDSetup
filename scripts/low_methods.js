@@ -47,9 +47,10 @@ function getFileBuffer_url(url, name) {
         }
     };
     xhr.onerror = function(){
+        console.log(this.status);
         progress(name,"Download " + name + ": retrying");
         getFileBuffer_url(url,name);
-    }
+    };
     xhr.onload = function () {
          var fileBlob = new Blob([xhr.response]);
         
@@ -61,6 +62,8 @@ function getFileBuffer_url(url, name) {
             fileReader.readAsArrayBuffer(fileBlob);
             progress(name,"Download " + name + ": Complete");
             available = true;
+        }else{
+            console.log(this.status);
         }
     };
     xhr.send();
@@ -77,6 +80,8 @@ function getLatestRelease(author,repo,filename,step){
                 return;
             }
         })
+    }).fail(function(jqXHR) {
+        rateLimit(jqXHR);
     });
 }
 
@@ -90,6 +95,8 @@ function getRelease(author,repo,filename,release,step){
                 return;
             }
         })
+    }).fail(function(jqXHR) {
+        rateLimit(jqXHR);
     });
 }
 
@@ -97,38 +104,7 @@ function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
     
     jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
-        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
-            var data = {};
-            
-            data.new_text = data.tag_name;
-            var found = false;
-            Object.keys(data.assets).forEach(function(key){
-                if(found){return;};
-                var file = data.assets[key];
-
-                if(file.name.indexOf(filename) > -1){
-                    data.url = file.browser_download_url;
-                    
-                    data.author = author;
-                    data.repo = repo;
-                    
-                    found = true;
-                    $.ajax({
-						type: 'POST',
-						data: JSON.stringify(data),
-				        contentType: 'application/json',
-                        url: '/updater',
-                        
-                    }).done(function(res){
-                        alert(res);
-                        check();
-                        
-                    });
-                    
-                    return;
-                }
-            })
-            
+        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {            
             if(name != data.name){
                 toastr["warning"]("The hosted file for " + repo + " is outdated");
             }
@@ -145,6 +121,8 @@ function notLatestRelease(author,repo,filename,step){
                 getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
             }
         })
+    }).fail(function(jqXHR) {
+        rateLimit(jqXHR);
     });
 }
 
@@ -274,6 +252,16 @@ function addFile(name,path,filename,origin){
 function folder(name){
     finalZip.file(name + "/dummy.txt", "i love ice cream");
     finalZip.remove(name + "/dummy.txt");
+}
+
+function rateLimit(jresult){
+    if (jresult.status == 403) {
+        $.getJSON("http://api.github.com/rate_limit",function(data){
+            var reset = Date(data.rate.reset);
+            toastr["error"]("You exceeded Github's rate limit. Try again after " + reset);
+        })
+        
+    }
 }
 
 function progress(step,message){   
