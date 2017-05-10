@@ -32,6 +32,11 @@ a:hover {
     z-index:99;
     position: relative
 }
+
+#inner2{
+    display:none;
+}
+
 .mastfoot {
     z-index:90;
 }
