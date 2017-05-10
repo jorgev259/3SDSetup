@@ -72,59 +72,67 @@ function getFileBuffer_url(url, name) {
 }
 
 function getLatestRelease(author,repo,filename,step){
-    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
-        Object.keys(data.assets).forEach(function(key){
-            var file = data.assets[key];
-            
-            if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
-                return;
-            }
-        })
-    }).fail(function(jqXHR) {
-        rateLimit(jqXHR);
-    });
+    if(!rate_limit){
+        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {
+            Object.keys(data.assets).forEach(function(key){
+                var file = data.assets[key];
+
+                if(file.name.indexOf(filename) > -1){
+                    getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
+                    return;
+                }
+            })
+        }).fail(function(jqXHR) {
+            rateLimit(jqXHR);
+        });
+    }
 }
 
 function getRelease(author,repo,filename,release,step){
-    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/tags/" + release, function( data ) {
-        Object.keys(data.assets).forEach(function(key){
-            var file = data.assets[key];
-            
-            if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
-                return;
-            }
-        })
-    }).fail(function(jqXHR) {
-        rateLimit(jqXHR);
-    });
+    if(!rate_limit){
+        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/tags/" + release, function( data ) {
+            Object.keys(data.assets).forEach(function(key){
+                var file = data.assets[key];
+
+                if(file.name.indexOf(filename) > -1){
+                    getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
+                    return;
+                }
+            })
+        }).fail(function(jqXHR) {
+            rateLimit(jqXHR);
+        });
+    }
 }
 
 function getLatestRelease_local(author,repo,filename,step){
     getFileBuffer_url("7zfiles/" + author + "_" + repo + "/" + filename,step);
     
-    jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {       
-        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {            
-            if(name != data.name){
-                toastr["warning"]("The hosted file for " + repo + " is outdated");
-            }
-        });
+    jQuery.get('7zfiles/'+ author + '_' + repo + '/name.txt', function(name) {
+        if(!rate_limit){
+            $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases/latest", function( data ) {            
+                if(name != data.name){
+                    toastr["warning"]("The hosted file for " + repo + " is outdated");
+                }
+            });
+        }
     });
 }
 
 function notLatestRelease(author,repo,filename,step){
-    $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases", function( data ) {
-      var data = data[0];  Object.keys(data.assets).forEach(function(key){
-            var file = data.assets[key];
-            
-            if(file.name.indexOf(filename) > -1){
-                getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
-            }
-        })
-    }).fail(function(jqXHR) {
-        rateLimit(jqXHR);
-    });
+    if(!rate_limit){
+        $.getJSON("https://api.github.com/repos/" + author + "/" + repo + "/releases", function( data ) {
+          var data = data[0];  Object.keys(data.assets).forEach(function(key){
+                var file = data.assets[key];
+
+                if(file.name.indexOf(filename) > -1){
+                    getFileBuffer_url("https://cors-anywhere.herokuapp.com/" + file.browser_download_url,step);
+                }
+            })
+        }).fail(function(jqXHR) {
+            rateLimit(jqXHR);
+        });
+    }
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
