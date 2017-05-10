@@ -31,7 +31,7 @@ $(document).ready(function(){
     
     var toastContact = toastr;
     toastContact.options.onclick = function() { window.open(' https://discord.me/Nintenbrew', '_blank'); };
-    toastContact["info"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
+    toastContact["warning"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
 });
 
 function getFileBuffer_url(url, name) {
@@ -296,7 +296,7 @@ function torrent(url,name,message){
     var toastorrent = toastr;
     torrent_used = true;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
-    toastorrent["info"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
+    toastorrent["warning"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
     $("#torrent_list").append("<div><a onclick='torrent_click(" + torrent_number.length + ")' class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
     

@@ -3,7 +3,7 @@ var auto_list;
 var download_msg;
 
 $(document).ready(function(){
-    toastr["info"]("If you have a non-working browser, select '0' on the last firmware number");  
+    toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");  
     available = false;    
 })
 
@@ -11,7 +11,7 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
-        download_msg = toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('html').addClass("bg_change");
         
         $("#inner1").hide();
@@ -70,7 +70,7 @@ function startup(){
     
     if(vers > 900 && vers < 1140){
         toastr.clear();
-        toastr["info"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+        toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
         $('html').addClass("bg_change");
         soundhax_hb();
         $("#inner1").hide();
