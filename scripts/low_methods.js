@@ -148,9 +148,9 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
     }
 }
 
-function extractFolder(bufferName,folder,path){
+function extractFolder(bufferName,folder_name,path){
     if(bufferList[bufferName] == undefined){
-        setTimeout(function(){ extractFolder(bufferName,folder)},500);
+        setTimeout(function(){ extractFolder(bufferName,folder_name)},500);
     }else{   
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
             var file_count2 = 0;
@@ -158,14 +158,16 @@ function extractFolder(bufferName,folder,path){
             //Modified from @jkcgs's snippet from extractZip :3
             Object.keys(data.files).forEach(function(filename){
                 var file = data.files[filename];
-                if (file.dir || !filename.startsWith(folder)) {
+                var file_path = path;
+                
+                if (file.dir || !filename.startsWith(folder_name)) {
                     file_count2++;
                     return;
                 }
                 
                 file.async("arraybuffer").then(function(content) {
                     file_count2++;
-                    addFile(content, path, filename, "buffer");
+                    addFile(content, file_path, filename, "buffer");
 
                     if(file_count2 == Object.keys(data.files).length){
                         progress_finish(bufferName, bufferName + ": Added to Zip");
