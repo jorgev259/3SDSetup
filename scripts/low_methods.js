@@ -5,6 +5,7 @@ var torrent_number = [];
 var torrent_used = false;
 var available = false;
 var button_redirect = false;
+var rate_limit = false;
 var start = "";
 var torrent_count = 0;
 var sha;
@@ -258,7 +259,10 @@ function rateLimit(jresult){
     if (jresult.status == 403) {
         $.getJSON("http://api.github.com/rate_limit",function(data){
             var reset = Date(data.rate.reset);
-            toastr["error"]("You exceeded Github's rate limit. Try again after " + reset);
+            if(!rate_limit){
+                toastr["error"]("You exceeded Github's rate limit. Try again after " + reset);
+                rate_limit = true;
+            }
         })
         
     }
