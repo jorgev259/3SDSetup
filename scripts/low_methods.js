@@ -8,7 +8,7 @@ var button_redirect = false;
 var rate_limit = false;
 var start = "";
 var torrent_count = 0;
-var sha;
+var step_count = 0;
 
 $(document).ready(function(){
     $("#inner2").hide();
@@ -36,6 +36,8 @@ $(document).ready(function(){
 });
 
 function getFileBuffer_url(url, name) {
+    var ends_zip = url.endsWith('.zip');
+    
     available = false;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url);
@@ -58,7 +60,13 @@ function getFileBuffer_url(url, name) {
         if (this.status === 200) {
             var fileReader = new FileReader();
             fileReader.onload = function() {
-                bufferList[name] = this.result;
+                if(ends_zip){
+                    JSZip.loadAsync(this.result).then(function (data) {
+                        bufferList[name] = data;
+                    })
+                }else{
+                    bufferList[name] = this.result;
+                }
             };
             fileReader.readAsArrayBuffer(fileBlob);
             progress(name,"Download " + name + ": Complete");
@@ -136,23 +144,26 @@ function notLatestRelease(author,repo,filename,step){
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
+    step_count++;
     if(bufferList[bufferName] == undefined){
+        step_count  =  step_count - 1;
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
     }else{   
-        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {    
+        var data =  bufferList[bufferName]    
             data.file(original_name).async("arraybuffer").then(function success(content){
                 addFile(content,path,new_name,"buffer");
                 progress_finish(bufferName, bufferName + ": Added to Zip");                
             })                                
-        });
     }
 }
 
 function extractFolder(bufferName,folder,path){
+    step_count++;
     if(bufferList[bufferName] == undefined){
+        step_count  =  step_count - 1;
         setTimeout(function(){ extractFolder(bufferName,folder,path)},500);
     }else{   
-        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
+        var data =  bufferList[bufferName]
             var file_count2 = 0;
             
             //Modified from @jkcgs's snippet from extractZip :3
@@ -173,66 +184,56 @@ function extractFolder(bufferName,folder,path){
                     }
                     
                 });
-            });
         });
     }
 }
 
 function extractZip(bufferName,path,remove_path){
+    step_count++;
     if(bufferList[bufferName] == undefined || delete_zip[bufferName] == true){
+        step_count  =  step_count - 1;
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
-        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
-            progress(bufferName, bufferName + ": Extracting");
-            var file_count = 0;
+        var data =  bufferList[bufferName]
+        progress(bufferName, bufferName + ": Extracting");
+        var file_count = 0;
             
-            //Code snippet from @jkcgs :3
-            Object.keys(data.files).forEach(function(key){
-                var file = data.files[key];
-                var file_name = file.name;
-                if(remove_path != ""){var file_name = (file_name).replace(remove_path + "/","");};
-                if (file.dir) {
-                    file_count++;
-                    return;
+        //Code snippet from @jkcgs :3
+        Object.keys(data.files).forEach(function(key){
+            var file = data.files[key];
+            var file_name = file.name;
+            if(remove_path != ""){var file_name = (file_name).replace(remove_path + "/","");};
+            if (file.dir) {
+                file_count++;
+                return;
+            }
+
+            file.async("arraybuffer").then(function(content) {
+                file_count++;
+                addFile(content, path, file_name, "buffer");
+
+                if(file_count == Object.keys(data.files).length){
+                    progress_finish(bufferName, bufferName + ": Added to Zip");      
                 }
-
-                file.async("arraybuffer").then(function(content) {
-                    file_count++;
-                    addFile(content, path, file_name, "buffer");
-
-                    if(file_count == Object.keys(data.files).length){
-                        progress_finish(bufferName, bufferName + ": Added to Zip");
-                        
-                    }
                     
-                });
-            });               
+            });             
         })
-    }
-    
+    }  
 }
 
 function deletefile_zip(bufferName,filename){
     delete_zip[bufferName] = true;
     if(bufferList[bufferName] == undefined){
         setTimeout(function(){ deletefile_zip(bufferName,filename)},500);
-    }else{
-    
-        JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
-            console.log(data);
-            data.remove(filename);
-            
-            data.generateAsync({type:"arraybuffer"}).then(function (content) {
-                // see FileSaver.js
-                delete_zip[bufferName] = false;
-                bufferList[bufferName] = content;
-            });
-        });
+    }else{  
+        bufferList[bufferName].remove(filename);       
+        delete_zip[bufferName] = false;
     }
 }
 
 function addFile(name,path,filename,origin){
     //origin either "list" or "buffer"
+    step_count++;
     var buffer;
     switch(origin){
         case "list":
@@ -244,6 +245,7 @@ function addFile(name,path,filename,origin){
     }
     
     if(buffer == undefined){
+        step_count  =  step_count - 1;
         setTimeout(function(){ addFile(name,path,filename,origin);},500);
     }else{                
         if(path == ""){
@@ -284,7 +286,9 @@ function progress(step,message){
     }
 }
 
-function progress_finish(step,message){       
+function progress_finish(step,message){
+    step_count  =  step_count - 1;
+    console.log(step_count);
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
