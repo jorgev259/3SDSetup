@@ -150,7 +150,7 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
 
 function extractFolder(bufferName,folder,path){
     if(bufferList[bufferName] == undefined){
-        setTimeout(function(){ extractFolder(bufferName,folder)},500);
+        setTimeout(function(){ extractFolder(bufferName,folder,path)},500);
     }else{   
         JSZip.loadAsync(bufferList[bufferName]).then(function (data) {
             var file_count2 = 0;
