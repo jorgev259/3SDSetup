@@ -268,9 +268,9 @@ function folder(name){
 function rateLimit(jresult){
     if (jresult.status == 403) {
         $.getJSON("http://api.github.com/rate_limit",function(data){
-            var reset = Date(data.rate.reset);
+            var reset = Date(data.rate.reset * 1000);
             if(!rate_limit){
-                toastr["error"]("You exceeded Github's rate limit. Try again after " + reset);
+                toastr["error"]("You exceeded Github's rate limit. Try again after 10 minutes");
                 rate_limit = true;
             }
         })
