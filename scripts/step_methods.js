@@ -229,6 +229,7 @@ function install(){
 function cfw_files(change_start,region,console){
     var ver_data = [];
     if(change_start){
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
         var form_data = $("#data_ver").serializeArray();
         var i;
