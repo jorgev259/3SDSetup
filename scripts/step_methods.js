@@ -291,6 +291,9 @@ function cfw_files(change_start,region,console){
     
     getLatestRelease("ErmanSayin", "Themely",".cia","Themely");
     addFile("Themely","cias","Themely.cia","list");
+    
+    getLatestRelease("zoogie", "DSP1",".cia","DSP1");
+    addFile("DSP1","cias","DSP1.cia","list");
 }
 
 function ctr_9_2(){
