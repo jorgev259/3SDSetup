@@ -70,7 +70,7 @@ function startup(){
     
     if(vers > 900 && vers < 1140){
         toastr.clear();
-        toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside plairekt.zip into your SD Card");
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('html').addClass("bg_change");
         soundhax_hb();
         $("#inner1").hide();
