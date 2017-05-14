@@ -8,7 +8,7 @@ var button_redirect = false;
 var rate_limit = false;
 var start = "";
 var torrent_count = 0;
-var step_count = 0;
+var step_progress = [];
 
 $(document).ready(function(){
     $("#inner2").hide();
@@ -144,9 +144,9 @@ function notLatestRelease(author,repo,filename,step){
 }
 
 function getFileBuffer_zip(bufferName,original_name,new_name,path){
-    step_count++;
+    
     if(bufferList[bufferName] == undefined){
-        step_count  =  step_count - 1;
+        
         setTimeout(function(){ getFileBuffer_zip(bufferName,original_name,new_name,path)},500);
     }else{   
         var data =  bufferList[bufferName]    
@@ -158,9 +158,9 @@ function getFileBuffer_zip(bufferName,original_name,new_name,path){
 }
 
 function extractFolder(bufferName,folder,path){
-    step_count++;
+    
     if(bufferList[bufferName] == undefined){
-        step_count  =  step_count - 1;
+        
         setTimeout(function(){ extractFolder(bufferName,folder,path)},500);
     }else{   
         var data =  bufferList[bufferName]
@@ -189,9 +189,9 @@ function extractFolder(bufferName,folder,path){
 }
 
 function extractZip(bufferName,path,remove_path){
-    step_count++;
+    
     if(bufferList[bufferName] == undefined || delete_zip[bufferName] == true){
-        step_count  =  step_count - 1;
+        
         setTimeout(function(){ extractZip(bufferName,path,remove_path);},500);
     }else{
         var data =  bufferList[bufferName]
@@ -233,7 +233,7 @@ function deletefile_zip(bufferName,filename){
 
 function addFile(name,path,filename,origin){
     //origin either "list" or "buffer"
-    step_count++;
+    
     var buffer;
     switch(origin){
         case "list":
@@ -245,7 +245,7 @@ function addFile(name,path,filename,origin){
     }
     
     if(buffer == undefined){
-        step_count  =  step_count - 1;
+        
         setTimeout(function(){ addFile(name,path,filename,origin);},500);
     }else{                
         if(path == ""){
@@ -287,8 +287,6 @@ function progress(step,message){
 }
 
 function progress_finish(step,message){
-    step_count  =  step_count - 1;
-    console.log(step_count);
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
