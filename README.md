@@ -1,5 +1,7 @@
 **3SDSetup**
 
+http://3sdsetup.net/
+
 For use with https://3ds.guide/
 
 Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
@@ -15,7 +17,7 @@ Sets up SD card for new installations of arm9loaderhax+Luma3DS with magnet links
 **Documentation**
 
 getFileBuffer_url(url, name) -> Gets file from URL and stores it with a name to identify it
-Example: getFileBuffer_url ("http://3sdsetup.tk/index.html","index")
+Example: getFileBuffer_url ("http://3sdsetup.net/index.html","index")
 
 
 getLatestRelease(author,repo,filename,step) -> gets the URL from a file that contains "filename" from the latest release of a repository, step is a name to                                                identify the step is used to (must be shared between the actions related to the corresponding step)
