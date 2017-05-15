@@ -278,7 +278,8 @@ function rateLimit(jresult){
     }
 }
 
-function progress(step,message){   
+function progress(step,message){  
+    step_progress[step] = false;
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
@@ -287,6 +288,16 @@ function progress(step,message){
 }
 
 function progress_finish(step,message){
+    step_progress[step] = true;
+    var finished = true;
+    Object.keys(step_progress).forEach(function(elt){
+        if(step_progress[elt] == false){
+            finished = false;
+        }
+    });
+    if(finished){
+        $("#download_btn").html("Download Zip");
+    }
     if(document.getElementById(step) !== null){
         document.getElementById(step).innerHTML = message;
     }else{
