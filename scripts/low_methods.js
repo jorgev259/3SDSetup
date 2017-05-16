@@ -46,12 +46,12 @@ function getFileBuffer_url(url, name) {
         if (e.lengthComputable) {
             available = false;
             var percent = Math.floor((e.loaded / e.total) * 100);
-            progress(name,"Download " + name + ": <progress value='" + percent + "' max='100'></progress>");
+            progress(name, name + ": <progress value='" + percent + "' max='100'></progress>");
         }
     };
     xhr.onerror = function(){
         console.log(this.status);
-        progress(name,"Download " + name + ": retrying");
+        progress(name, name + ": retrying");
         getFileBuffer_url(url,name);
     };
     xhr.onload = function () {
@@ -69,14 +69,14 @@ function getFileBuffer_url(url, name) {
                 }
             };
             fileReader.readAsArrayBuffer(fileBlob);
-            progress(name,"Download " + name + ": Complete");
+            progress(name, name + ": Complete");
             available = true;
         }else{
             console.log(this.status);
         }
     };
     xhr.send();
-    progress(name,"Download " + name + ": starting");
+    progress(name, name + ": starting");
 }
 
 function getLatestRelease(author,repo,filename,step){
