@@ -3,7 +3,8 @@ var auto_list;
 var download_msg;
 
 $(document).ready(function(){
-    toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");  
+    toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");
+    toastr["error"]("3DS.guide will be updated with big changes today, so please consider delaying all future installations until 3SDSetup and 3DS.guide are updated");
     available = false;    
 })
 
@@ -11,7 +12,7 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
-        toastr["error"]("3DS.guide will be updated with big changes today, so please consider delaying all future installations until 3SDSetup and 3DS.guide are updated");
+        
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('html').addClass("bg_change");
         
