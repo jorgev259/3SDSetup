@@ -22,6 +22,12 @@ function set_step_list() {
     //Hard-coded, will make it updatable later on
     switch(console){
         case "OLD":
+            if(vers>=1140){
+                step_list = false;
+                auto = false;
+                toastr["warning"]("You need a hardmod or dsiwarehax (check 3ds.guide for more information)");
+            }
+            
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
@@ -52,26 +58,7 @@ function set_step_list() {
             }
 
             if (vers >= 100 && vers <= 310) {
-                switch (browser > 0) {
-                    case true:
-                        if (vers === 210) {
-                            //install arm9
-                            step_list.push("install");
-                            //9.2 ctr
-                            step_list.push("9.2_ctr");
-                            
-                            start= "installing-arm9loaderhax"
-                        } else {
-                            //Update latest
-                            compatible = false;
-                        }
-                        break;
-
-                    case false:
-                        //Update latest
-                        compatible = false;
-                        break;
-                }
+                compatible="false";
             }
             break;
 
@@ -93,14 +80,10 @@ function set_step_list() {
     }
 
     
-    if(vers >= 1140){
+    if(!compatible){
         step_list = false;
         auto = false;
-        toastr["warning"]("You need a NAND backup and hardmod");
-    }else if (!compatible) {
-        step_list = false;
-        auto = false;
-        toastr["warning"]("You need to do a cart update (check 3ds.guide for more info)");
+        toastr["warning"]("You need a hardmod");
     }
     return step_list;
 }
