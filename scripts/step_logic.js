@@ -44,13 +44,13 @@ function set_step_list() {
                     step_list.push("bootstrap9_browser");
                     step_list.push("install");
                     
-                    start = "safectrtransfer-(browser)";
+                    start = "installing-boot9strap-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("bootstrap9_mset");
                         step_list.push("install");
                         
-                        start = "safectrtransfer-(mset)";
+                        start = "installing-boot9strap-(mset)";
                     }else{
                         compatible = false;
                     }
@@ -63,6 +63,13 @@ function set_step_list() {
             break;
 
         case "NEW":
+            if(vers>=1140){
+                step_list = false;
+                auto = false;
+                toastr["warning"]("You need a hardmod or dsiwarehax (check 3ds.guide for more information)");
+            }
+            
+            
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
@@ -83,7 +90,7 @@ function set_step_list() {
     if(!compatible){
         step_list = false;
         auto = false;
-        toastr["warning"]("You need a hardmod");
+        toastr["warning"]("You need a hardmod (check 3ds.guide for more information)");
     }
     return step_list;
 }
