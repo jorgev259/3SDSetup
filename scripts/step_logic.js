@@ -26,7 +26,7 @@ function set_step_list() {
                 //Soundhax
                 step_list.push("soundhax");
                 //d9 (hb)
-                step_list.push("safectr_hb");
+                step_list.push("bootstrap9_hb");
                 //arm9
                 step_list.push("install");
                 

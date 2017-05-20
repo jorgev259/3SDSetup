@@ -26,8 +26,8 @@ function startup_CFW(){
                     soundhax_hb();
                     break;
                     
-                case "safectr_hb":
-                    safectr_hb();
+                case "bootstrap9_hb":
+                    bootstrap9_hb();
                     break;
                     
                 case "safectr_browser":
@@ -145,12 +145,12 @@ function safectr_browser(){
     getFileBuffer_zip("SafeCtrTransfer","Launcher.dat","Launcher.dat","");
 }
 
-function safectr_hb(){
-    ctr21();
-    folder("CTRTransfer");
+function bootstrap9_hb(){
+    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    extractZip("boot9strap","boot9strap","");
     
-    getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.bin","safehaxpayload.bin","");
+    getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
+    getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.bin","safehaxpayload.bin","");
     
     var ver_data = [];
     if(auto){
@@ -214,17 +214,6 @@ function install(){
         addFile("cetk file","luma","cetk","list")
     }
     
-    torrent("magnet:?xt=urn:btih:a1195c9f7ab650fa7c7bf020b51fc19ea8d9440c&dn=data%5Finput%5Fv3.zip&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","data_input v3","Extract to the root of the sd card");
-    
-    folder("files9");
-    
-    getLatestRelease_local("Plailect", "SafeA9LHInstaller","a9lhinstaller.zip","A9LH Installer");
-    deletefile_zip("A9LH Installer","arm9loaderhax.bin");
-    extractZip("A9LH Installer","","");
-    
-    getLatestRelease_local("AuroraWright","arm9loaderhax","release.zip","A9LH");
-    extractZip("A9LH","a9lh","");
-    
     cfw_files(false,ver_data[5],ver_data[0]);
 }
 
@@ -270,12 +259,6 @@ function cfw_files(change_start,region,console){
         $("#inner2").show();
     }
     
-    folder("files9");
-    
-    torrent("magnet:?xt=urn:btih:18b3a17f78e2376e05feaa150749d9fd689b25dc&dn=aeskeydb.bin&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce","aeskeydb.bin","Extract to /files9/");
-    
-    
-    
     getLatestRelease("yellows8", "hblauncher_loader",".zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
     
@@ -286,10 +269,10 @@ function cfw_files(change_start,region,console){
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
     
     getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Luma CFW");
-    getFileBuffer_zip("Luma CFW", "arm9loaderhax.bin","arm9loaderhax.bin","");
+    getFileBuffer_zip("Luma CFW", "boot.firm","boot.firm","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
-    getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
+    getFileBuffer_zip("GodMode9", "GodMode9.firm","GodMode9.firm","luma/payloads");
     
     getLatestRelease("ErmanSayin", "Themely",".cia","Themely");
     addFile("Themely","cias","Themely.cia","list");
