@@ -4,7 +4,7 @@ var download_msg;
 
 $(document).ready(function(){
     toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");
-    toastr["error"]("3DS.guide will be updated with big changes today, so please consider delaying all future installations until 3SDSetup and 3DS.guide are updated");
+    toastr["warning"]("3SDSetup is now working with bootstrap9!");
     available = false;    
 })
 
