@@ -35,13 +35,13 @@ function set_step_list() {
 
             if (vers >= 400 && vers <= 810) {
                 if(browser>0){
-                    step_list.push("safectr_browser");
+                    step_list.push("bootstrap9_browser");
                     step_list.push("install");
                     
                     start = "safectrtransfer-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
-                        step_list.push("safectr_mset");
+                        step_list.push("bootstrap9_mset");
                         step_list.push("install");
                         
                         start = "safectrtransfer-(mset)";
