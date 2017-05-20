@@ -185,13 +185,15 @@ function safectr_mset(){
     toastr["warning"]("Copy the files inside the 'flashcart files' folder to your flashcart's SD card");
     toastr["warning"]("You'll need a ds flashcart for this method or doing a cart update (check 3ds.guide for more info)");
     
-    folder("CTRTransfer");
-    ctr21();
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
+    extractZip("Starter Homebrew Kit","","starter");
     
-    getLatestRelease("d0k3","SafeCtrTransfer",".zip", "SafeCtrTransfer");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.dat","SafeCTRTransfer.dat","");
-    getFileBuffer_zip("SafeCtrTransfer","SafeCTRTransfer.nds","SafeCTRTransfernds","flashcart files");
+    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    extractZip("boot9strap","boot9strap","");
     
+    getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
+    getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.dat","","");
+    getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.nds","SafeB9SInstaller.nds","flashcart files");   
 }
 
 function install(){
