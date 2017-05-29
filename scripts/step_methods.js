@@ -140,7 +140,7 @@ function bootstrap9_browser(){
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
     extractZip("Starter Homebrew Kit","","starter");
     
-    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -148,7 +148,7 @@ function bootstrap9_browser(){
 }
 
 function bootstrap9_hb(){
-    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -188,7 +188,7 @@ function safectr_mset(){
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
     extractZip("Starter Homebrew Kit","","starter");
     
-    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -338,7 +338,7 @@ function updatea9lh(){
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
     }
 
-    getLatestRelease("SciresM","boot9strap",".zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
