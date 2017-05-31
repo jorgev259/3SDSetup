@@ -1,4 +1,3 @@
-var auto = false;
 var auto_list;
 var download_msg;
 
@@ -58,15 +57,11 @@ function startup_CFW(){
 
 function startup(){
     var ver_data = [];
-    if(auto){
-        ver_data = auto_list;
-    }else{
-         var form_data = $("#data_ver").serializeArray();
-        var i;
-        for (i = 0; i <= 5; i++) {
-            ver_data[i] = form_data[i].value;
-        };
-    }
+    var form_data = $("#data_ver").serializeArray();
+    var i;
+    for (i = 0; i <= 5; i++) {
+        ver_data[i] = form_data[i].value;
+    };
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
     
@@ -84,14 +79,7 @@ function startup(){
 }
 
 function soundhax_hb(){
-    var req_data;
-    if(auto){
-        req_data = default_form;
-        req_data["0"].value = auto_list["0"];
-        req_data["5"].value = auto_list["5"];
-    }else{
-         req_data = $("#data_ver").serializeArray();
-    }
+    var req_data = $("#data_ver").serializeArray();
     
     var console = req_data["0"].value;
     var region = req_data["5"].value;
@@ -155,15 +143,11 @@ function bootstrap9_hb(){
     getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.bin","safehaxpayload.bin","");
     
     var ver_data = [];
-    if(auto){
-        ver_data = auto_list;
-    }else{
-         var form_data = $("#data_ver").serializeArray();
-        var i;
-        for (i = 0; i <= 5; i++) {
-            ver_data[i] = form_data[i].value;
-        };
-    }
+     var form_data = $("#data_ver").serializeArray();
+    var i;
+    for (i = 0; i <= 5; i++) {
+        ver_data[i] = form_data[i].value;
+    };
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
     
@@ -198,15 +182,11 @@ function safectr_mset(){
 
 function install(){
     var ver_data = [];
-    if(auto){
-        ver_data = auto_list;
-    }else{
-         var form_data = $("#data_ver").serializeArray();
-        var i;
-        for (i = 0; i <= 5; i++) {
-            ver_data[i] = form_data[i].value;
-        };
-    }
+    var form_data = $("#data_ver").serializeArray();
+    
+    for (var i = 0; i <= 5; i++) {
+        ver_data[i] = form_data[i].value;
+    };
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
     
@@ -223,12 +203,15 @@ function install(){
 
 function cfw_files(change_start,region,console){
     var ver_data = [];
+    $("#inner1").hide();
+    $("#inner2").show();
+    
     if(change_start){
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
         var form_data = $("#data_ver").serializeArray();
-        var i;
-        for (i = 0; i <= 5; i++) {
+
+        for (var i = 0; i <= 5; i++) {
             ver_data[i] = form_data[i].value;
         };
         region = ver_data[5];
@@ -257,11 +240,7 @@ function cfw_files(change_start,region,console){
         }
         addFile("Otherapp Payload (11.2)","hblauncherloader",payloadName + ".bin","list");
     } 
-    
-    if(!auto){
-         $("#inner1").hide();
-        $("#inner2").show();
-    }
+
     
     getLatestRelease("yellows8", "hblauncher_loader",".zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
@@ -332,11 +311,10 @@ function ctr_9_2(){
 }
 
 function updatea9lh(){
-    if(!auto){
-         $("#inner1").hide();
-        $("#inner2").show();
-        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
-    }
+    $("#inner1").hide();
+    $("#inner2").show();
+    download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
+
 
     getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");

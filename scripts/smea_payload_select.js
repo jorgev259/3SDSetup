@@ -12,11 +12,8 @@ var global_version = {};
 
 function updatePayload()
 {
-    if(auto){
-        return getUrlFromVersion([auto_list[1], auto_list[2], auto_list[3], auto_list[4], auto_list[5], auto_list[0]]);
-    }else{
-         return getUrlFromVersion([global_version[1], global_version[2], global_version[3], global_version[4], global_version[5], global_version[0]]);
-    }
+    return getUrlFromVersion([global_version[1], global_version[2], global_version[3], global_version[4], global_version[5], global_version[0]]);
+
 }
 
 //Took from smealum.github.io/3ds

@@ -2,15 +2,11 @@ var guide = "3ds.guide";
 
 function set_step_list() {
     var ver_data = [];
-    if(auto){
-        ver_data = auto_list;
-    }else{
          var form_data = $("#data_ver").serializeArray();
         var i;
         for (i = 0; i <= 5; i++) {
             ver_data[i] = form_data[i].value;
         };
-    }
     
     var console = ver_data[0];
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
@@ -89,7 +85,6 @@ function set_step_list() {
     
     if(!compatible){
         step_list = false;
-        auto = false;
         toastr["warning"]("You need a hardmod (check 3ds.guide for more information)");
     }
     return step_list;
