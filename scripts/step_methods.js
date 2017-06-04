@@ -143,7 +143,7 @@ function bootstrap9_hb(){
      var form_data = consoleinfo();
     var i;
     for (i = 0; i <= 5; i++) {
-        ver_data[i] = consoleinfo[i].value;
+        ver_data[i] = form_data[i].value;
     };
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
