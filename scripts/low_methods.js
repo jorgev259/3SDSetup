@@ -332,6 +332,10 @@ function startSetup(){
     download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 }
 
+function consoleinfo(){
+    return $("#data_ver").serializeArray();
+}
+
 function downloadZip(){
     if((available && torrent_count == torrent_number.length)||localStorage.torrent_noob == "true"){
         finalZip.generateAsync({type:"blob"})

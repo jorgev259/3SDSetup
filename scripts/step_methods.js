@@ -3,7 +3,6 @@ var download_msg;
 
 $(document).ready(function(){
     toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");
-    toastr["warning"]("3SDSetup is now working with bootstrap9!");
     available = false;    
 })
 
@@ -57,7 +56,7 @@ function startup_CFW(){
 
 function startup(){
     var ver_data = [];
-    var form_data = $("#data_ver").serializeArray();
+    var form_data = consoleinfo();
     var i;
     for (i = 0; i <= 5; i++) {
         ver_data[i] = form_data[i].value;
@@ -77,7 +76,7 @@ function startup(){
 }
 
 function soundhax_hb(){
-    var req_data = $("#data_ver").serializeArray();
+    var req_data = consoleinfo();
     
     var console = req_data["0"].value;
     var region = req_data["5"].value;
@@ -141,10 +140,10 @@ function bootstrap9_hb(){
     getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.bin","safehaxpayload.bin","");
     
     var ver_data = [];
-     var form_data = $("#data_ver").serializeArray();
+     var form_data = consoleinfo();
     var i;
     for (i = 0; i <= 5; i++) {
-        ver_data[i] = form_data[i].value;
+        ver_data[i] = consoleinfo[i].value;
     };
     
     var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
@@ -180,7 +179,7 @@ function safectr_mset(){
 
 function install(){
     var ver_data = [];
-    var form_data = $("#data_ver").serializeArray();
+    var form_data = consoleinfo();
     
     for (var i = 0; i <= 5; i++) {
         ver_data[i] = form_data[i].value;
@@ -207,7 +206,10 @@ function cfw_files(change_start,region,console){
     if(change_start){
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
-        var form_data = $("#data_ver").serializeArray();
+    }
+
+    if(change_start || region === undefined || console == undefined){
+        var form_data = consoleinfo();
 
         for (var i = 0; i <= 5; i++) {
             ver_data[i] = form_data[i].value;
@@ -263,7 +265,7 @@ function cfw_files(change_start,region,console){
 }
 
 function ctr_9_2(){
-    var req_data = $("#data_ver").serializeArray();
+    var req_data = consoleinfo();
     var region = req_data["5"].value;
     var console = req_data["0"].value;
     var url;
@@ -324,10 +326,38 @@ function updatea9lh(){
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
 
-    torrent("magnet:?xt=urn:btih:15a3c97acf17d67af98ae8657cc66820cc58f655&dn=secret_sector.bin&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce","secret_sector.bin","Extract to /boot9strap/")
+    torrent("magnet:?xt=urn:btih:15a3c97acf17d67af98ae8657cc66820cc58f655&dn=secret_sector.bin&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce","secret_sector.bin","Move to /boot9strap/")
 }
 
 function dsiwareSave(){
-    startSetup();
+    var console = consoleinfo()["0"].value;
 
+    startSetup();
+    cfw_files(false);
+
+    getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
+
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    extractZip("boot9strap","boot9strap","");
+
+    getLatestRelease("Plailect","b9sTool","boot.nds","boot.nds");
+    addFile("boot.nds","","boot.nds","list");
+
+    var _torrent = "";
+    switch(console){
+        case "OLD":
+            _torrent ="magnet:?xt=urn:btih:0dd89d42ad711f770da899af05ee162ede0d0070&dn=2.54-0_11.4_OLD.firm&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce";
+            break
+
+        case "NEW":
+        _torrent = "magnet:?xt=urn:btih:3b59dd43eec3edb133555f58d1180bfb196acbb4&dn=2.54-0_11.4_NEW.firm&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce";
+            break
+
+    }
+    torrent(_torrent,"11.4.0 firm","Move to /boot9strap/")
+}
+
+function cfw114(){
+    $("#normal").hide();
+    $("#cfw114").show();
 }

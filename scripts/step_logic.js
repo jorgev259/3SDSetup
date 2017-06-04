@@ -18,12 +18,6 @@ function set_step_list() {
     //Hard-coded, will make it updatable later on
     switch(console){
         case "OLD":
-            if(vers>=1140){
-                step_list = false;
-                auto = false;
-                toastr["warning"]("You need a hardmod or dsiwarehax (check 3ds.guide for more information)");
-            }
-            
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
@@ -59,13 +53,6 @@ function set_step_list() {
             break;
 
         case "NEW":
-            if(vers>=1140){
-                step_list = false;
-                auto = false;
-                toastr["warning"]("You need a hardmod or dsiwarehax (check 3ds.guide for more information)");
-            }
-            
-            
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
                 step_list.push("soundhax");
@@ -80,6 +67,11 @@ function set_step_list() {
             }
 
             break;
+    }
+
+    if(vers>=1140){
+        step_list = false;
+        cfw114();
     }
 
     
