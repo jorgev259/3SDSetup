@@ -67,11 +67,9 @@ function startup(){
     
     if(vers > 900 && vers < 1140){
         toastr.clear();
-        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
+        startSetup();
         $('html').addClass("bg_change");
         soundhax_hb();
-        $("#inner1").hide();
-        $("#inner2").show();
         available = true;
     }else{
         toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
@@ -311,9 +309,7 @@ function ctr_9_2(){
 }
 
 function updatea9lh(){
-    $("#inner1").hide();
-    $("#inner2").show();
-    download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
+    startSetup();
 
 
     getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
@@ -329,4 +325,8 @@ function updatea9lh(){
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.firm","luma/payloads");
 
     torrent("magnet:?xt=urn:btih:15a3c97acf17d67af98ae8657cc66820cc58f655&dn=secret_sector.bin&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce","secret_sector.bin","Extract to /boot9strap/")
+}
+
+function dsiwareSave(){
+    startSetup();
 }
