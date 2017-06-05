@@ -293,7 +293,7 @@ function updatea9lh(){
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
     getFileBuffer_zip("SafeB9SInstaller","SafeB9SInstaller.bin","SafeB9SInstaller.bin","luma/payloads");
     
-    getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Lusma CFW");
+    getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Luma CFW");
     getFileBuffer_zip("Luma CFW", "boot.firm","boot.firm","");
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
