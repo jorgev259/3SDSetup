@@ -125,7 +125,7 @@ function bootstrap9_browser(){
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
     extractZip("Starter Homebrew Kit","","starter");
     
-    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.2.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -133,7 +133,7 @@ function bootstrap9_browser(){
 }
 
 function bootstrap9_hb(){
-    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.2.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -169,7 +169,7 @@ function safectr_mset(){
     getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
     extractZip("Starter Homebrew Kit","","starter");
     
-    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.2.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -208,48 +208,19 @@ function cfw_files(change_start,region,console){
         start = "installing-arm9loaderhax#section-iii---configuring-luma3ds";
     }
 
-    if(change_start || region === undefined || console == undefined){
-        var form_data = consoleinfo();
-
-        for (var i = 0; i <= 5; i++) {
-            ver_data[i] = form_data[i].value;
-        };
-        region = ver_data[5];
-        console = ver_data[0]; 
-    }
-    
-    if(console == "OLD"){
-        folder("hblauncherloader");
-        
-        global_version = $.parseJSON('{"0":"OLD","1":"11","2":"2","3":"0","4":"0","5":"' + region + '"}');
-        getFileBuffer_url(updatePayload(),"Otherapp Payload (11.2)");
-        var payloadName = "OLD-11-4-0-37-";
-        switch(region){
-            case "E":
-                payloadName += "EUR";
-                break;
-            case "U":
-                payloadName += "USA";
-                break;
-            case "J":
-                payloadName += "JPN";
-                break;
-            case "K":
-                payloadName += "KOR";
-                break;
-        }
-        addFile("Otherapp Payload (11.2)","hblauncherloader",payloadName + ".bin","list");
-    } 
-
     
     getLatestRelease("yellows8", "hblauncher_loader",".zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
+    
+    getLatestRelease("fincs", "new-hbmenu", ".3dsx", "New Homebrew Launcher");
+    addFile("New Homebrew Launcher","","boot.3dsx","list")
     
     getLatestRelease("Hamcha", "lumaupdate",".cia","Luma Updater");
     addFile("Luma Updater","cias","lumaupdater.cia","list");
   
     getLatestRelease("Steveice10", "FBI",".zip","FBI");
     getFileBuffer_zip("FBI", "3ds-arm/FBI.cia","FBI.cia","cias");
+    getFileBuffer_zip("FBI", "3ds-arm/3ds/FBI/FBI.3dsx","FBI.3dsx","3ds");
     
     getLatestRelease_local("AuroraWright","Luma3DS","luma.zip","Luma CFW");
     getFileBuffer_zip("Luma CFW", "boot.firm","boot.firm","");
@@ -312,9 +283,11 @@ function ctr_9_2(){
 
 function updatea9lh(){
     startSetup();
+    
+    getLatestRelease("fincs", "new-hbmenu", ".3dsx", "New Homebrew Launcher");
+    addFile("New Homebrew Launcher","","boot.3dsx","list")
 
-
-    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.2.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
     
     getLatestRelease("d0k3","SafeB9SInstaller",".zip", "SafeB9SInstaller");
@@ -337,7 +310,7 @@ function dsiwareSave(){
 
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
 
-    getLatestRelease("SciresM","boot9strap","boot9strap-1.0.zip", "boot9strap");
+    getLatestRelease("SciresM","boot9strap","boot9strap-1.2.zip", "boot9strap");
     extractZip("boot9strap","boot9strap","");
 
     getLatestRelease("Plailect","b9sTool","boot.nds","boot.nds");
