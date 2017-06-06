@@ -39,8 +39,9 @@
         "version":"latest",
         "steps":[
             {
-               "file":"safehax.3dsx",
+               "file":".3dsx",
                 "type":"addFile",
+                "name":"safehax.3dsx",
                 "path":"3ds"
             }
         ]
@@ -52,7 +53,8 @@
         "version":"latest",
         "steps":[
             {
-               "file":"udsploit.3dsx",
+               "file":".3dsx",
+                "name":"udsploit.3dsx",
                 "type":"addFile",
                 "path":"3ds"
             }
@@ -79,7 +81,8 @@
         "steps":[
             {
                 "type":"addFile",
-                "file":"boot.firm",
+                "file":".firm",
+                "name":"boot.firm",
                 "path":""
             }
         ]
@@ -92,7 +95,8 @@
         "steps":[
             {
                 "type": "addFile",
-                "file": "boot.3dsx",
+                "name":"boot.3dsx",
+                "file": ".3dsx",
                 "path": ""
             }
         ]
@@ -105,7 +109,8 @@
         "steps": [
             {
                 "type": "addFile",
-                "file": "lumaupdater.cia",
+                "file":".cia",
+                "name": "lumaupdater.cia",
                 "path": "cias"
             }
         ]
@@ -119,10 +124,12 @@
             {
                 "type": "addFile",
                 "file": ".3dsx",
+                "name":"fbi.3dsx",
                 "path": "3ds"
             },
             {
                 "type": "addFile",
+                "name":"fbi.cia",
                 "file": ".cia",
                 "path": "cias"
             }
@@ -150,6 +157,7 @@
         "steps":[
             {
                 "type": "addFile",
+                "name": "dsp1.cia",
                 "file": ".cia",
                 "path": "cias"
             }
@@ -163,7 +171,8 @@
         "steps":[
             {
                 "type": "addFile",
-                "file": "themely.cia",
+                "file": ".cia",
+                "name": "themely.cia",
                 "path": "cias"
             }
         ]
