@@ -20,11 +20,11 @@ function set_step_list() {
         case "OLD":
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
-                step_list.push("soundhax");
+                step_list.push("soundhaxList");
                 //d9 (hb)
-                step_list.push("bootstrap9_hb");
+                step_list.push("b9s_hb");
                 //arm9
-                step_list.push("install");
+                step_list.push("finalize");
                 
                 start = "homebrew-launcher-(soundhax)";
             }
@@ -32,13 +32,13 @@ function set_step_list() {
             if (vers >= 400 && vers <= 810) {
                 if(browser>0){
                     step_list.push("bootstrap9_browser");
-                    step_list.push("install");
+                    step_list.push("finalize");
                     
                     start = "installing-boot9strap-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("bootstrap9_mset");
-                        step_list.push("install");
+                        step_list.push("finalize");
                         
                         start = "installing-boot9strap-(mset)";
                     }else{
@@ -55,11 +55,11 @@ function set_step_list() {
         case "NEW":
             if (vers >= 900 && vers <= 1130) {
                 //Soundhax
-                step_list.push("soundhax");
+                step_list.push("soundhaxList");
                 //d9 (hb)
-                step_list.push("bootstrap9_hb");
+                step_list.push("b9s_hb");
                 //arm9
-                step_list.push("install");
+                step_list.push("finalize");
             }
 
             if (vers == 810) {

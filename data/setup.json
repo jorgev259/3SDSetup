@@ -39,7 +39,7 @@
         "version":"latest",
         "steps":[
             {
-               "file":".3dsx",
+               "file":"safehax.3dsx",
                 "type":"addFile",
                 "path":"3ds"
             }
@@ -52,7 +52,7 @@
         "version":"latest",
         "steps":[
             {
-               "file":".3dsx",
+               "file":"udsploit.3dsx",
                 "type":"addFile",
                 "path":"3ds"
             }
@@ -163,7 +163,7 @@
         "steps":[
             {
                 "type": "addFile",
-                "file": ".cia",
+                "file": "themely.cia",
                 "path": "cias"
             }
         ]

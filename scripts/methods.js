@@ -26,15 +26,12 @@
             downloadZip();
         });
 
-
-        $.get("data/setup.json", function(list) {
             setupList["otherapp"].url = updatePayload();
             setupList["Soundhax"].url = soundhaxURL();
 
             $("#inner1").hide();
             $("#inner2").show();
-            readList(list[data].steps);
-        });
+            readList(data);
     }
 
     function readList(list){
@@ -399,4 +396,16 @@ function soundhaxURL(){
 
 function consoleinfo(){
     return $("#data_ver").serializeArray();
+}
+
+function startup_CFW(){
+    var step_list = set_step_list();
+    console.log(step_list);
+    if(step_list){
+
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
+        $('html').addClass("bg_change");
+
+        startSetup(step_list);
+    }
 }
