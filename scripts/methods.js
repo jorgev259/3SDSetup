@@ -26,12 +26,12 @@
             downloadZip();
         });
 
-            setupList["otherapp"].url = updatePayload();
-            setupList["Soundhax"].url = soundhaxURL();
+        setupList["otherapp"].url = updatePayload();
+        setupList["Soundhax"].url = soundhaxURL();
 
-            $("#inner1").hide();
-            $("#inner2").show();
-            readList(data);
+        $("#inner1").hide();
+        $("#inner2").show();
+        readList(data);
     }
 
     function readList(list){
@@ -74,7 +74,12 @@
                 break;
 
             case "addFile":
-                addFile(data, step.path, step.file);
+                if(step.name){
+                    addFile(data, step.path, step.name);
+                }else{
+                    addFile(data, step.path, step.file);
+                }
+
                 break;
 
             case "deleteFile":
@@ -349,63 +354,3 @@
 
         return null;
     }
-
-//3SDSetup stuff
-function progress(step,message){
-    if(document.getElementById(step) !== null){
-        document.getElementById(step).innerHTML = message;
-    }else{
-        $("#progress").append("<div id='" + step + "'>" + message + "</div>");
-    }
-}
-
-function soundhaxURL(){
-    var req_data = consoleinfo();
-
-    var console = req_data["0"].value;
-    var region = req_data["5"].value;
-
-    switch (console)
-    {
-        case "OLD":
-            console = "o3ds";
-            break;
-            case "NEW":
-            console = "n3ds";
-            break;
-    }
-
-    switch (region)
-    {
-        case "E":
-            region = "eur";
-            break;
-        case "U":
-            region = "usa";
-            break;
-        case "J":
-            region = "jpn";
-            break;
-        case "K":
-            region = "kor";
-            break;
-    }
-
-    return "https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a";
-}
-
-function consoleinfo(){
-    return $("#data_ver").serializeArray();
-}
-
-function startup_CFW(){
-    var step_list = set_step_list();
-    console.log(step_list);
-    if(step_list){
-
-        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
-        $('html').addClass("bg_change");
-
-        startSetup(step_list);
-    }
-}
