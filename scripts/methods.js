@@ -1,13 +1,13 @@
-    var setupList;
-    $.get("data/setup.json", function(list) {
-         setupList = list;
-    });
-
     var finalZip = new JSZip();
     var rateLimit = null;
     var rateLimited = false;
     var totalSteps = 0;
     var finishedSteps = 0;
+    var setupList;
+
+    $.get("data/setup.json", function(list) {
+        setupList = list;
+    });
 
     function downloadZip() {
         if(!totalSteps > 0 && finishedSteps >= totalSteps) {
@@ -22,11 +22,17 @@
 
     function startSetup(data){
         updateRateLimit();
-        $('.dl-button').click(function() {
+        $('#download_btn').click(function() {
             downloadZip();
         });
 
+
         $.get("data/setup.json", function(list) {
+            setupList["otherapp"].url = updatePayload();
+            setupList["Soundhax"].url = soundhaxURL();
+
+            $("#inner1").hide();
+            $("#inner2").show();
             readList(list[data].steps);
         });
     }
@@ -35,19 +41,20 @@
         for(var i=0;i<list.length;i++){
             var itemName = list[i];
             if(itemName && setupList.hasOwnProperty(itemName)) {
-                totalSteps += list.length;
-                evaluateItem(setupList[itemName]);
+                evaluateItem(itemName);
             }
         }
     }
 
-    function evaluateItem(item) {
+    function evaluateItem(itemName) {
+        var item = setupList[itemName];
+
         switch(item.type) {
             case "github":
-                runGithub(item);
+                runGithub(item,itemName);
                 break;
             case "direct":
-                runDirect(item);
+                runDirect(item,itemName);
                 break;
             case "list":
                 readList(item.steps);
@@ -55,7 +62,7 @@
         }
     }
 
-    function evaluateStep(step, data) {
+    function evaluateStep(step, data, name) {
         switch(step.type){
             case "extractFile":
                 if(step.fileExtract) {
@@ -65,7 +72,7 @@
                         getFileBuffer_zip(data, fileStep.file, fileStep.path);
                     });
                 } else {
-                    extractZip(data, step.path, step.remove_path);
+                    extractZip(data, step.path, step.removePath);
                 }
                 break;
 
@@ -89,36 +96,41 @@
                 break;
             // add more
         }
+        progress(name, name + " : Added (∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ");
 
         finishedSteps++; // kinda
         if(totalSteps === finishedSteps) {
-            $('.dl-button').text("Download");
+            $('#download_btn').text("Download");
         }
 
-        element.childNodes[element.childNodes.length -1].innerText = "(Added!)";
+        //element.childNodes[element.childNodes.length -1].innerText = "(Added!)";
     }
 
     // Prepares files and runs each step passing the downloaded files.
-    function runGithub(item) {
+    function runGithub(item,name) {
         getGithubRelease(item, function(err, info) {
             item.steps.forEach(function(step) {
+                totalSteps++;
+
                 var asset = getGithubAsset(info.assets, step.file);
                 if(asset === null) {
                     console.log("no asset found for " + step.file);
                     return;
                 }
 
-                getFileBuffer_url(corsURL(asset.browser_download_url), function(data) {
-                    evaluateStep(step, data);
+                getFileBuffer_url(corsURL(asset.browser_download_url), name,function(data) {
+                    evaluateStep(step, data, name);
                 });
             });
         });
     }
 
-    function runDirect(item) {
-        getFileBuffer_url(corsURL(item.url), function(data) {
+    function runDirect(item,name) {
+        totalSteps++;
+
+        getFileBuffer_url(corsURL(item.url), name, function(data) {
             item.steps.forEach(function(step) {
-                evaluateStep(step, data);
+                evaluateStep(step, data, name);
             });
         });
     }
@@ -160,7 +172,7 @@
         });
     }
 
-    function getFileBuffer_url(url, callback) {
+    function getFileBuffer_url(url, name, callback) {
         console.log("Downloading " + url);
         callback = callback || function(){};
 
@@ -180,6 +192,7 @@
 
             fileReader.onload = function() {
                 console.log("Downloaded " + url);
+                progress(name,name + ": Download Finished");
                 if(url.endsWith('.zip')){
                     JSZip.loadAsync(this.result).then(function (data) {
                         callback(data);
@@ -195,7 +208,8 @@
         xhr.onprogress = function (e) {
         if (e.lengthComputable) {
             var percent = Math.floor((e.loaded / e.total) * 100);
-            element.childNodes[element.childNodes.length -1].innerText = "(" + percent + ")";
+            progress(name,name + ": " + percent + " %");
+            //element.childNodes[element.childNodes.length -1].innerText = "(" + percent + ")";
         }
         };
 
@@ -208,6 +222,7 @@
     }
 
     function getFileBuffer_zip(data, originalName, path, newName){
+        //should work with relative and not absolute names (not implemented)
         newName = newName || originalName;
 
         try {
@@ -337,3 +352,51 @@
 
         return null;
     }
+
+//3SDSetup stuff
+function progress(step,message){
+    if(document.getElementById(step) !== null){
+        document.getElementById(step).innerHTML = message;
+    }else{
+        $("#progress").append("<div id='" + step + "'>" + message + "</div>");
+    }
+}
+
+function soundhaxURL(){
+    var req_data = consoleinfo();
+
+    var console = req_data["0"].value;
+    var region = req_data["5"].value;
+
+    switch (console)
+    {
+        case "OLD":
+            console = "o3ds";
+            break;
+            case "NEW":
+            console = "n3ds";
+            break;
+    }
+
+    switch (region)
+    {
+        case "E":
+            region = "eur";
+            break;
+        case "U":
+            region = "usa";
+            break;
+        case "J":
+            region = "jpn";
+            break;
+        case "K":
+            region = "kor";
+            break;
+    }
+
+    return "https://raw.githubusercontent.com/nedwill/soundhax/master/soundhax-" + region + "-" + console + ".m4a";
+}
+
+function consoleinfo(){
+    return $("#data_ver").serializeArray();
+}
