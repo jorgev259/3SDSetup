@@ -189,7 +189,7 @@ function install(){
     
     if(vers >= 300 && vers <= 450){                          
         getFileBuffer_url("https://cors-anywhere.herokuapp.com/http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/00000056", "Firmware file");
-        addFile("Firmware file","luma","firmware.bin","list");
+        addFile("Firmware file","luma","native.bin","list");
         
         getFileBuffer_url("https://cors-anywhere.herokuapp.com/http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/00000056", "cetk file");
         addFile("cetk file","luma","cetk","list")
