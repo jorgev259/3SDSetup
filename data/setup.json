@@ -313,6 +313,43 @@
         ]
     },
 
+    "Luma3DS legacy":{
+        "type":"direct",
+        "url":"https://3ds.guide/luma_legacy/cf0b05e/boot.firm",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"boot.firm",
+                "path":""
+            }
+        ]
+
+    },
+
+    "Native.firm":{
+        "type":"direct",
+        "url":"http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/00000056",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"native.firm",
+                "path":"luma"
+            }
+        ]
+    },
+
+    "Cetk":{
+        "type":"direct",
+        "url":"http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/cetk",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"cetk",
+                "path":"luma"
+            }
+        ]
+    },
+
     "soundhaxList":{
         "type":"list",
         "steps":[
@@ -349,6 +386,29 @@
             "Boot9strap",
             "SafeB9SInstaller MSET",
             "Luma3DS"
+        ]
+    },
+
+    "a9lh_to_b9s":{
+        "type":"list",
+        "steps":[
+            "Godmode9",
+            "Boot9strap",
+            "SafeB9SInstaller payload",
+            "Luma3DS",
+            "Homebrew Launcher",
+            "Luma Updater"
+        ]
+    },
+
+    "updating_b9s":{
+        "type":"list",
+        "steps":[
+            "Godmode9",
+            "Boot9strap",
+            "SafeB9SInstaller payload",
+            "Luma3DS",
+            "Homebrew Launcher"
         ]
     },
 
