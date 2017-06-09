@@ -77,10 +77,8 @@ function startup(){
 
     if(vers > 900 && vers < 1140){
         toastr.clear();
-        startSetup();
+        startSetup(setupList["soundhaxList"].steps);
         $('html').addClass("bg_change");
-        soundhax_hb();
-        available = true;
     }else{
         toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
     }

@@ -33,6 +33,52 @@
 
     },
 
+    "SafeB9SInstaller Browser": {
+        "type": "github",
+        "repo": "d0k3/SafeB9SInstaller",
+        "version": "latest",
+        "steps": [
+            {
+                "file":".zip",
+                "type": "extractFile",
+                "files":[
+                    {
+                        "file":"SafeB9SInstaller.dat",
+                        "path":""
+                    },
+                    {
+                        "file":"Launcher.dat",
+                        "path":""
+                    }
+                ]
+            }
+        ]
+
+    },
+
+    "SafeB9SInstaller MSET": {
+        "type": "github",
+        "repo": "d0k3/SafeB9SInstaller",
+        "version": "latest",
+        "steps": [
+            {
+                "file":".zip",
+                "type": "extractFile",
+                "files":[
+                    {
+                        "file":"SafeB9SInstaller.dat",
+                        "path":""
+                    },
+                    {
+                        "file":"SafeB9SInstaller.dat",
+                        "path":"flashcart files"
+                    }
+                ]
+            }
+        ]
+
+    },
+
     "Safehax":{
         "type":"github",
         "repo":"TiniVi/safehax",
@@ -283,6 +329,25 @@
             "SafeB9SInstaller safehax",
             "Udsploit",
             "Boot9strap",
+            "Luma3DS"
+        ]
+    },
+
+    "b9s_browser":{
+        "type":"list",
+        "steps":[
+            "Homebrew Starter Kit",
+            "Boot9strap",
+            "SafeB9SInstaller Browser"
+        ]
+    },
+
+    "b9s_mset":{
+        "type":"list",
+        "steps":[
+            "Homebrew Starter Kit",
+            "Boot9strap",
+            "SafeB9SInstaller MSET",
             "Luma3DS"
         ]
     },

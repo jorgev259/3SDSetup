@@ -63,10 +63,16 @@
         switch(step.type){
             case "extractFile":
                 if(step.fileExtract) {
-                    getFileBuffer_zip(data, step.fileExtract, step.path);
+                    if(step.newName == undefined){
+                        step.newName = step.fileExtract;
+                    }
+                    getFileBuffer_zip(data, step.fileExtract, step.path, step.newName);
                 } else if(step.files) {
                     step.files.forEach(function(fileStep) {
-                        getFileBuffer_zip(data, fileStep.file, fileStep.path);
+                        if(fileStep.newName == undefined){
+                            fileStep.newName = fileStep.file;
+                        }
+                        getFileBuffer_zip(data, fileStep.file, fileStep.path, fileStep.newName);
                     });
                 } else {
                     extractZip(data, step.path, step.removePath);
