@@ -109,7 +109,7 @@
 
     "Luma3DS": {
         "type": "direct",
-        "url":"https://github.com/rikumax25/3SDSetup/blob/master/7zfiles/AuroraWright_Luma3DS/luma.zip",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/7zfiles/AuroraWright_Luma3DS/luma.zip",
         "steps": [
             {
                 "type": "extractFile",
@@ -125,26 +125,12 @@
         "steps":[
             {
                 "type":"addFile",
-                "file":".firm",
                 "name":"boot.firm",
                 "path":""
             }
         ]
     },
 
-    "Homebrew Launcher":{
-        "type":"github",
-        "repo":"fincs/new-hbmenu",
-        "version":"latest",
-        "steps":[
-            {
-                "type": "addFile",
-                "name":"boot.3dsx",
-                "file": ".3dsx",
-                "path": ""
-            }
-        ]
-    },
 
     "Luma Updater": {
         "type": "github",
