@@ -107,8 +107,8 @@
         if(totalSteps === finishedSteps) {
             $('#download_btn').text("Download");
             $('#download_btn').click(function() {
- -            downloadZip();
- -        });
+                downloadZip();
+            });
         }
 
         //element.childNodes[element.childNodes.length -1].innerText = "(Added!)";
