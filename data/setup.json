@@ -108,13 +108,11 @@
     },
 
     "Luma3DS": {
-        "type": "github",
-        "repo": "AuroraWright/Luma3DS",
-        "version": "latest",
+        "type": "direct",
+        "url":"https://github.com/rikumax25/3SDSetup/blob/master/7zfiles/AuroraWright_Luma3DS/luma.zip",
         "steps": [
             {
                 "type": "extractFile",
-                "file": ".7z",
                 "fileExtract": "boot.firm",
                 "path": ""
             }
