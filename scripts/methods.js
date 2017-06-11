@@ -22,9 +22,6 @@
 
     function startSetup(data){
         updateRateLimit();
-        $('#download_btn').click(function() {
-            downloadZip();
-        });
 
         setupList["otherapp"].url = updatePayload();
         setupList["Soundhax"].url = soundhaxURL();
