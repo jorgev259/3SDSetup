@@ -211,10 +211,7 @@ function cfw_files(change_start,region,console){
     
     getLatestRelease("yellows8", "hblauncher_loader",".zip","HBL Loader");
     getFileBuffer_zip("HBL Loader", "hblauncher_loader.cia","hblauncher_loader.cia","cias");
-    
-    getLatestRelease("fincs", "new-hbmenu", ".3dsx", "New Homebrew Launcher");
-    addFile("New Homebrew Launcher","","boot.3dsx","list")
-    
+
     getLatestRelease("Hamcha", "lumaupdate",".cia","Luma Updater");
     addFile("Luma Updater","cias","lumaupdater.cia","list");
   
@@ -284,6 +281,9 @@ function ctr_9_2(){
 function updatea9lh(){
     startSetup();
     
+    getFileBuffer_url("https://smealum.github.io/ninjhax2/starter.zip","Starter Homebrew Kit");
+    extractZip("Starter Homebrew Kit","","starter");
+
     getLatestRelease("fincs", "new-hbmenu", ".3dsx", "New Homebrew Launcher");
     addFile("New Homebrew Launcher","","boot.3dsx","list")
 
