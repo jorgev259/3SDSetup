@@ -1,6 +1,24 @@
 var download_msg;
 
 $(document).ready(function(){
+    toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  "onclick": null,
+  "showDuration": "0",
+  "hideDuration": "0",
+  "timeOut": "0",
+  "extendedTimeOut": "0",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+    }
+    
     toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");
 
     var toastContact = toastr;
@@ -79,6 +97,7 @@ function startup(){
 
     if(vers > 900 && vers < 1140){
         toastr.clear();
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         startSetup(setupList["soundhaxList"].steps);
         $('html').addClass("bg_change");
     }else{

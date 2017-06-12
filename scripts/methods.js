@@ -16,7 +16,8 @@
         
         fileName(function (zip_name){
             finalZip.generateAsync({ type:"blob" })
-            .then(function (blob) {            
+            .then(function (blob) {
+                 download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + zip_name + ".zip into your SD Card");
                 saveAs(blob, zip_name);
             });
         })
@@ -24,6 +25,8 @@
 
     function startSetup(data){
         updateRateLimit();
+        
+        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 
         setupList["otherapp"].url = updatePayload();
         setupList["Soundhax"].url = soundhaxURL();
