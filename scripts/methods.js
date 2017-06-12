@@ -13,11 +13,13 @@
         if(!totalSteps > 0 && finishedSteps >= totalSteps) {
             return;
         }
-
-        finalZip.generateAsync({ type:"blob" })
-        .then(function (blob) {
-            saveAs(blob, "generic_name.zip");
-        });
+        
+        fileName(function (zip_name){
+            finalZip.generateAsync({ type:"blob" })
+            .then(function (blob) {            
+                saveAs(blob, zip_name);
+            });
+        })
     }
 
     function startSetup(data){

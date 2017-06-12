@@ -91,3 +91,13 @@ function cfw114(){
     $("#normal").hide();
     $("#cfw114").show();
 }
+
+function fileName(callback){
+    callback = callback || function(){};
+    
+    $.get("data/typos.txt",function(typos){
+        var resp_list = typos.split("/");
+        var zip_name = resp_list[Math.floor(Math.random() * resp_list.length)];
+        callback(zip_name);
+    })
+}
