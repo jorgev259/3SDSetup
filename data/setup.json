@@ -119,6 +119,18 @@
         ]
     },
 
+    "Luma3DS a9lh":{
+        "type":"direct",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/7zfiles/AuroraWright_Luma3DS/arm9loaderhax.bin",
+        "steps":[
+            {
+                "type":"addFile",
+                "name":"arm9loaderhax.bin",
+                "path":""
+            }
+        ]
+    },
+
     "Luma3DS Legacy":{
         "type":"direct",
         "url":"https://3ds.guide/luma_legacy/cf0b05e/boot.firm",
@@ -380,6 +392,7 @@
             "Boot9strap",
             "SafeB9SInstaller payload",
             "Luma3DS",
+            "Luma3DS a9lh",
             "Homebrew Launcher",
             "Luma Updater"
         ]
