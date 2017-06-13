@@ -388,6 +388,7 @@
     "a9lh_to_b9s":{
         "type":"list",
         "steps":[
+            "Homebrew Starter Kit",
             "Godmode9",
             "Boot9strap",
             "SafeB9SInstaller payload",
