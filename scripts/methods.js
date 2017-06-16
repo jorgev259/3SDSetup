@@ -134,7 +134,7 @@
                     return;
                 }
 
-                getFileBuffer_url(asset.browser_download_url, name,function(data) {
+                getFileBuffer_url(corsURL(asset.browser_download_url), name,function(data) {
                     evaluateStep(step, data, name);
                 });
             });
@@ -144,7 +144,7 @@
     function runDirect(item,name) {
         totalSteps++;
 
-        getFileBuffer_url(item.url, name, function(data) {
+        getFileBuffer_url(corsURL(item.url), name, function(data) {
             item.steps.forEach(function(step) {
                 evaluateStep(step, data, name);
             });
