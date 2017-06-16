@@ -295,8 +295,7 @@
         "steps": [
             {
                 "type":"extractFile",
-                "path":"",
-                "removePath":"starter"
+                "path":""
             }
 
         ]
