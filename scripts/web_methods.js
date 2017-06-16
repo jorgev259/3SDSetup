@@ -120,3 +120,14 @@ function fileName(callback){
         callback(zip_name);
     })
 }
+
+function torrent(url,name,message){
+    var toastorrent = toastr;
+    torrent_used = true;
+    toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
+    toastorrent["warning"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
+
+    $("#torrent_list").append("<div><a onclick='torrent_click(" + torrent_number.length + ")' class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
+
+    torrent_number[torrent_number.length] = 0;
+}
