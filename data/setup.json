@@ -362,6 +362,16 @@
         ]
     },
 
+    "Secret_sector.bin":{
+        "type":"torrent",
+        "name":"",
+        "require":{
+            "type":"console",
+            "data":"NEW"
+        },
+        "step":""
+    },
+
     "soundhaxList":{
         "type":"list",
         "steps":[
@@ -421,8 +431,7 @@
             "Godmode9",
             "Boot9strap",
             "SafeB9SInstaller firm",
-            "Luma3DS",
-            "Homebrew Launcher"
+            "Homebrew Starter Kit"
         ]
     },
 
