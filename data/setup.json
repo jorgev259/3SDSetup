@@ -420,7 +420,6 @@
             "SafeB9SInstaller payload",
             "Luma3DS",
             "Luma3DS a9lh",
-            "Homebrew Launcher",
             "Luma Updater"
         ]
     },
@@ -438,14 +437,13 @@
     "finalize":{
         "type":"list",
         "steps":[
-            "Homebrew Menu",
+            "Homebrew Starter Kit",
             "FBI",
             "Luma Updater",
             "Themely",
             "DSP1",
             "Godmode9",
-            "HBL Loader",
-            "Homebrew Launcher"
+            "HBL Loader"
         ]
     }
 }
