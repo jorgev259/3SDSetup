@@ -60,6 +60,8 @@ function set_step_list() {
                 step_list.push("b9s_hb");
                 //arm9
                 step_list.push("finalize");
+
+                start = "homebrew-launcher-(soundhax)";
             }
 
             if (vers == 810) {
@@ -69,14 +71,6 @@ function set_step_list() {
             break;
     }
 
-    if(vers<= 450 && vers>=300){
-        step_list.push("Native.firm");
-        step_list.push("Cetk");
-    }
-
-    if(vers<900){
-        step_list.push("Luma3DS legacy");
-    }
 
     if(vers>=1140){
         step_list = false;

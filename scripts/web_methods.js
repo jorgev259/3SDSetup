@@ -121,13 +121,65 @@ function fileName(callback){
     })
 }
 
-function torrent(url,name,message){
+function torrent(item){
     var toastorrent = toastr;
     torrent_used = true;
     toastorrent.options.onclick = function() { window.open('http://dev.deluge-torrent.org/wiki/Download', '_blank'); };
     toastorrent["warning"]("You need a torrent client like Deluge to download the torrent files, the white button links (Click here to go to Deluge's website)");
 
-    $("#torrent_list").append("<div><a onclick='torrent_click(" + torrent_number.length + ")' class='btn btn-lg btn-torrent' href='" + url + "'>" + name + " (" + message + ")</a></div>");
+    $("#torrent_list").append("<div><a class='btn btn-lg btn-torrent' href='" + item.url + "'>" + item.name + " (" + item.step + ")</a></div>");
 
-    torrent_number[torrent_number.length] = 0;
+}
+
+function checkReq(item){
+    if(item === undefined){
+        return true;
+    }
+
+    var info = consoleinfo();
+
+    switch(item.type){
+        case "console":
+            if(item.data === info[0].value){
+                return true;
+            }
+            break;
+
+        case "fw":
+            var firmware = parseInt(info[1].value + info[2].value +info[3].value);
+            switch(item.comparator){
+                case "<":
+                    if(firmware < item.data){
+                        return true
+                    }
+                    break;
+
+                case "<=":
+                    if(firmware <= item.data){
+                        return true
+                    }
+                    break;
+
+                case ">":
+                    if(firmware > item.data){
+                        return true
+                    }
+                    break;
+
+                case ">=":
+                    if(firmware >= item.data){
+                        return true
+                    }
+                    break;
+
+                case "<>":
+                    if(firmware <= item.data1 && firmware >= item.data2){
+                        return true
+                    }
+                    break;
+            }
+            break;
+    }
+
+    return false;
 }

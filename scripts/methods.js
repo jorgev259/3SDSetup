@@ -50,17 +50,21 @@
 
     function evaluateItem(itemName) {
         var item = setupList[itemName];
-
-        switch(item.type) {
-            case "github":
-                runGithub(item,itemName);
-                break;
-            case "direct":
-                runDirect(item,itemName);
-                break;
-            case "list":
-                readList(item.steps);
-                break;
+        if(checkReq(item.require)){
+            switch(item.type) {
+                case "github":
+                    runGithub(item,itemName);
+                    break;
+                case "direct":
+                    runDirect(item,itemName);
+                    break;
+                case "torrent":
+                    torrent(item);
+                    break;
+                case "list":
+                    readList(item.steps);
+                    break;
+            }
         }
     }
 

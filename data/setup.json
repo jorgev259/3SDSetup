@@ -327,7 +327,12 @@
 
     "Luma3DS legacy":{
         "type":"direct",
-        "url":"https://3ds.guide/luma_legacy/cf0b05e/boot.firm",
+        "url":"https://3ds.guide/luma_legacy/boot.firm",
+        "require":{
+            "type":"fw",
+            "comparator":"<",
+            "data":"900"
+        },
         "steps":[
             {
                 "type":"addFile",
@@ -341,6 +346,12 @@
     "Native.firm":{
         "type":"direct",
         "url":"http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/00000056",
+        "require":{
+            "type":"fw",
+            "comparator":"<>",
+            "data1":"450",
+            "data2":"300"
+        },
         "steps":[
             {
                 "type":"addFile",
@@ -362,14 +373,15 @@
         ]
     },
 
-    "Secret_sector.bin":{
+    "Secret_sector":{
         "type":"torrent",
-        "name":"",
+        "url":"magnet:?xt=urn:btih:15a3c97acf17d67af98ae8657cc66820cc58f655&dn=secret_sector.bin&tr=udp%3A%2F%2Ftracker.filetracker.pl%3A8089%2Fannounce&tr=http%3A%2F%2Ftracker.tfile.me%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.yoshi210.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker1.wasabii.com.tw%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.aletorrenty.pl%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.baravik.org%3A6970%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=udp%3A%2F%2Fzer0day.ch%3A1337%2Fannounce&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=http%3A%2F%2Ftorrent.gresille.org%2Fannounce&tr=http%3A%2F%2Fexplodie.org%3A6969%2Fannounce",
+        "name":"Secret_sector.bin",
         "require":{
             "type":"console",
             "data":"NEW"
         },
-        "step":""
+        "step":"Move to /bootstrap9/"
     },
 
     "soundhaxList":{
@@ -420,7 +432,8 @@
             "SafeB9SInstaller payload",
             "Luma3DS",
             "Luma3DS a9lh",
-            "Luma Updater"
+            "Luma Updater",
+            "Secret_sector"
         ]
     },
 
@@ -443,7 +456,8 @@
             "Themely",
             "DSP1",
             "Godmode9",
-            "HBL Loader"
+            "HBL Loader",
+            "Luma3DS legacy"
         ]
     }
 }
