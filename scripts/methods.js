@@ -91,6 +91,10 @@
                 }
                 break;
 
+            case "extractFolder":
+                extractFolder(data, step.folder, step.path);
+                break;
+
             case "addFile":
                 if(step.name){
                     addFile(data, step.path, step.name);
