@@ -34,11 +34,12 @@
         try{
             setupList["otherapp"].url = updatePayload();
             setupList["Soundhax"].url = soundhaxURL();
-        }
+        }finally{
 
-        $("#inner1").hide();
-        $("#inner2").show();
-        readList(data);
+            $("#inner1").hide();
+            $("#inner2").show();
+            readList(data);
+        }
     }
 
     function readList(list){
