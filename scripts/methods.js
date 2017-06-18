@@ -31,8 +31,10 @@
         
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 
-        setupList["otherapp"].url = updatePayload();
-        setupList["Soundhax"].url = soundhaxURL();
+        try{
+            setupList["otherapp"].url = updatePayload();
+            setupList["Soundhax"].url = soundhaxURL();
+        }
 
         $("#inner1").hide();
         $("#inner2").show();
@@ -138,7 +140,7 @@
                     return;
                 }
 
-                getFileBuffer_url(corsURL(asset.browser_download_url), name,function(data) {
+                getFileBuffer_url(corsURL(asset.browser_download_url), name, function(data) {
                     evaluateStep(step, data, name);
                 });
             });

@@ -5,7 +5,6 @@
         "version": "latest",
         "steps": [
             {
-                "name": "safeb9sinstaller",
                 "type": "extractFile",
                 "file": ".zip",
                 "fileExtract": "SafeB9SInstaller.bin",
@@ -22,7 +21,6 @@
         "version": "latest",
         "steps": [
             {
-                "name": "safeb9sinstaller",
                 "type": "extractFile",
                 "file": ".zip",
                 "fileExtract": "SafeB9SInstaller.bin",
@@ -39,7 +37,6 @@
         "version": "latest",
         "steps": [
             {
-                "name": "safeb9sinstaller",
                 "type": "extractFile",
                 "file": ".zip",
                 "fileExtract": "SafeB9SInstaller.firm",
