@@ -114,9 +114,8 @@ function cfw114(){
 function fileName(callback){
     callback = callback || function(){};
     
-    $.get("https://cors-anywhere.herokuapp.com/http://3sdsetup.net/data/typos.txt",function(typos){
-        var resp_list = typos.split("/");
-        var zip_name = resp_list[Math.floor(Math.random() * resp_list.length)];
+    $.get("https://cors-anywhere.herokuapp.com/http://3sdsetup.net/data/typos.json",function(typos){
+        var zip_name = typos[Math.floor(Math.random() * typos.length)];
         callback(zip_name);
     })
 }
