@@ -276,10 +276,6 @@
             file.async("arraybuffer").then(function(content) {
                 file_count2++;
                 addFile(content, path, filename);
-
-                if(file_count2 == Object.keys(data.files).length){
-                    progress_finish(bufferName, bufferName + ": Added to Zip");
-                }
             });
         });
     }
