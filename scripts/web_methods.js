@@ -19,7 +19,7 @@ $(document).ready(function(){
   "hideMethod": "fadeOut"
     }
     
-    toastr["warning"]("If you have a non-working browser, select '0' on the last firmware number");
+
 
     var toastContact = toastr;
     toastContact.options.onclick = function() { window.open(' https://discord.me/Nintenbrew', '_blank'); };
