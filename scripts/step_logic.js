@@ -48,7 +48,7 @@ function set_step_list() {
             }
 
             if (vers >= 100 && vers <= 310) {
-                compatible="false";
+                compatible=false;
             }
             break;
 
