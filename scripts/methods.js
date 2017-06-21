@@ -34,12 +34,12 @@
         try{
             setupList["otherapp"].url = updatePayload();
             setupList["Soundhax"].url = soundhaxURL();
+            $('#guide_btn').attr("href",start);
         }finally{
 
             $("#inner1").hide();
             $("#inner2").show();
 
-            $('#guide_btn').attr("href",start);
             readList(data);
         }
     }
@@ -64,7 +64,11 @@
                     runDirect(item,itemName);
                     break;
                 case "torrent":
-                    torrent(item);
+                    if(item.urls){
+
+                    }else{
+                        torrent(item);
+                    }
                     break;
                 case "list":
                     readList(item.steps);

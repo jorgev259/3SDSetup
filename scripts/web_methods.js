@@ -97,6 +97,7 @@ function startup(){
 
     if(vers > 900 && vers < 1140){
         toastr.clear();
+        start="https://3ds.guide/homebrew-launcher-(soundhax)"
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         startSetup(setupList["soundhaxList"].steps);
         $('html').addClass("bg_change");
@@ -109,6 +110,9 @@ function startup(){
 function cfw114(){
     $("#normal").hide();
     $("#cfw114").show();
+
+    toastr["error"]("Select the firmware of the Target console and extract the files on the Source's console SD Card");
+    start="";
 }
 
 function fileName(callback){
