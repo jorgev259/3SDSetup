@@ -26,7 +26,7 @@ function set_step_list() {
                 //arm9
                 step_list.push("finalize");
                 
-                start = "homebrew-launcher-(soundhax)";
+                start = "https://3ds.guide/homebrew-launcher-(soundhax)";
             }
 
             if (vers >= 400 && vers <= 810) {
@@ -34,13 +34,13 @@ function set_step_list() {
                     step_list.push("b9s_browser");
                     step_list.push("finalize");
                     
-                    start = "installing-boot9strap-(browser)";
+                    start = "https://3ds.guide/installing-boot9strap-(browser)";
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("b9s_mset");
                         step_list.push("finalize");
                         
-                        start = "installing-boot9strap-(mset)";
+                        start = "https://3ds.guide/installing-boot9strap-(mset)";
                     }else{
                         compatible = false;
                     }
@@ -61,7 +61,7 @@ function set_step_list() {
                 //arm9
                 step_list.push("finalize");
 
-                start = "homebrew-launcher-(soundhax)";
+                start = "https://3ds.guide/homebrew-launcher-(soundhax)";
             }
 
             if (vers == 810) {

@@ -20,7 +20,7 @@
                 try{
                     download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + zip_name + ".zip into your SD Card");
                 }finally{
-                    saveAs(blob, zip_name + ".zip")
+                    saveAs(blob, zip_name + ".zip");
                 }
             });
         })
@@ -38,6 +38,8 @@
 
             $("#inner1").hide();
             $("#inner2").show();
+
+            $('#guide_btn').attr("href",start);
             readList(data);
         }
     }
