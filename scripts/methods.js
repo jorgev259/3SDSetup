@@ -28,7 +28,9 @@
 
     function startSetup(data){
         updateRateLimit();
-        
+        if(data.start){
+            start = data.start;
+        }
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 
         try{
@@ -40,7 +42,7 @@
             $("#inner1").hide();
             $("#inner2").show();
 
-            readList(data);
+            readList(data.steps);
         }
     }
 

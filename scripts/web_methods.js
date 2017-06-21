@@ -77,11 +77,12 @@ function startup_CFW(){
     var step_list = set_step_list();
     console.log(step_list);
     if(step_list){
-
+        var data = {};
+        data.steps = step_list;
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('html').addClass("bg_change");
 
-        startSetup(step_list);
+        startSetup(data);
     }
 }
 
@@ -99,7 +100,7 @@ function startup(){
         toastr.clear();
         start="https://3ds.guide/homebrew-launcher-(soundhax)"
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
-        startSetup(setupList["soundhaxList"].steps);
+        startSetup(setupList["soundhaxList"]);
         $('html').addClass("bg_change");
     }else{
         toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
