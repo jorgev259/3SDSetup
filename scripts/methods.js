@@ -100,6 +100,15 @@
                         getFileBuffer_zip(data, fileStep.file, fileStep.path, fileStep.newName);
                     });
                 } else {
+                    if(step.fileDelete){
+                        if(step.fileDelete.files){
+                            step.fileDelete.files.forEach(function (fileStep){
+                                deletefile_zip(data, fileStep);
+                            })
+                        }else{
+                            deletefile_zip(data, step.fileDelete);
+                        }
+                    }
                     extractZip(data, step.path, step.removePath);
                 }
                 break;
@@ -113,17 +122,6 @@
                     addFile(data, step.path, step.name);
                 }else{
                     addFile(data, step.path, step.file);
-                }
-
-                break;
-
-            case "deleteFile":
-                if(step.file) {
-                    deletefile_zip(step.file);
-                } else if(step.files) {
-                    step.files.forEach(function(fileStep) {
-                        deletefile_zip(fileStep.file);
-                    });
                 }
 
                 break;
@@ -328,8 +326,8 @@
         }
     }
 
-    function deletefile_zip(filename){
-        finalZip.remove(filename);
+    function deletefile_zip(data, filename){
+        data.remove(filename);
     }
 
     function folder(name){
