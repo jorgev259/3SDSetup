@@ -119,10 +119,10 @@
 
             case "deleteFile":
                 if(step.file) {
-                    deletefile_zip(data,step.fileDelete);
+                    deletefile_zip(step.file);
                 } else if(step.files) {
                     step.files.forEach(function(fileStep) {
-                        deletefile_zip(data, fileStep.file);
+                        deletefile_zip(fileStep.file);
                     });
                 }
 
