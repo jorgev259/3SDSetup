@@ -150,19 +150,15 @@
             item.steps.forEach(function(step) {
                 totalSteps++;
 
-                if(step.type == "deleteFile"){
-                    evaluateStep(step, null, name);
-                }else{
-                    var asset = getGithubAsset(info.assets, step.file);
-                    if(asset === null) {
-                        console.log("no asset found for " + step.file);
-                        return;
-                    }
-
-                    getFileBuffer_url(corsURL(asset.browser_download_url), name, function(data) {
-                        evaluateStep(step, data, name);
-                    });
+                var asset = getGithubAsset(info.assets, step.file);
+                if(asset === null) {
+                    console.log("no asset found for " + step.file);
+                    return;
                 }
+
+                getFileBuffer_url(corsURL(asset.browser_download_url), name, function(data) {
+                    evaluateStep(step, data, name);
+                });
             });
         });
     }
