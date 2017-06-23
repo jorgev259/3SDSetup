@@ -152,7 +152,7 @@
             item.steps.forEach(function(step) {
                 totalSteps++;
 
-                if(step.type == "fileDelete"){
+                if(step.type == "deleteFile"){
                     evaluateStep(step, null, name);
                 }else{
                     var asset = getGithubAsset(info.assets, step.file);
