@@ -6,7 +6,12 @@
     var setupList;
 
     $.get("data/setup.json", function(list) {
-        setupList = list;
+        if(list.length === undefined){
+            setupList = list;
+        }else{
+            setupList = JSON.parse(list);
+        }
+
     });
 
     function downloadZip() {
