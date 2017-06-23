@@ -152,15 +152,19 @@
             item.steps.forEach(function(step) {
                 totalSteps++;
 
-                var asset = getGithubAsset(info.assets, step.file);
-                if(asset === null) {
-                    console.log("no asset found for " + step.file);
-                    return;
-                }
+                if(step.type == "fileDelete"){
+                    evaluateStep(step, null, name);
+                }else{
+                    var asset = getGithubAsset(info.assets, step.file);
+                    if(asset === null) {
+                        console.log("no asset found for " + step.file);
+                        return;
+                    }
 
-                getFileBuffer_url(corsURL(asset.browser_download_url), name, function(data) {
-                    evaluateStep(step, data, name);
-                });
+                    getFileBuffer_url(corsURL(asset.browser_download_url), name, function(data) {
+                        evaluateStep(step, data, name);
+                    });
+                }
             });
         });
     }
@@ -324,8 +328,8 @@
         }
     }
 
-    function deletefile_zip(data, filename){
-        data.remove(filename);
+    function deletefile_zip(filename){
+        finalZip.remove(filename);
     }
 
     function folder(name){
