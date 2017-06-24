@@ -294,22 +294,6 @@
         ]
     },
 
-    "stuff": {
-        "type": "direct",
-        "url": "https://archive.org/download/testmp3testfile/testmp3testfile_64kb.m3u",
-        "steps": [
-            {
-                "type": "addFile",
-                "file": "testmp3testfile_64kb.m3u",
-                "path": ""
-            },
-            {
-                "type":"folder",
-                "name":"testFolder"
-            }
-        ]
-    },
-
     "Homebrew Starter Kit":{
         "type" :"direct",
         "url":"https://smealum.github.io/ninjhax2/starter.zip",
@@ -508,13 +492,18 @@
             "DSP1",
             "Godmode9",
             "HBL Loader",
-            "Luma3DS legacy"
+            "Luma3DS legacy",
+            "Native.firm",
+            "Cetk"
         ]
     },
 
     "Game Inject":{
         "type":"list",
         "steps":[
+            "Homebrew Starter Kit",
+            "Luma3DS",
+            "Boot9strap",
             "b9stool",
             "finalize"
         ]
