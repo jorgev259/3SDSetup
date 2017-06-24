@@ -97,6 +97,30 @@
         "type":"github",
         "repo":"TiniVi/safehax",
         "version":"latest",
+        "require":{
+            "type":"fw",
+            "comparator":">=",
+            "data":"1130"
+        },
+        "steps":[
+            {
+               "file":".3dsx",
+                "type":"addFile",
+                "name":"safehax.3dsx",
+                "path":"3ds"
+            }
+        ]
+    },
+
+    "Safehax r19":{
+        "type":"github",
+        "repo":"TiniVi/safehax",
+        "version":"r19",
+        "require":{
+            "type":"fw",
+            "comparator":"<",
+            "data":"1130"
+        },
         "steps":[
             {
                "file":".3dsx",
@@ -413,6 +437,7 @@
         "type":"list",
         "steps":[
             "Safehax",
+            "Safehax r19",
             "SafeB9SInstaller safehax",
             "Udsploit",
             "Boot9strap",
