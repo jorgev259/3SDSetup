@@ -147,7 +147,19 @@
 
     "Luma3DS": {
         "type": "direct",
-        "url":"https://github.com/rikumax25/3SDSetup/raw/master/7zfiles/AuroraWright_Luma3DS/luma.zip",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/localfiles/luma.zip",
+        "steps": [
+            {
+                "type": "extractFile",
+                "fileExtract": "boot.firm",
+                "path": ""
+            }
+        ]
+    },
+
+    "Luma3DS V7.1": {
+        "type": "direct",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/localfiles/lumav7.1.zip",
         "steps": [
             {
                 "type": "extractFile",
@@ -159,7 +171,7 @@
 
     "Luma3DS a9lh":{
         "type":"direct",
-        "url":"https://github.com/rikumax25/3SDSetup/raw/master/7zfiles/AuroraWright_Luma3DS/arm9loaderhax.bin",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/localfiles/arm9loaderhax.bin",
         "steps":[
             {
                 "type":"addFile",
@@ -470,7 +482,8 @@
             "Godmode9",
             "Boot9strap",
             "SafeB9SInstaller firm",
-            "Homebrew Starter Kit"
+            "Homebrew Starter Kit",
+            "Luma3DS V7.1"
         ]
     },
 
