@@ -246,7 +246,7 @@
         xhr.onprogress = function (e) {
         if (e.lengthComputable) {
             var percent = Math.floor((e.loaded / e.total) * 100);
-            progress(name,name + ": " + percent + " %");
+            progress(name,name + ": <progress max='100' value='" + percent +"'></progress>");
             //element.childNodes[element.childNodes.length -1].innerText = "(" + percent + ")";
         }
         };
