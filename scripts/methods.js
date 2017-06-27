@@ -257,7 +257,7 @@
         };
 
         xhr.send();
-        progress(name,name + ": <progress max='100' value='0' id='" + name + "_progress'></progress>");
+        progress(name,name + ": <progress max=100 value=0 id='" + name + "_progress'></progress>");
     }
 
     function getFileBuffer_zip(data, originalName, path, newName){

@@ -37,22 +37,6 @@ a:hover {
     display:none;
 }
 
-progress {
-  background-color: #f3f3f3;
-  border-radius: 9px;
-}
-progress::-webkit-progress-bar {
-  background-color: #f3f3f3;
-  border-radius: 9px;
-}
-progress::-webkit-progress-value {
-  background-color: #f3f3f3;
-  border-radius: 9px;
-}
-progress::-moz-progress-bar {
-  background-color: #f3f3f3;
-  border-radius: 9px;
-}
 
 .mastfoot {
     z-index:90;
