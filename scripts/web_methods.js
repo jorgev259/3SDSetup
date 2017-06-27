@@ -26,12 +26,21 @@ $(document).ready(function(){
     toastContact["warning"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
 })
 
-function progress(step,message){
-    if(document.getElementById(step) !== null){
-        document.getElementById(step).innerHTML = message;
-    }else{
-        $("#progress").append("<div id='" + step + "'>" + message + "</div>");
+function progress(step,message,type){
+    switch(type){
+        case "progress":
+            $("#" + step + "_progress").val(message);
+            break;
+
+        default:
+            if(document.getElementById(step) !== null){
+                document.getElementById(step).innerHTML = message;
+            }else{
+                $("#progress").append("<div id='" + step + "'>" + message + "</div>");
+            }
+            break;
     }
+
 }
 
 function soundhaxURL(){
