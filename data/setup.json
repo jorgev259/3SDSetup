@@ -181,18 +181,6 @@
         ]
     },
 
-    "Luma3DS Legacy":{
-        "type":"direct",
-        "url":"https://3ds.guide/luma_legacy/cf0b05e/boot.firm",
-        "steps":[
-            {
-                "type":"addFile",
-                "name":"boot.firm",
-                "path":""
-            }
-        ]
-    },
-
 
     "Luma Updater": {
         "type": "github",
@@ -360,36 +348,6 @@
 
     },
 
-    "Native.firm":{
-        "type":"direct",
-        "url":"http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/00000056",
-        "require":{
-            "type":"fw",
-            "comparator":"<>",
-            "data1":"450",
-            "data2":"300"
-        },
-        "steps":[
-            {
-                "type":"addFile",
-                "file":"native.firm",
-                "path":"luma"
-            }
-        ]
-    },
-
-    "Cetk":{
-        "type":"direct",
-        "url":"http://nus.cdn.c.shop.nintendowifi.net/ccs/download/0004013800000002/cetk",
-        "steps":[
-            {
-                "type":"addFile",
-                "file":"cetk",
-                "path":"luma"
-            }
-        ]
-    },
-
     "b9stool":{
         "type":"github",
         "repo":"Plailect/b9sTool",
@@ -504,10 +462,7 @@
             "Themely",
             "DSP1",
             "Godmode9",
-            "HBL Loader",
-            "Luma3DS legacy",
-            "Native.firm",
-            "Cetk"
+            "HBL Loader"
         ]
     },
 
