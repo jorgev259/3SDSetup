@@ -70,6 +70,29 @@
 
     },
 
+    "SafeB9SInstaller 2xrsa": {
+        "type": "github",
+        "repo": "d0k3/SafeB9SInstaller",
+        "version": "latest",
+        "steps": [
+            {
+                "file":".zip",
+                "type": "extractFile",
+                "files":[
+                    {
+                        "file":"arm9.bin",
+                        "path":""
+                    },
+                    {
+                        "file":"arm11.bin",
+                        "path":""
+                    }
+                ]
+            }
+        ]
+
+    },
+
     "SafeB9SInstaller MSET": {
         "type": "github",
         "repo": "d0k3/SafeB9SInstaller",
@@ -405,6 +428,15 @@
             "Homebrew Starter Kit",
             "Boot9strap",
             "SafeB9SInstaller Browser"
+        ]
+    },
+
+    "2xrsa":{
+        "type":"list",
+        "steps":[
+            "Homebrew Starter Kit",
+            "Boot9strap",
+            "SafeB9SInstaller 2xrsa"
         ]
     },
 

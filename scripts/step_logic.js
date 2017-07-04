@@ -47,7 +47,11 @@ function set_step_list() {
                 }
             }
 
-            if (vers >= 100 && vers <= 310) {
+            if(vers>=210 && browser>0){
+                step_list.push("finalize");
+                step_list.push("2xrsa");
+                start = "https://3ds.guide/installing-boot9strap-(2xrsa)";
+            }else if (vers >= 100 && vers <= 310) {
                 compatible=false;
             }
             break;
@@ -68,8 +72,15 @@ function set_step_list() {
                 compatible = false;
             }
 
+            if(vers>=210 && browser>0){
+                step_list.push("finalize");
+                step_list.push("2xrsa");
+                start = "https://3ds.guide/installing-boot9strap-(2xrsa)";
+            }
+
             break;
     }
+
 
 
     if(vers>=1140){
