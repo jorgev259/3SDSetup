@@ -29,6 +29,8 @@ $(document).ready(function(){
 function progress(step,message,type){
     switch(type){
         case "progress":
+            step.split(")").join("-");
+            step.split("(").join("-");
             $("#" + step + "_progress").val(message);
             break;
 
