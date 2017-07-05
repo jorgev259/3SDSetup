@@ -261,8 +261,6 @@
         };
 
         xhr.send();
-        name.split(")").join("-");
-        name.split("(").join("-");
         progress(name,name + ": <progress max=100 value=0 id='" + name + "_progress'></progress>");
     }
 
