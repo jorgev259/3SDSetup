@@ -35,8 +35,6 @@ function set_step_list() {
                     step_list.push("finalize");
                     
                     start = "https://3ds.guide/installing-boot9strap-(browser)";
-
-                    return
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("b9s_mset");
