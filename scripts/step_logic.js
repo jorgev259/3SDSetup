@@ -35,6 +35,8 @@ function set_step_list() {
                     step_list.push("finalize");
                     
                     start = "https://3ds.guide/installing-boot9strap-(browser)";
+
+                    return
                 }else{
                     if((vers >=400 && vers<=450)||(vers>=600 && 630)){                      
                         step_list.push("b9s_mset");
@@ -47,7 +49,7 @@ function set_step_list() {
                 }
             }
 
-            if(vers>=210 && browser>0){
+            if(vers==210 && browser>0){
                 step_list.push("finalize");
                 step_list.push("2xrsa");
                 start = "https://3ds.guide/installing-boot9strap-(2xrsa)";
@@ -72,7 +74,7 @@ function set_step_list() {
                 compatible = false;
             }
 
-            if(vers>=210 && browser>0){
+            if(vers==210 && browser>0){
                 step_list.push("finalize");
                 step_list.push("2xrsa");
                 start = "https://3ds.guide/installing-boot9strap-(2xrsa)";
