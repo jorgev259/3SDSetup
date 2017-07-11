@@ -290,6 +290,11 @@
                 "file": ".zip",
                 "fileExtract": "GodMode9.firm",
                 "path": "luma/payloads"
+            },
+            {
+                "type":"extractFolder",
+                "folder":"gm9/scripts",
+                "path":""
             }
         ]
     },
