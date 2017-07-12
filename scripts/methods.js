@@ -82,6 +82,9 @@
                     }
                     break;
                 case "list":
+                    if(zipname == undefined && item.zipname == undefined){
+                       zipname = item.zipname;
+                    }
                     readList(item.steps);
                     break;
             }

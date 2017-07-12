@@ -1,4 +1,5 @@
 var download_msg;
+var zipname;
 
 $(document).ready(function(){
     toastr.options = {
@@ -87,6 +88,7 @@ function startup_CFW(){
     console.log(step_list);
     if(step_list){
         var data = {};
+        zipname = "Stock to B9S";
         data.steps = step_list;
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
         $('html').addClass("bg_change");
@@ -108,7 +110,7 @@ function fileName(callback){
     
     $.get("https://cors-anywhere.herokuapp.com/http://3sdsetup.net/data/typos.json",function(typos){
         var zip_name = typos[Math.floor(Math.random() * typos.length)];
-        callback(zip_name);
+        callback(zip_name + " (" + zipname + ") ");
     })
 }
 

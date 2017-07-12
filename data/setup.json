@@ -457,6 +457,7 @@
     },
 
     "a9lh_to_b9s":{
+        "zipname":"A9LH To B9S",
         "start":"https://3ds.guide/a9lh-to-b9s",
         "type":"list",
         "steps":[
@@ -472,6 +473,7 @@
     },
 
     "updating_b9s":{
+        "zipname":"Updating B9S",
         "start":"https://3ds.guide/updating-b9s",
         "type":"list",
         "steps":[
@@ -484,6 +486,7 @@
     },
 
     "Wiped SD":{
+        "zipname":"Wiped SD",
         "start":"https://3ds.guide/finalizing-setup",
         "type":"list",
         "steps":[
