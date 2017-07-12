@@ -95,28 +95,6 @@ function startup_CFW(){
     }
 }
 
-function startup(){
-    var ver_data = [];
-    var form_data = consoleinfo();
-    var i;
-    for (i = 0; i <= 5; i++) {
-        ver_data[i] = form_data[i].value;
-    };
-
-    var vers = Number(ver_data[1] + ver_data[2] + ver_data[3]);
-
-    if(vers > 900 && vers < 1140){
-        toastr.clear();
-        start="https://3ds.guide/homebrew-launcher-(soundhax)"
-        download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
-        startSetup(setupList["soundhaxList"]);
-        $('html').addClass("bg_change");
-    }else{
-        toastr["warning"]("Non-supported homebrew firmware, look for secondary exploits");
-    }
-}
-
-
 function cfw114(){
     $("#normal").hide();
     $("#cfw114").show();
