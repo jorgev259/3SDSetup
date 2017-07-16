@@ -389,6 +389,18 @@
         ]
     },
 
+    "Setup ctrnand Luma3DS Script":{
+        "type":"direct",
+        "url":"https://3ds.guide/gm9_scripts/setup_ctrnand_luma3ds.gm9",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"setup_ctrnand_luma3ds.gm9",
+                "path":"gm9/scripts"
+            }
+        ]
+    },
+
     "Game Injections":{
         "type":"torrent",
         "urls":[
@@ -468,7 +480,8 @@
             "Luma3DS",
             "Luma3DS a9lh",
             "Luma Updater",
-            "Secret_sector"
+            "Secret_sector",
+            "Setup ctrnand Luma3DS Script"
         ]
     },
 
@@ -503,7 +516,8 @@
             "Themely",
             "DSP1",
             "Godmode9",
-            "HBL Loader"
+            "HBL Loader",
+            "Setup ctrnand Luma3DS Script"
         ]
     },
 
