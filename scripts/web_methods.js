@@ -105,15 +105,6 @@ function cfw114(){
     start="";
 }
 
-function fileName(callback){
-    callback = callback || function(){};
-    
-    $.get("https://cors-anywhere.herokuapp.com/http://3sdsetup.net/data/typos.json",function(typos){
-        var zip_name = typos[Math.floor(Math.random() * typos.length)];
-        callback(zip_name + " (" + zipname + ") ");
-    })
-}
-
 function torrent(item){
     var toastorrent = toastr;
     torrent_used = true;
@@ -175,4 +166,9 @@ function checkReq(item){
     }
 
     return false;
+}
+
+function timeNow(){
+    var time = new Date().toISOString();
+    return time.split("T")[0];
 }

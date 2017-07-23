@@ -19,26 +19,27 @@
             return;
         }
         
-        fileName(function (zip_name){
-            finalZip.generateAsync({ type:"blob" })
-            .then(function (blob) {
-                try{
-                    download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + zip_name + ".zip into your SD Card");
-                }finally{
-                    if(window.navigator.userAgent.indexOf("Edge") > -1){
-                        window.navigator.msSaveBlob(blob, zip_name + ".zip");
-                    }else{
-                        saveAs(blob, zip_name + ".zip");
-                    }
+        finalZip.generateAsync({ type:"blob" })
+        .then(function (blob) {
+            try{
+                download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + zipname + ".zip into your SD Card");
+            }finally{
+                if(window.navigator.userAgent.indexOf("Edge") > -1){
+                    window.navigator.msSaveBlob(blob, zipname + " (" + timeNow() + ").zip");
+                 }else{
+                    saveAs(blob, zipname + " (" + timeNow() + ").zip");
                 }
-            });
-        })
+            }
+        });
     }
 
     function startSetup(data){
         updateRateLimit();
         if(data.start){
             start = data.start;
+        }
+        if(zipname == undefined && data.zipname){
+            zipname = data.zipname;
         }
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 
