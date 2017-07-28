@@ -267,20 +267,6 @@
         ]
     },
 
-    "Themely":{
-        "type":"github",
-        "version":"latest",
-        "repo":"ErmanSayin/Themely",
-        "steps":[
-            {
-                "type": "addFile",
-                "file": ".cia",
-                "name": "themely.cia",
-                "path": "cias"
-            }
-        ]
-    },
-
     "Godmode9": {
         "type": "github",
         "repo": "d0k3/GodMode9",
@@ -513,7 +499,6 @@
             "Homebrew Starter Kit",
             "FBI",
             "Luma Updater",
-            "Themely",
             "DSP1",
             "Godmode9",
             "HBL Loader",
