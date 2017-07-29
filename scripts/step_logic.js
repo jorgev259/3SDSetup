@@ -91,7 +91,7 @@ function set_step_list() {
     
     if(!compatible){
         step_list = false;
-        toastr["warning"]("You need a hardmod (check 3ds.guide for more information)");
+        toastr["warning"]("You need a hardmod or Cart update(check 3ds.guide for more information)");
     }
     return step_list;
 }
