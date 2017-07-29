@@ -97,6 +97,26 @@ function startup_CFW(){
     }
 }
 
+function selector(){
+    $("#normal").hide();
+    $("#selector").show();
+}
+
+function consoleSelector(data){
+    $("#normal").hide();
+    $("#consoleSelector").show();
+
+    $("#o3ds").click(function(){ modifyConsole(data,'OLD'); });
+
+    $("#n3ds").click(function(){ modifyConsole(data,'NEW'); });
+
+}
+
+function modifyConsole(setup,type){
+    $("#console").val(type);
+    startSetup(setup);
+}
+
 function cfw114(){
     $("#normal").hide();
     $("#cfw114").show();

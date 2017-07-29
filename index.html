@@ -41,24 +41,41 @@
                 </div>
 
                 <div class="inner cover" id="inner1">
-                    <h1 class="cover-heading">Select your firmware version</h1>
-                    <br>
-                    <form id="data_ver" class="firmware-form form-inline" method="post">
-                        <select data-id="0" name="five" class="form-control" style="margin:6px 0px"></select> 
-                        <select data-id="1" name="zero" class="form-control" style="margin:6px 0px"></select>
-                        .
-                        <select data-id="2" name="one" class="form-control" style="margin:6px 0px"></select>
-                        .
-                        <select data-id="3" name="two" class="form-control" style="margin:6px 0px"></select>
-                        -
-                        <select data-id="4" name="three" class="form-control" style="margin:6px 0px"></select>
-                        <select data-id="5" name="four" class="form-control" style="margin:6px 0px"></select>
-                    </form>
+                    <div id="consoleSelector">
+                        <h1 class="cover-heading">Select your console model</h1>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
+                                <a href="#" id ="o3ds" class="btn btn-lg btn-default">Old 3DS</a>
+                            </div>
+                            <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
+                                <a href="#" id ="n3ds" class="btn btn-lg btn-default">New 3DS</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="selector">
+                        <h1 class="cover-heading">Select your firmware version</h1>
+                        <br>
+                        <form id="data_ver" class="firmware-form form-inline" method="post">
+                            <select data-id="0" name="five" id="console" class="form-control" style="margin:6px 0px"></select>
+                            <select data-id="1" name="zero" class="form-control" style="margin:6px 0px"></select>
+                            .
+                            <select data-id="2" name="one" class="form-control" style="margin:6px 0px"></select>
+                            .
+                            <select data-id="3" name="two" class="form-control" style="margin:6px 0px"></select>
+                            -
+                            <select data-id="4" name="three" class="form-control" style="margin:6px 0px"></select>
+                            <select data-id="5" name="four" class="form-control" style="margin:6px 0px"></select>
+                        </form>
+                        <div class="col-md-6 col-md-offset-3" style="margin-bottom:6px">
+                                <a href="#" class="btn btn-lg btn-default" onclick="startup_CFW()">Prepare Zip (Stock to B9S install)</a>
+                        </div>
+                    </div>
                     <br>
                     <div id="normal">
                         <div class="row">
                             <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
-                                <a href="#" class="btn btn-lg btn-default" onclick="startup_CFW()">Prepare Zip (Stock to B9S install)</a>
+                                <a href="#" class="btn btn-lg btn-default" onclick="selector()">Prepare Zip (Stock to B9S install)</a>
                             </div>
                             <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
                                 <a href="#" class="btn btn-lg btn-default" onclick="startSetup(setupList['updating_b9s'])">Prepare Zip (Updating B9S)</a>
@@ -69,7 +86,7 @@
                                 <a href="#" class="btn btn-lg btn-default" onclick="startSetup(setupList['Wiped SD'])">Prepare Zip (Wiped SD)</a>
                             </div>
                             <div class="col-sm-5 col-lg-6" style="margin-bottom:6px">
-                                <a href="#" class="btn btn-lg btn-default" onclick="startSetup(setupList['a9lh_to_b9s'])">Prepare Zip (A9LH to B9S)</a>
+                                <a href="#" class="btn btn-lg btn-default" onclick="consoleSelector(setupList['a9lh_to_b9s'])">Prepare Zip (A9LH to B9S)</a>
                             </div>
                         </div>
                     </div>

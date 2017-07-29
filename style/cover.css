@@ -33,7 +33,7 @@ a:hover {
     position: relative
 }
 
-#inner2{
+#inner2,#selector,#consoleSelector{
     display:none;
 }
 
