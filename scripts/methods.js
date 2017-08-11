@@ -208,7 +208,11 @@
         }
 
         $.getJSON(url, function(data) {
-            if(options.version === "") {
+            if(options.version === ""){
+                var versionCount = 0;
+                while(data[versionCount].length == 0){
+                    versionCount += 1;
+                }
                 data = data[0];
             }
 
