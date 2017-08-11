@@ -213,7 +213,7 @@
                 while(data[versionCount].assets.length == 0){
                     versionCount += 1;
                 }
-                data = data[0];
+                data = data[versionCount];
             }
 
             callback(null, data);
