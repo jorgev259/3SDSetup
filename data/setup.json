@@ -294,17 +294,20 @@
             {
                 "type": "extractFile",
                 "file": "boot9strap-1.2.zip",
-                "files": [
-                    {
-                        "file": "boot9strap.firm",
-                        "path": "boot9strap"
-                    },
-                    {
-                        "file": "boot9strap.firm.sha",
-                        "path": "boot9strap"
-                    }
-                ]
+                "path": "boot9strap"
+            }
+        ]
+    },
 
+    "Boot9strap ntr": {
+        "type": "github",
+        "repo": "SciresM/boot9strap",
+        "version": "latest",
+        "steps": [
+            {
+                "type": "extractFile",
+                "file": "ntr.zip",
+                "path": "Source Console/boot9strap"
             }
         ]
     },
