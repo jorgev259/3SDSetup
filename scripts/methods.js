@@ -19,7 +19,7 @@
             return;
         }
         
-        finalZip.generateAsync({ type:"blob" })
+        finalZip.generateAsync({ type:"blob" ,compression:"DEFLATE"})
         .then(function (blob) {
             try{
                 download_msg.find(".toast-message").text( "Once all downloads finish, click 'Download Zip' and extract everything inside " + zipname + ".zip into your SD Card");
