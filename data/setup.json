@@ -390,6 +390,18 @@
         ]
     },
 
+    "Cleanup SD Card Script":{
+        "type":"direct",
+        "url":"https://3ds.guide/gm9_scripts/cleanup_sd_card.gm9",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"cleanup_sd_card.gm9",
+                "path":"gm9/scripts"
+            }
+        ]
+    },
+
     "Game Injections":{
         "type":"torrent",
         "urls":[
@@ -457,6 +469,20 @@
         ]
     },
 
+    "Themely":{
+         "type":"github",
+         "version":"latest",
+         "repo":"ihaveamac/Themely",
+         "steps":[
+             {
+                 "type": "addFile",
+                 "file": ".cia",
+                 "name": "themely.cia",
+                 "path": "cias"
+             }
+         ]
+     },
+
     "a9lh_to_b9s":{
         "zipname":"A9LH To B9S",
         "start":"https://3ds.guide/a9lh-to-b9s",
@@ -483,7 +509,8 @@
             "Boot9strap",
             "SafeB9SInstaller firm",
             "Homebrew Starter Kit",
-            "Luma3DS V7.1"
+            "Luma3DS V7.1",
+            "Setup ctrnand Luma3DS Script"
         ]
     },
 
@@ -505,7 +532,9 @@
             "DSP1",
             "Godmode9",
             "HBL Loader",
-            "Setup ctrnand Luma3DS Script"
+            "Setup ctrnand Luma3DS Script",
+            "Themely",
+            "Luma3DS"
         ]
     },
 
