@@ -1,6 +1,6 @@
-**3SDSetup**
+# 3SDSetup
 
-http://3sdsetup.net/
+https://rikumax25.github.io/3SDSetup/
 
 For use with https://3ds.guide/
 
@@ -11,7 +11,11 @@ Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 **Usage**
 
-Sets up SD card for new installations of arm9loaderhax+Luma3DS with magnet links to neccessary torrents.
+SD card setup for...
+- stock to boot9strap install
+- arm9loaderhax to boot9strap
+- boot9strap updating
+- wiped SD card
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 **Documentation**
