@@ -157,7 +157,10 @@
         getGithubRelease(item, function(err, info) {
             item.steps.forEach(function(step) {
                 totalSteps++;
-
+                if(step.type==="folder"){
+                    evaluateStep(step, null, name);
+                    return;
+                };
                 var asset = getGithubAsset(info.assets, step.file);
                 if(asset === null) {
                     console.log("no asset found for " + step.file);
