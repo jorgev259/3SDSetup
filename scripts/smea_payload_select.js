@@ -12,12 +12,7 @@ var global_version = {};
 
 function updatePayload()
 {
-    Object.keys(otherapp).forEach(function(fw){
-        if(otherapp[fw] == global_version[4]){
-            var gversion = fw.split(".");
-            return getUrlFromVersion([gversion[0], gversion[1], gversion[2], otherapp[fw], global_version[5], global_version[0]])
-        }
-    });
+    return getUrlFromVersion([global_version[1], global_version[2], global_version[3], global_version[4], global_version[5], global_version[0]]);
 }
 
 //Took from smealum.github.io/3ds
