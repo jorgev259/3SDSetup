@@ -469,15 +469,15 @@
         ]
     },
 
-    "Themely":{
+    "Anemone3DS":{
          "type":"github",
          "version":"latest",
-         "repo":"ihaveamac/Themely",
+         "repo":"astronautlevel2/Anemone3DS",
          "steps":[
              {
                  "type": "addFile",
                  "file": ".cia",
-                 "name": "themely.cia",
+                 "name": "Anemone3DS.cia",
                  "path": "cias"
              }
          ]
@@ -533,7 +533,7 @@
             "Godmode9",
             "HBL Loader",
             "Setup ctrnand Luma3DS Script",
-            "Themely",
+            "Anemone3DS",
             "Luma3DS"
         ]
     },
