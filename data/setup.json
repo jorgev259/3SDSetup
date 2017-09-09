@@ -496,7 +496,8 @@
             "Luma3DS a9lh",
             "Luma Updater",
             "Secret_sector",
-            "Setup ctrnand Luma3DS Script"
+            "Setup ctrnand Luma3DS Script",
+            "Cleanup SD Card Script"
         ]
     },
 
@@ -505,12 +506,9 @@
         "start":"https://3ds.guide/updating-b9s",
         "type":"list",
         "steps":[
-            "Godmode9",
             "Boot9strap",
             "SafeB9SInstaller firm",
-            "Homebrew Starter Kit",
-            "Luma3DS V7.1",
-            "Setup ctrnand Luma3DS Script"
+            "Cleanup SD Card Script"
         ]
     },
 
@@ -534,7 +532,8 @@
             "HBL Loader",
             "Setup ctrnand Luma3DS Script",
             "Anemone3DS",
-            "Luma3DS"
+            "Luma3DS",
+            "Cleanup SD Card Script"
         ]
     },
 
