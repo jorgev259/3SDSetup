@@ -67,6 +67,8 @@
                             <select data-id="4" name="three" class="form-control" style="margin:6px 0px"></select>
                             <select data-id="5" name="four" class="form-control" style="margin:6px 0px"></select>
                         </form>
+                    </div>
+                    <div id="selector2">
                         <div class="col-md-6 col-md-offset-3" style="margin-bottom:6px">
                                 <a href="#" class="btn btn-lg btn-default" onclick="startup_CFW()">Prepare Zip (Stock to B9S install)</a>
                         </div>
@@ -92,7 +94,7 @@
                     </div>
 
                     <div id="cfw114" class="row">
-                        <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
+                       <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
                             <a href="#" class="btn btn-lg btn-default" onclick="dsiwareSave()">Dsiwarehax (Save Injection)</a>
                         </div>
                         <div class="col-sm-5 col-lg-6" style="margin-bottom:6px">
@@ -100,6 +102,9 @@
                         </div>
                         <div class="col-sm-offset-1 col-lg-offset-0 col-sm-5 col-lg-6" style="margin-bottom:6px">
                             <a href="#" class="btn btn-lg btn-default" onclick="">Hardmod (FIRM injection)</a>
+                        </div>
+                        <div class="col-sm-5 col-lg-6" style="margin-bottom:6px">
+                            <a href="#" class="btn btn-lg btn-default" onclick="startSetup(setupList['Game Inject'])">ntrboot (Custom Firmware)</a>
                         </div>
                     </div>
 
@@ -124,9 +129,6 @@
 
                 <div class="mastfoot">
                     <div class="inner">
-                        <p class="lead" style="color:white;">
-                            Powered by Ritsu Technologies Inc.
-                        </p>
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
                             <input type="hidden" name="hosted_button_id" value="AJFJXVPUP4V2Q">

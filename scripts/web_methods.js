@@ -100,6 +100,7 @@ function startup_CFW(){
 function selector(){
     $("#normal").hide();
     $("#selector").show();
+    $("#selector2").show();
 }
 
 function consoleSelector(data){
@@ -119,6 +120,8 @@ function modifyConsole(setup,type){
 
 function cfw114(){
     $("#normal").hide();
+    $("#selector2").hide();
+    $("#selector").hide();
     $("#cfw114").show();
 
     toastr["error"]("Select the firmware of the Target console and extract the files on the Source's console SD Card");
