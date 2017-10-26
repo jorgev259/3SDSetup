@@ -104,6 +104,11 @@ display:none;
   margin-bottom: 10px;
 }
 
+.masthead-git {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .masthead-nav > li {
   display: inline-block;
 }
@@ -135,6 +140,9 @@ display:none;
 @media (min-width: 768px) {
   .masthead-brand {
     float: left;
+  }
+  .masthead-git {
+    float: right;
   }
   .masthead-nav {
     float: right;

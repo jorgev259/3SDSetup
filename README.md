@@ -4,7 +4,7 @@ https://rikumax25.github.io/3SDSetup/
 
 For use with https://3ds.guide/
 
-Thread: https://gbatemp.net/threads/3sdsetup-web-sd-setup-release.457604/
+Thread: https://gbatemp.net/threads/plailects-guides-file-downloaders-web-3sdsetup-wiiusetup.478176/
 
 
 
