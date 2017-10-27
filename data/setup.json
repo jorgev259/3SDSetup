@@ -396,8 +396,7 @@
 
     "ak2i ntrcardhax flasher Dsi":{
         "type":"github",
-        "repo":"d3m3vilurr/ak2i_ntrcardhax_flasher",
-        "version":"v3.1",
+        "repo":"ntrteam/ds_ntrboot_flasher",
         "steps":[
             {
                 "type": "addFile",
@@ -409,8 +408,7 @@
 
     "ak2i ntrcardhax flasher DS":{
         "type":"github",
-        "repo":"d3m3vilurr/ak2i_ntrcardhax_flasher",
-        "version":"v3.1",
+        "repo":"ntrteam/ds_ntrboot_flasher",
         "steps":[
             {
                 "type": "addFile",
