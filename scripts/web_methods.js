@@ -97,10 +97,19 @@ function startup_CFW(){
     }
 }
 
-function selector(){
-    $("#normal").hide();
-    $("#selector").show();
-    $("#selector2").show();
+function selector(elem,parent){
+    switch(elem){
+        case "normal":
+            $("#normal").hide();
+            $("#selector").show();
+            $("#selector2").show();
+            break;
+
+        case "ntrboot":
+            $(`#${parent}`).hide();
+            $("#ntrboot").show();
+            break;
+    }
 }
 
 function consoleSelector(data){

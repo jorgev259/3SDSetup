@@ -47,6 +47,22 @@
 
     },
 
+    "SafeB9SInstaller boot.firm": {
+        "type": "github",
+        "repo": "d0k3/SafeB9SInstaller",
+        "version": "latest",
+        "steps": [
+            {
+                "type": "extractFile",
+                "file": ".zip",
+                "fileExtract": "SafeB9SInstaller.firm",
+                "newName":"boot.firm",
+                "path": ""
+            }
+        ]
+
+    },
+
     "SafeB9SInstaller Browser": {
         "type": "github",
         "repo": "d0k3/SafeB9SInstaller",
@@ -108,7 +124,7 @@
                     },
                     {
                         "file":"SafeB9SInstaller.nds",
-                        "path":"flashcart files"
+                        "path":"Copy the contents of this folder in your flashcard's SD card"
                     }
                 ]
             }
@@ -307,7 +323,7 @@
             {
                 "type": "extractFile",
                 "file": "ntr.zip",
-                "path": "Source Console/boot9strap"
+                "path": "Copy the contents of this folder in your hacked console's SD card/boot9strap"
             }
         ]
     },
@@ -378,6 +394,45 @@
         ]
     },
 
+    "ak2i ntrcardhax flasher Dsi":{
+        "type":"github",
+        "repo":"d3m3vilurr/ak2i_ntrcardhax_flasher",
+        "version":"v3.1",
+        "steps":[
+            {
+                "type": "addFile",
+                "file": "flasher_dsi.nds",
+                "path": "Copy the contents of this folder in your flashcard's SD card"
+            }
+        ]
+    },
+
+    "ak2i ntrcardhax flasher DS":{
+        "type":"github",
+        "repo":"d3m3vilurr/ak2i_ntrcardhax_flasher",
+        "version":"v3.1",
+        "steps":[
+            {
+                "type": "addFile",
+                "file": "flasher.nds",
+                "path": "Copy the contents of this folder in your flashcard's SD card"
+            }
+        ]
+    },
+
+    "ntrboot flasher":{
+        "type":"github",
+        "repo":"kitling/ntrboot_flasher",
+        "steps":[
+            {
+                "type":"addFile",
+                "file":"ntrboot_flasher.firm",
+                "path":"Copy the contents of this folder in your hacked console's SD card/luma/payloads"
+            }
+        ]
+
+    },
+
     "Setup ctrnand Luma3DS Script":{
         "type":"direct",
         "url":"https://3ds.guide/gm9_scripts/setup_ctrnand_luma3ds.gm9",
@@ -402,12 +457,6 @@
         ]
     },
 
-    "Game Injections":{
-        "type":"torrent",
-        "urls":[
-
-        ]
-    },
 
     "Secret_sector":{
         "type":"torrent",
@@ -537,14 +586,48 @@
         ]
     },
 
-    "Game Inject":{
+    "install ntrboot":{
         "type":"list",
         "steps":[
             "Homebrew Starter Kit",
-            "Luma3DS",
             "Boot9strap",
-            "b9stool",
-            "finalize"
+            "SafeB9SInstaller boot.firm",
+            "FBI",
+            "Luma Updater",
+            "DSP1",
+            "Godmode9",
+            "HBL Loader",
+            "Setup ctrnand Luma3DS Script",
+            "Anemone3DS",
+            "Cleanup SD Card Script"
+        ]
+    },
+
+    "NTRBoot 3DS/DSi":{
+        "start":"https://3ds.guide/ntrboot",
+        "type":"list",
+        "steps":[
+            "install ntrboot",
+            "ak2i ntrcardhax flasher Dsi"
+        ]
+    },
+
+    "NTRBoot 3DS":{
+        "start":"https://3ds.guide/flashing-ntrboot-(3ds-multi-system)",
+        "type":"list",
+        "steps":[
+            "install ntrboot",
+            "ntrboot flasher",
+            "Boot9strap ntr"
+        ]
+    },
+
+    "NTRBoot DS/DS Lite":{
+        "start":"https://3ds.guide/flashing-ntrboot-(nds)",
+        "type":"list",
+        "steps":[
+            "install ntrboot",
+            "ak2i ntrcardhax flasher DS"
         ]
     }
 }
