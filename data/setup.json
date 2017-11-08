@@ -602,6 +602,7 @@
     },
 
     "NTRBoot 3DS/DSi":{
+        "zipname":"NTRBoot 3DS/DSi",
         "start":"https://3ds.guide/ntrboot",
         "type":"list",
         "steps":[
@@ -611,6 +612,7 @@
     },
 
     "NTRBoot 3DS":{
+        "zipname":"NTRBoot 3DS (Multi System)",
         "start":"https://3ds.guide/flashing-ntrboot-(3ds-multi-system)",
         "type":"list",
         "steps":[
@@ -621,6 +623,7 @@
     },
 
     "NTRBoot DS/DS Lite":{
+        "zipname":"NTRBoot DS/DS Lite",
         "start":"https://3ds.guide/flashing-ntrboot-(nds)",
         "type":"list",
         "steps":[
