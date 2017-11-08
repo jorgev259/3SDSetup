@@ -44,9 +44,9 @@
         download_msg = toastr["warning"]("Once all downloads finish, click 'Download Zip' and extract everything inside the given zip into your SD Card");
 
         try{
+             $('#guide_btn').attr("href",start);
             setupList["otherapp"].url = updatePayload();
             setupList["Soundhax"].url = soundhaxURL();
-            $('#guide_btn').attr("href",start);
         }finally{
 
             $("#inner1").hide();
