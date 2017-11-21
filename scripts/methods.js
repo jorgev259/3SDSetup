@@ -241,21 +241,16 @@ function getFileBuffer_url(url, name, callback) {
 		}
 
 		var fileBlob = new Blob([xhr.response]);
-		var fileReader = new FileReader();
 
-		fileReader.onload = function() {
-			console.log("Downloaded " + url);
-			progress(name,name + ": Download Finished");
-			if(url.endsWith('.zip')){
-				JSZip.loadAsync(this.result).then(function (data) {
-					callback(data);
-				});
-			} else {
-				callback(this.result);
-			}
-		};
-
-		fileReader.readAsArrayBuffer(fileBlob);
+		console.log("Downloaded " + url);
+		progress(name,name + ": Download Finished");
+		if(url.endsWith('.zip')){
+			JSZip.loadAsync(fileBlob).then(function (data) {
+				callback(data);
+			});
+		} else {
+			callback(fileBlob);
+		}
 	};
 
 	xhr.onprogress = function (e) {
