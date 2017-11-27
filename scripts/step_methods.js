@@ -286,6 +286,12 @@ function cfw_files(change_start,region,console){
     
     getLatestRelease("d0k3","GodMode9",".zip","GodMode9");
     getFileBuffer_zip("GodMode9", "GodMode9.bin","GodMode9.bin","luma/payloads");
+    
+    getLatestRelease("ErmanSayin", "Themely",".cia","Themely");
+    addFile("Themely","cias","Themely.cia","list");
+    
+    getLatestRelease("zoogie", "DSP1",".cia","DSP1");
+    addFile("DSP1","cias","DSP1.cia","list");
 }
 
 function ctr_9_2(){
