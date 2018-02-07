@@ -195,6 +195,19 @@
             }
         ]
     },
+    
+    "Luma3DS NTRBoot": {
+        "type": "direct",
+        "url":"https://github.com/rikumax25/3SDSetup/raw/master/localfiles/luma.zip",
+        "steps": [
+            {
+                "type": "extractFile",
+                "fileExtract": "boot.firm",
+                "newName":"Luma3DS_boot.firm",
+                "path": ""
+            }
+        ]
+    },
 
     "Luma3DS V7.1": {
         "type": "direct",
@@ -587,6 +600,7 @@
     "install ntrboot":{
         "type":"list",
         "steps":[
+            "Luma3DS NTRBoot",
             "Homebrew Starter Kit",
             "Boot9strap",
             "SafeB9SInstaller boot.firm",
