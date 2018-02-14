@@ -348,7 +348,7 @@
         "steps":[
             {
                 "type": "addFile",
-                "name": "dsp1.cia",
+                "name": "boot.3dsx",
                 "file": "boot.3dsx",
                 "path": ""
             }
