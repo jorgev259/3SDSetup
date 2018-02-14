@@ -340,18 +340,21 @@
             }
         ]
     },
-
-    "Homebrew Starter Kit":{
-        "type" :"direct",
-        "url":"https://smealum.github.io/ninjhax2/starter.zip",
-        "steps": [
+    
+    "Homebrew Launcher":{
+        "type":"github",
+        "version":"latest",
+        "repo":"fincs/new-hbmenu",
+        "steps":[
             {
-                "type":"extractFile",
-                "path":""
+                "type": "addFile",
+                "name": "dsp1.cia",
+                "file": "boot.3dsx",
+                "path": ""
             }
-
         ]
     },
+
 
     "otherapp":{
         "type":"direct",
@@ -483,7 +486,7 @@
     "soundhaxList":{
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "otherapp",
             "Soundhax"
         ]
@@ -504,7 +507,7 @@
     "b9s_browser":{
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "Boot9strap",
             "SafeB9SInstaller Browser"
         ]
@@ -513,7 +516,7 @@
     "2xrsa":{
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "Boot9strap",
             "SafeB9SInstaller 2xrsa"
         ]
@@ -522,7 +525,7 @@
     "b9s_mset":{
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "Boot9strap",
             "SafeB9SInstaller MSET",
             "Luma3DS"
@@ -548,7 +551,7 @@
         "start":"https://3ds.guide/a9lh-to-b9s",
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "Godmode9",
             "Boot9strap",
             "SafeB9SInstaller payload",
@@ -584,7 +587,7 @@
     "finalize":{
         "type":"list",
         "steps":[
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "FBI",
             "Luma Updater",
             "DSP1",
@@ -601,7 +604,7 @@
         "type":"list",
         "steps":[
             "Luma3DS NTRBoot",
-            "Homebrew Starter Kit",
+            "Homebrew Launcher",
             "Boot9strap",
             "SafeB9SInstaller boot.firm",
             "FBI",
