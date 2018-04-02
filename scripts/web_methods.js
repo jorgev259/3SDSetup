@@ -23,8 +23,8 @@ $(document).ready(function(){
 
 
     var toastContact = toastr;
-    toastContact.options.onclick = function() { window.open(' https://discord.me/Nintenbrew', '_blank'); };
-    toastContact["warning"]("If you need support or wanna suggest something, contact Rikumax25 on Discord or go to the Nintenbrew Discord Server (click here to get the invite link)");
+    toastContact.options.onclick = function() { window.open('https://discord.gg/C29hYvh', '_blank'); };
+    toastContact["warning"]("If you need support or wanna suggest something, contact Just Riku on the Nintendo Homebrew Discord Server (click here to get the invite link)");
 })
 
 function progress(step,message,type){
