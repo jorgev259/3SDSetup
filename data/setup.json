@@ -610,7 +610,8 @@
             "Setup ctrnand Luma3DS Script",
             "Anemone3DS",
             "Luma3DS",
-            "Cleanup SD Card Script"
+            "Cleanup SD Card Script",
+            "ctr-no-timeoffset"
         ]
     },
 
