@@ -328,6 +328,18 @@
             }
         ]
     },
+    
+    "Godmode9 NANDManager": {
+        "type": "direct",
+        "url": "https://transfer.sh/%28/mkHBZ/NANDManager.gm9%29.zip",
+        "steps": [
+            {
+                "type": "extractFile",               
+                "fileExtract": "NANDManager.gm9",
+                "path": "gm9/scripts"
+            }
+        ]
+    },
 
     "Boot9strap": {
         "type": "github",
@@ -606,6 +618,7 @@
             "Luma Updater",
             "DSP1",
             "Godmode9",
+            "Godmode9 NANDManager",
             "HBL Loader",
             "Setup ctrnand Luma3DS Script",
             "Anemone3DS",
