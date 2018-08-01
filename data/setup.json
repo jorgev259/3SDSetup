@@ -247,6 +247,20 @@
             }
         ]
     },
+    
+    "ctr-no-timeoffset":{
+        "type":"github",
+        "repo":"ihaveamac/ctr-no-timeoffset",
+        "version":"latest",
+        "steps":[
+            {
+               "file":".3dsx",
+                "name":"ctr-no-timeoffset.3dsx",
+                "type":"addFile",
+                "path":"3ds"
+            }
+        ]
+    },
 
     "FBI":{
         "type":"github",
@@ -311,6 +325,18 @@
                 "file": ".zip",
                 "folder":"gm9/scripts",
                 "path":""
+            }
+        ]
+    },
+    
+    "Godmode9 NANDManager": {
+        "type": "direct",
+        "url": "https://transfer.sh/%28/mkHBZ/NANDManager.gm9%29.zip",
+        "steps": [
+            {
+                "type": "extractFile",               
+                "fileExtract": "NANDManager.gm9",
+                "path": "gm9/scripts"
             }
         ]
     },
@@ -592,11 +618,13 @@
             "Luma Updater",
             "DSP1",
             "Godmode9",
+            "Godmode9 NANDManager",
             "HBL Loader",
             "Setup ctrnand Luma3DS Script",
             "Anemone3DS",
             "Luma3DS",
-            "Cleanup SD Card Script"
+            "Cleanup SD Card Script",
+            "ctr-no-timeoffset"
         ]
     },
 
