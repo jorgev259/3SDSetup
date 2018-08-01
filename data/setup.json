@@ -247,6 +247,20 @@
             }
         ]
     },
+    
+    "ctr-no-timeoffset":{
+        "type":"github",
+        "repo":"ihaveamac/ctr-no-timeoffset",
+        "version":"latest",
+        "steps":[
+            {
+               "file":".3dsx",
+                "name":"ctr-no-timeoffset.3dsx",
+                "type":"addFile",
+                "path":"3ds"
+            }
+        ]
+    },
 
     "FBI":{
         "type":"github",
